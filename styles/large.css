@@ -1,0 +1,23 @@
+@media screen and (min-width:38rem) {
+    header {
+        grid-template-columns: 35px auto;
+    }
+    .hamburger {
+        display: none;
+    }
+    header, main, nav, footer {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .navigation {
+        display: block;
+    }
+    .navigation ul {
+        display: flex;
+    }
+    .navigation a {
+        border-style: none solid;
+        border-width: 1px 1px;
+        border-color: #ddd;
+    }
+}

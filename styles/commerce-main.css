@@ -1,0 +1,319 @@
+:root {
+    --primary-color: #dec3b2;
+    --secondary-color: #fef7e4;
+    --tertiary-color: #ffffff;
+    --quaternary-color: #0d0101;
+    --special-color: #31261e;
+    --card-color: #f4ddb2;
+    --light-blue: #0c2455;
+    --green-color: #014a01;
+    --red-color: #640505;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 40px auto 40px;
+    align-items: start;
+    padding: 5px 10px 5px;
+    gap:0.5rem;
+}
+
+header img {
+    display: block;
+    width:100%;
+    height: auto;
+}
+
+header span {
+    display: block;
+    font-size: 1.5rem;
+    padding: 12px 0 0 0;
+    color: var(--quaternary-color);
+}
+
+.hamburger {
+    display: block;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.hamburger::before {
+    content: "\2630";
+    font-size: 2rem;
+}
+
+.hamburger.show::before {
+    content: "\2715";
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.navigation {
+    display: none;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.navigation.show {
+    display: block;
+}
+
+.navigation ul {
+    display: block;
+    list-style-type: none;
+    padding: 5px 0 0 0;
+    margin: 0;
+}
+
+.navigation a {
+    display: block;
+    text-decoration: none;
+    padding:12px 6px;
+    color: var(--special-color);
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.navigation li.current {
+    background-color: var(--primary-color);
+}
+
+.navigation a:hover {
+    background-color: var(--hover-color);
+    color: var(--tertiary-color);
+}
+
+header, .navigation, main, footer {
+    max-width: 95%;
+    margin: 0 auto;
+}
+
+main {
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: var(--quaternary-color);
+    grid-column: 1/3;
+}
+
+h2 {
+    display: block;
+    font-family: "monserrat", sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    text-align: center;
+    color: var(--tertiary-color);
+    background-color: var(--quaternary-color);
+}
+
+.about-me p {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    font-family:'Times New Roman', Times, serif;
+    color: var(--special-color);
+    padding: 0.5rem;
+}
+
+.photo {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    aspect-ratio: 3/3;
+    height: auto;
+    border: 3px solid var(--primary-color);
+}
+
+section {
+    background-color: var(--secondary-color);
+}
+
+footer {
+    background-color: var(--tertiary-color);
+    color: var(--quaternary-color);
+    text-align: center;
+    margin: 15px auto;
+}
+
+.social-link {
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+}
+
+.social-link img {
+    width:40px;
+    height: 40px;
+}
+
+.footer-text {
+    padding: 10px;
+    background-color: var(--secondary-color);
+    font-size: 1.1rem;
+    font-family: "Montserrat", sans-serif;
+}
+
+.certificate {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--primary-color);
+}
+
+.certificate .btn {
+    display: inline-block;
+    font-family: "monserrat", sans-serif;
+    padding: 8px;
+    margin: 12px 10px ;
+    cursor: pointer;
+    border:none;
+    background-color: var(--primary-color);
+    color: var(--quaternary-color);
+    font-size: 1.1rem;
+    border-radius: 2px;
+    transition: opacity 0.15s;
+    box-shadow: 1px 1px 5px 1px var(--quaternary-color);
+}
+
+.certificate .certificate-header {
+    grid-column: 1/4;
+}
+
+.certificate .credit-text {
+    font-size: 1.1rem;
+    padding: 10px;
+    grid-column: 1/4;
+    background-color: var(--primary-color);
+    text-align: center;
+}
+
+.certificate .course-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column: 1/4;
+    gap: 20px;
+}
+
+.certificate .btn:active {
+    opacity: 0.5;
+}
+
+.certificate .btn:hover {
+    background-color: var(--special-color);
+    color: var(--tertiary-color);
+}
+
+.certificate .btn:focus {
+    background-color: var(--special-color);
+    color: var(--tertiary-color);
+}
+
+.course-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: var(--card-color);
+  color: var(--quaternary-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.course-card .course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--secondary-color);
+  padding: 15px;
+  margin: -10px -10px 0 -10px;
+  border-radius: 5px 5px 0 0;
+}
+
+.course-card h4 {
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.course-card .credits {
+  background-color: var(--light-blue);
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: var(--tertiary-color);
+  font-weight: bold;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.course-card h5 {
+  font-size: 1.4rem;
+  margin: 10px 0;
+  color: var(--quaternary-color);
+}
+
+.course-card .course-description {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin: 15px 0;
+  line-height: 1.5;
+  flex-grow: 1;
+  color: var(--special-color);
+}
+
+.course-card .technology {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.course-card .technology {
+  background-color: var(--secondary-color);
+  color: var(--quaternary-color);
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.course-card .status {
+  margin-top: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  width: 50%;
+}
+
+.course-card .status.completed {
+  background-color: var(--tertiary-color);
+  color: var(--green-color);
+  border: 1px solid var(--green-color);
+}
+
+.course-card .status.incomplete {
+  background-color: var(--tertiary-color);
+  color: var(--red-color);
+  border: 1px solid var(--red-color);
+}

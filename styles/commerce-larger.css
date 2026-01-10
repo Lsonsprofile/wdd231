@@ -1,0 +1,45 @@
+@media screen and (min-width:45rem) {
+    :root {
+    --primary-color: #dec3b2;
+    --secondary-color: #fef7e4;
+    --tertiary-color: #ffffff;
+    --quaternary-color: #0d0101;
+    --special-color: #31261e;
+    --primary-font: 'Roboto', sans-serif;
+    --secondary-font: 'Lato', sans-serif;
+    --hover-color:rgba(71, 42, 4, 0.829);
+}
+    .hamburger {
+        display: none;
+    }
+    header {
+        grid-template-columns: 40px auto;
+    }
+    .navigation {
+        display: block;
+    }
+    .navigation ul {
+        display: flex;
+    }
+    .navigation a {
+        border-style: none solid;
+        border-width: 1px 1px;
+        border-color: var(--secondary-color);
+    }
+    main {
+    display: grid;
+    grid-template-columns: 60% auto;
+    }
+    .certificate {
+        grid-column: 1/3;
+    }
+    .certificate .course-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width:60rem) {
+    .certificate .course-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

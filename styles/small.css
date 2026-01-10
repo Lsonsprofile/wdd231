@@ -1,0 +1,125 @@
+/*************** SITE WIDE ***************/
+* {
+    font-family: "Josefin Sans", sans-serif;
+    box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+
+/*************** HEADER ***************/
+header {
+    display: grid;
+    grid-template-columns: 35px auto 44px;
+    padding: 5px 6px 1px ;
+    align-items: end;
+    border-bottom: solid 1px #ddd;
+    column-gap: 8px;
+}
+
+header img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+header span {
+    font-size: 1.4rem;
+    color: #3D405B;
+}
+
+header span, header img {
+    padding: 0 0 5px 0;
+}
+
+/******************** HAMBURGER NAVIGATION ********************/
+.hamburger {
+    background: none;
+    border: none;
+    color: #3D405B;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.hamburger::after {
+    content: "\2630";
+    font-size: 2rem;
+}
+
+.hamburger.show::after {
+    content:"\00D7";
+}
+
+.navigation {
+    display: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.navigation.show {
+    display: block;
+}
+
+.navigation ul {
+    display: block;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation a {
+    display: block;
+    text-decoration: none;
+    padding:12px 6px;
+    color: #3D405B;
+    border-bottom: 1px solid #ddd;
+}
+
+.navigation li.current {
+    background-color: #ddd;
+}
+
+.navigation a:hover {
+    background-color: rgba(197, 133, 50, 0.829);
+}
+
+h1 {
+    margin-left: 6px;
+    color: #3D405B;
+}
+
+/****************** FOOTER ******************/
+footer {
+    background-color: #3D405B;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.social-link {
+    display: flex;
+    justify-content: center;
+    column-gap: 8px;
+}
+
+.social-link a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    border: #ddd dashed 1px;
+    cursor: pointer;
+    border-radius: 22px;
+}
+
+.social-link a:hover {
+    background-color: #ddd;
+}

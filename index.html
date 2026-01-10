@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse profile information and in-progress WDD and CSE courses, including credits, technologies, and course details.">
+    <meta name="author" content="Emmanuel Ndogo">
+    <title>Home | Emmanuel Chamber of Commerce</title>
+    <link rel="icon" href="images/site-logo.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/commerce-main.css">
+    <link rel="stylesheet" href="styles/commerce-larger.css">
+    <script src="scripts/navigation.js" defer></script>
+    <script src="scripts/date.js" defer></script>
+    <script src="scripts/course.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="images/site-logo.svg" alt="Chamber of Commerce">
+        <span>Emmanuel Chamber of Commerce</span>
+        <button aria-label="Show navigational link" id="ham-btn" class="hamburger"></button>
+    </header>
+    <nav id="nav-bar" class="navigation">
+        <ul>
+            <li class="current"><a href="index.html">Home</a></li>
+            <li><a href="#">Chamber Project</a></li>
+            <li><a href="#">Final Project</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Home</h1>
+        <section class="about-me">
+            <h2>About Me</h2>
+            <p>My name is Emmanuel and I am a student at Brigham Young University–Pathway Worldwide. I am currently enrolled in the Web Development program and I am excited to be learning new skills and techniques. I am passionate about web development and I am always looking for new ways to improve my skills. I am also interested in learning more about the business world and how it can be used to improve the lives of people.</p>
+        </section>
+
+        <section class="student-img">
+            <h2>Student photo</h2>
+            <img class="photo" src="images/lsonimg.webp" alt="Student photograph" width="300" height="300">
+        </section>
+
+        <section class="certificate">
+            <h2 class="certificate-header">Web and Computer Programme Certificate</h2>
+            <button id="course-btn" aria-label="Show all courses" class="btn">All courses</button>
+            <button id="btn-wdd" aria-label="Show WDD courses" class="btn">WDD courses</button>
+            <button id="btn-cse" aria-label="Show CSE courses" class="btn">CSE courses</button>
+            <p class="credit-text">Total Number of Credits: <span id="course-count">6</span></p>
+            <div id="course-list" class="course-grid">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="social-link">
+            <a href="#" target="_blank"><img src="images/github.svg" alt="Github icon"></a>
+            <a href="#" target="_blank"><img src="images/linkedin.svg" alt="linkedin icon"></a>
+            <a href="#" target="_blank"><img src="images/whatsapp.svg" alt="whatsapp icon"></a>
+        </div>
+        <div class="footer-text">
+            <p>&copy; <span id="year"></span>. Emmanuel Ndogo. Lagos, Nigeria.</p>
+            <p>Last modified: <span id="lastModified"></span></p>
+        </div>
+    </footer>
+</body>
+</html>
