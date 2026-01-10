@@ -280,15 +280,6 @@ footer {
 }
 
 .course-card .technology {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.course-card .technology {
   background-color: var(--secondary-color);
   color: var(--quaternary-color);
   padding: 5px 12px;
