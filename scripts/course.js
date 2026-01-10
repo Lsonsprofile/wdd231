@@ -101,10 +101,12 @@ function createCourseCard(course) {
         <h4>${course.subject} ${course.number}</h4>
         <p class="credits">Credits: ${course.credits}</p>
     </div>
-    <h5>${course.title}</h5>
-    <p class="course-description">${course.description}</p>
-    <p class="technology">${course.technology.join(", ")}</p>
-    <p class="status ${statusClass}">${statusText}</p>
+      <div class="course-body">
+        <h5>${course.title}</h5>
+        <p class="course-description">${course.description}</p>
+        <p class="technology">${course.technology.join(", ")}</p>
+        <p class="status ${statusClass}">${statusText}</p>
+    </div>
   `;
 
   return card;

@@ -1,6 +1,6 @@
 :root {
     --primary-color: #dec3b2;
-    --secondary-color: #fef7e4;
+    --secondary-color: #f8edcf;
     --tertiary-color: #ffffff;
     --quaternary-color: #0d0101;
     --special-color: #31261e;
@@ -229,63 +229,62 @@ footer {
 .course-card {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 10px;
-  margin: 10px;
   border-radius: 5px;
-  background-color: var(--card-color);
-  color: var(--quaternary-color);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: var(--tertiary-color);
+  margin: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  min-height: 450px;
 }
 
-.course-card .course-header {
+.course-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--secondary-color);
-  padding: 15px;
-  margin: -10px -10px 0 -10px;
+  background-color: var(--card-color);
+  padding: 15px 20px;
   border-radius: 5px 5px 0 0;
-}
-
-.course-card h4 {
   font-size: 1.8rem;
-  margin: 0;
   font-weight: bold;
 }
 
-.course-card .credits {
+.credits {
   background-color: var(--light-blue);
   border-radius: 5px;
   padding: 5px 10px;
   color: var(--tertiary-color);
-  font-weight: bold;
-  font-size: 0.9rem;
   white-space: nowrap;
 }
 
-.course-card h5 {
-  font-size: 1.4rem;
-  margin: 10px 0;
+.course-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 15px 15px;
+}
+
+.course-body h5 {
+  font-size: 1.5rem;
+  margin: 15px 0;
   color: var(--quaternary-color);
 }
 
-.course-card .course-description {
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  margin: 15px 0;
+.course-description {
+  margin: 0 0 10px 0;
   line-height: 1.5;
   flex-grow: 1;
-  color: var(--special-color);
+  overflow: auto;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: var(--quaternary-color);
 }
 
-.course-card .technology {
-  background-color: var(--secondary-color);
+.technology {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
   color: var(--quaternary-color);
-  padding: 5px 12px;
-  border-radius: 15px;
-  font-size: 1rem;
-  font-weight: 500;
 }
 
 .course-card .status {
