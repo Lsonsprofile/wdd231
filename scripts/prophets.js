@@ -1,32 +1,50 @@
 const url = 'https://byui-cse.github.io/cse-ww-program/data/latter-day-prophets.json';
 const cards = document.querySelector('#cards');
 
-async function getProphetData() {
-  const response = await fetch(url);
-  const data = await response.json();
-  console.table(data.prophets); // ✅ This shows data in the console
-
-  // Display each prophet in the #cards div
-  data.prophets.forEach(prophet => {
+const displayProphets = (prophets) => {
+  prophets.forEach((prophet) => {
     const card = document.createElement('section');
-    const h2 = document.createElement('h2');
-    const birth = document.createElement('p');
-    const place = document.createElement('p');
+    card.classList.add('prophet-card');
+    const fullName = document.createElement('h2');
+    const birthDate = document.createElement('p');
+    birthDate.classList.add('birth-date');
+    const deathDate = document.createElement('p');
+    const length = document.createElement('p');
+    const order = document.createElement('p');
+    const birthPlace = document.createElement('p');
+    const children = document.createElement('p');
     const portrait = document.createElement('img');
 
-    h2.textContent = `${prophet.name} ${prophet.lastname}`;
-    birth.textContent = `Date of Birth: ${prophet.birthdate}`;
-    place.textContent = `Place of Birth: ${prophet.birthplace}`;
+    fullName.textContent = `${prophet.name} ${prophet.lastname}`;
+    birthDate.textContent = `Birth Date: ${prophet.birthdate}`;
+    deathDate.textContent = `Death: ${prophet.death}`;
+    length.textContent = `Years as Prophet: ${prophet.length}`;
+    order.textContent = `Order: ${prophet.order}`;
+    birthPlace.textContent = `Birthplace: ${prophet.birthplace}`;
+    children.textContent = `Children: ${prophet.numofchildren}`;
+
     portrait.setAttribute('src', prophet.imageurl);
     portrait.setAttribute('alt', `Portrait of ${prophet.name} ${prophet.lastname}`);
     portrait.setAttribute('loading', 'lazy');
+    portrait.setAttribute('width', '340');
+    portrait.setAttribute('height', '440');
 
-    card.appendChild(h2);
-    card.appendChild(birth);
-    card.appendChild(place);
+    card.appendChild(fullName);
     card.appendChild(portrait);
+    card.appendChild(birthDate);
+    card.appendChild(deathDate);
+    card.appendChild(length);
+    card.appendChild(order);
+    card.appendChild(birthPlace);
+    card.appendChild(children);
     cards.appendChild(card);
   });
+};
+
+async function getProphetData() {
+  const response = await fetch(url);
+  const data = await response.json();
+  displayProphets(data.prophets);
 }
 
 getProphetData();
