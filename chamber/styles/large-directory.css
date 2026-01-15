@@ -1,0 +1,26 @@
+@media screen and (min-width:44rem) {
+    .site-header {
+        grid-template-columns: 40px auto 1fr;
+
+    }
+    .hamburger {
+        display: none;
+    }
+    .navbar ul {
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+        padding: 0 5px 10px;
+    }
+    .navbar li {
+        border-bottom: none;
+    }
+    .navbar {
+        display: block;
+        grid-column: 3;
+        margin: 0;
+    }
+    .navbar a {
+        padding: 0 4px;
+    }
+}

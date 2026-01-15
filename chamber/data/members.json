@@ -1,0 +1,225 @@
+{
+  "members": [
+    {
+      "id": 101,
+      "name": "TechVision Solutions",
+      "address": {
+        "street": "123 Innovation Drive",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94107",
+        "country": "USA"
+      },
+      "phone": "(415) 555-1234",
+      "website": "https://www.techvisionsolutions.com",
+      "image": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80",
+      "membership_level": 3,
+      "membership_type": "Corporate Gold",
+      "join_date": "2020-05-15",
+      "contact_person": "Sarah Johnson",
+      "contact_email": "sarah.j@techvisionsolutions.com",
+      "industry": "Technology Consulting",
+      "description": "Full-service IT consulting firm specializing in digital transformation and cloud solutions.",
+      "services": ["Cloud Migration", "Cybersecurity", "Software Development", "IT Support"],
+      "social_media": {
+        "twitter": "https://twitter.com/techvision",
+        "linkedin": "https://linkedin.com/company/techvision",
+        "facebook": "https://facebook.com/techvisionsolutions"
+      }
+    },
+    {
+      "id": 102,
+      "name": "GreenLeaf Organics",
+      "address": {
+        "street": "789 Farm-to-Table Lane",
+        "city": "Portland",
+        "state": "OR",
+        "zip": "97205",
+        "country": "USA"
+      },
+      "phone": "(503) 555-5678",
+      "website": "https://www.greenleaforganics.com",
+      "image": "https://images.unsplash.com/photo-1613478223719-2ab802602423?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80",
+      "membership_level": 2,
+      "membership_type": "Silver Partner",
+      "join_date": "2019-08-22",
+      "contact_person": "Michael Chen",
+      "contact_email": "michael.chen@greenleaforganics.com",
+      "industry": "Organic Food Distribution",
+      "description": "Certified organic produce distributor connecting local farms with restaurants and grocery stores.",
+      "services": ["Organic Produce Supply", "Farm Partnerships", "Delivery Services"],
+      "social_media": {
+        "instagram": "https://instagram.com/greenleaforganics",
+        "facebook": "https://facebook.com/greenleaforganics"
+      }
+    },
+    {
+      "id": 103,
+      "name": "Summit Financial Advisors",
+      "address": {
+        "street": "101 Wall Street Plaza",
+        "city": "New York",
+        "state": "NY",
+        "zip": "10005",
+        "country": "USA"
+      },
+      "phone": "(212) 555-9012",
+      "website": "https://www.summitfinancial.com",
+      "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80",
+      "membership_level": 3,
+      "membership_type": "Platinum Partner",
+      "join_date": "2017-03-10",
+      "contact_person": "Robert Williams",
+      "contact_email": "r.williams@summitfinancial.com",
+      "industry": "Financial Services",
+      "description": "Comprehensive wealth management and investment advisory services for high-net-worth individuals.",
+      "services": ["Investment Management", "Retirement Planning", "Tax Strategy", "Estate Planning"],
+      "social_media": {
+        "linkedin": "https://linkedin.com/company/summitfinancial",
+        "twitter": "https://twitter.com/summit_financial"
+      }
+    },
+    {
+      "id": 104,
+      "name": "UrbanFit Gym",
+      "address": {
+        "street": "303 Fitness Avenue",
+        "city": "Chicago",
+        "state": "IL",
+        "zip": "60611",
+        "country": "USA"
+      },
+      "phone": "(312) 555-3456",
+      "website": "https://www.urbanfitgym.com",
+      "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80",
+      "membership_level": 1,
+      "membership_type": "Basic Member",
+      "join_date": "2021-01-30",
+      "contact_person": "Jessica Martinez",
+      "contact_email": "jessica@urbanfitgym.com",
+      "industry": "Fitness & Wellness",
+      "description": "Modern fitness centers offering state-of-the-art equipment, group classes, and personal training.",
+      "services": ["Personal Training", "Group Fitness Classes", "Nutrition Counseling", "Corporate Wellness"],
+      "social_media": {
+        "instagram": "https://instagram.com/urbanfitgym",
+        "facebook": "https://facebook.com/urbanfitgym",
+        "tiktok": "https://tiktok.com/@urbanfitgym"
+      }
+    },
+    {
+      "id": 105,
+      "name": "Precision Manufacturing Corp",
+      "address": {
+        "street": "606 Industrial Parkway",
+        "city": "Detroit",
+        "state": "MI",
+        "zip": "48226",
+        "country": "USA"
+      },
+      "phone": "(313) 555-7890",
+      "website": "https://www.precisionmfg.com",
+      "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80",
+      "membership_level": 2,
+      "membership_type": "Silver Industrial",
+      "join_date": "2018-11-05",
+      "contact_person": "David Thompson",
+      "contact_email": "d.thompson@precisionmfg.com",
+      "industry": "Industrial Manufacturing",
+      "description": "Specialized manufacturer of precision components for automotive and aerospace industries.",
+      "services": ["Custom Fabrication", "CNC Machining", "Quality Control", "Supply Chain Management"],
+      "social_media": {
+        "linkedin": "https://linkedin.com/company/precisionmanufacturing"
+      }
+    },
+    {
+      "id": 106,
+      "name": "Creative Minds Marketing",
+      "address": {
+        "street": "808 Advertising Blvd",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90028",
+        "country": "USA"
+      },
+      "phone": "(323) 555-2345",
+      "website": "https://www.creativemindsmarketing.com",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80",
+      "membership_level": 1,
+      "membership_type": "Basic Creative",
+      "join_date": "2022-04-18",
+      "contact_person": "Alex Rodriguez",
+      "contact_email": "alex@creativemindsmarketing.com",
+      "industry": "Digital Marketing",
+      "description": "Full-service digital marketing agency focused on branding, social media, and content creation.",
+      "services": ["Social Media Management", "Brand Strategy", "Content Creation", "SEO Optimization"],
+      "social_media": {
+        "instagram": "https://instagram.com/creativeminds",
+        "twitter": "https://twitter.com/creativeminds",
+        "linkedin": "https://linkedin.com/company/creativeminds"
+      }
+    },
+    {
+      "id": 107,
+      "name": "Horizon Pharmaceuticals",
+      "address": {
+        "street": "909 Medical Center Drive",
+        "city": "Philadelphia",
+        "state": "PA",
+        "zip": "19104",
+        "country": "USA"
+      },
+      "phone": "(215) 555-6789",
+      "website": "https://www.horizonpharma.com",
+      "image": "https://images.unsplash.com/photo-1586773860418-dc22f8b874bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80",
+      "membership_level": 3,
+      "membership_type": "Corporate Gold",
+      "join_date": "2016-09-12",
+      "contact_person": "Dr. Elizabeth Parker",
+      "contact_email": "eparker@horizonpharma.com",
+      "industry": "Pharmaceuticals",
+      "description": "Research-driven pharmaceutical company developing innovative treatments for rare diseases.",
+      "services": ["Drug Development", "Clinical Trials", "Pharmaceutical Manufacturing", "Medical Research"],
+      "social_media": {
+        "linkedin": "https://linkedin.com/company/horizonpharma",
+        "twitter": "https://twitter.com/horizon_pharma"
+      }
+    },
+    {
+      "id": 108,
+      "name": "EcoBuild Sustainable Construction",
+      "address": {
+        "street": "1212 Green Building Way",
+        "city": "Denver",
+        "state": "CO",
+        "zip": "80202",
+        "country": "USA"
+      },
+      "phone": "(303) 555-4567",
+      "website": "https://www.ecobuildconstruction.com",
+      "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80",
+      "membership_level": 2,
+      "membership_type": "Silver Sustainable",
+      "join_date": "2020-10-25",
+      "contact_person": "Thomas Green",
+      "contact_email": "t.green@ecobuildconstruction.com",
+      "industry": "Sustainable Construction",
+      "description": "Specializing in eco-friendly construction using sustainable materials and energy-efficient designs.",
+      "services": ["Green Building", "LEED Certification", "Energy Audits", "Sustainable Renovations"],
+      "social_media": {
+        "instagram": "https://instagram.com/ecobuildco",
+        "facebook": "https://facebook.com/ecobuildconstruction",
+        "linkedin": "https://linkedin.com/company/ecobuild"
+      }
+    }
+  ],
+  "metadata": {
+    "total_members": 8,
+    "last_updated": "2023-10-15",
+    "membership_levels": {
+      "1": "Member",
+      "2": "Silver",
+      "3": "Gold"
+    },
+    "image_source": "Unsplash - All images are royalty-free and available for commercial use"
+  }
+}
