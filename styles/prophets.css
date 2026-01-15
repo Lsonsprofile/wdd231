@@ -75,3 +75,11 @@ header h1 {
     font-weight: 700;
     letter-spacing: 1px;
 }
+
+footer p {
+  color: var(--octonary-color);
+  padding: 20px;
+  background-color: var(--septenary-color);
+  font-size: 20px;
+  text-align: center;
+}
