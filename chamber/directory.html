@@ -17,7 +17,13 @@
     <link rel="stylesheet" href="styles/main-directory.css">
     <link rel="stylesheet" href="styles/large-directory.css">
     <script src="scripts/nav-directory.js" defer></script>
+    <script src="scripts/lastmod.js" defer></script>
+    <script src="scripts/members.js" defer></script>
     <link rel="icon" href="images/webpage.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
     
 </head>
 <body>
@@ -33,18 +39,108 @@
                 <li><a href="dicover.html">Discover</a></li>
             </ul>
         </nav>
-</header>
-
+    </header>
     <main>
         <section class="hero">
-            <img src="images/hero.jpg" alt="City skyline" class="responsive-img">
-            <h1>Welcome to Our Chamber</h1>
+            <img src="images/hero-img.jpg" alt="City skyline" class="responsive-img">
+            <div class="hero-text">
+            <h1>Welcome to Emmanuel</h1>
+            <span>Chamber Directory</span>
             <p>Connecting businesses and community</p>
+            </div>
         </section>
 
+        <section class="members">
+            <h2 class="home">Home</h2>
+
+            <div class="live-updates">
+            <section class="events">
+                <h2>Events</h2>
+                <ul class="event-list">
+                <li>
+                    <h3>Lagos Study Abroad Expo</h3>
+                    <h4>Lagos Oriental Hotel, Lekki</h4>
+                    <p>January 28, 2026 · 10:00 AM – 12:00 PM</p>
+                    <a href="https://allevents.in/lagos/lagos-study-abroad-expo-january-2026/100001391847656809" target="_blank">More Info</a>
+                </li>
+                <li>
+                    <h3>Lagos Mainland International College Fair</h3>
+                    <h4>Lagos Marriott Hotel, Ikeja</h4>
+                    <p>January 29, 2026 · 10:00 AM – 4:00 PM</p>
+                    <a href="https://happeningnext.com/event/lagos-mainland-international-college-fair-2026-eid1ef09q2jxvir" target="_blank">More Info</a>
+                </li>
+                <li>
+                    <h3>Africa–Dubai Home Expo</h3>
+                    <h4>Landmark Event Center, Victoria Island</h4>
+                    <p>January 30–31, 2026 · 8:00 AM – 10:00 PM</p>
+                    <a href="https://allevents.in/victoria-island/africa-dubai-home-expo-lagos-2026/100001324887116029" target="_blank">More Info</a>
+                </li>
+                </ul>
+            </section>
+
+            <section class="current-weather">
+                <h2>Current Weather</h2>
+                <div class="weather-details">
+                <div class="weather-icon" aria-hidden="true"></div>
+                <div class="weather-info">
+                    <p><strong>Temperature:</strong> 75°F</p>
+                    <p><strong>Condition:</strong> Partly Cloudy</p>
+                    <p><strong>High:</strong> 85°F</p>
+                    <p><strong>Low:</strong> 52°F</p>
+                    <p><strong>Humidity:</strong> 34%</p>
+                    <p><strong>Sunrise:</strong> 7:30 AM</p>
+                    <p><strong>Sunset:</strong> 9:59 PM</p>
+                </div>
+                </div>
+            </section>
+
+            <section class="weather-forecast">
+                <h2>Weather Forecast</h2>
+                <ul class="forecast-list">
+                <li><strong>Today:</strong> <span>90°F</span></li>
+                <li><strong>Wednesday:</strong> <span>89°F</span></li>
+                <li><strong>Thursday:</strong> <span>68°F</span></li>
+                </ul>
+            </section>
+            </div>
+        </section>
+        <div class="view-toggle">
+            <button id="grid-btn" aria-label="Show grid view">
+                <i class="fas fa-th"></i>
+            </button>
+            <button id="list-btn" aria-label="Show list view">
+                <i class="fas fa-list"></i>
+            </button>
+        </div>
+
+        <div id="membership-card"></div>
+</main>
+
     </main>
+
     <footer>
-        <p>&copy; 2023 Emmanuel International Chamber of Commerce. All rights reserved.</p>
+        <div class="contact-info">
+            <p><strong>Emmanuel Chamber of Commerce</strong></p>
+            <p>42 Unity Crescent</p>
+            <p>Victoria Island, Lagos 101241</p>
+            <p>
+                <a href="mailto:info@lagoscc.org.ng">info@lagoscc.org.ng</a>
+            </p>
+            <p>
+                <a href="tel:+2348095551234">(+234) 809-555-1234</a>
+            </p>
+        </div>
+        <div class="social-link">
+            <a href="#" target="_blank"><img src="images/github.svg" alt="Github icon"></a>
+            <a href="#" target="_blank"><img src="images/linkedin.svg" alt="linkedin icon"></a>
+            <a href="#" target="_blank"><img src="images/whatsapp.svg" alt="whatsapp icon"></a>
+        </div>
+        <div class="footer-text">
+            <p><strong>WDD231 Class Project</strong></p>
+            <p>Emmanuel Ndogo</p>
+            <p>&copy; <span id="year"></span>. Emmanuel Chamber of Commerce.</p>
+            <p>Last modified: <span id="lastModified"></span></p>
+        </div>
     </footer>
     </main>
     

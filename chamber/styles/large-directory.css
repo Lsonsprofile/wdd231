@@ -22,5 +22,12 @@
     }
     .navbar a {
         padding: 0 4px;
+        border-radius: 5px;
+    }
+    footer {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .live-updates {
+        flex-direction: row;
     }
 }
