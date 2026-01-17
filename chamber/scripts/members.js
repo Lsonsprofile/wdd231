@@ -21,12 +21,25 @@ const displayMembers = (members) => {
 
     name.textContent = member.name;
     industry.innerHTML = `<strong>Industry:</strong> ${member.industry}`
-    membership.innerHTML = `<strong>Membership:</strong> ${member.membership_level}`
     address.innerHTML = `<strong>Address:</strong> ${member.address}`;
     phone.innerHTML = `<strong>Phone:</strong> ${member.phone}`;
     discription.innerHTML = `<strong>Description:</strong> ${member.description}`;
     joindate.innerHTML = `<strong>Joined:</strong> ${member.join_date}`;
     services.innerHTML = `<strong>Services:</strong> ${member.services}`;
+
+    let icon = "";
+    switch (member.membership_level) {
+      case "Bronze Member":
+        icon = "&#129351;";
+        break;
+      case "Silver Member":
+        icon = "&#129352;";
+        break;
+      case "Gold Member":
+        icon = "&#129353;";
+        break;
+    }
+    membership.innerHTML = `<strong>Membership:</strong> ${member.membership_level} ${icon}`;
 
     website.innerHTML = `<strong>Website:</strong> ${member.website}`
     website.href = member.website;
