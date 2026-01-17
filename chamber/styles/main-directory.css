@@ -203,7 +203,7 @@ footer {
     justify-content: center;
     gap: 20px;
     background-color: var(--background-color);
-    margin: 10px auto;
+    margin: 20px auto;
 }
 
 .view-toggle button {
@@ -320,5 +320,164 @@ footer {
 .forecast-list li {
     list-style-type: none;
     padding: 15px;
+}
+
+
+
+
+
+/* Main container styling */
+#membership-card {
+  display: grid;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+/* Grid View - Cards with Images */
+#membership-card.grid-view {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+/* Grid Card Styling */
+#membership-card.grid-view .member-card {
+  background: var(--body-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 2px solid var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  box-shadow: 1px 1px 5px var(--text-color);
+}
+
+#membership-card.grid-view .member-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border-color: var(--secondary-color);
+}
+
+/* Grid Card Image */
+#membership-card.grid-view .member-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  background-color: var(--background-color);
+  padding: 0.75rem;
+  border: 1px solid var(--primary-color);
+}
+
+/* Grid Card Text */
+#membership-card.grid-view .member-card h2 {
+  color: var(--secondary-color);
+  font-size: 1.3rem;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+#membership-card.grid-view .member-card p {
+  color: var(--text-color);
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+#membership-card.grid-view .member-card strong {
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+#membership-card.grid-view .member-card a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  margin: 0.5rem 0;
+  display: block;
+  word-break: break-all;
+}
+
+#membership-card.grid-view .member-card a:hover {
+  color: var(--quaternary-color);
+  text-decoration: underline;
+}
+
+/* Membership level badges in grid view */
+#membership-card.grid-view .member-card p:nth-child(4) {
+  background-color: var(--transparent-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+/* List View - Simple Text Layout */
+#membership-card.list-view {
+  display: block;
+  background: var(--body-color);
+  border-radius: 8px;
+  padding: 0;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* List view cards as compact items */
+#membership-card.list-view .member-card {
+  display: block;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--primary-color);
+  background: var(--body-color);
+  transition: background-color 0.2s ease;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+#membership-card.list-view .member-card:last-child {
+  border-bottom: none;
+}
+
+#membership-card.list-view .member-card:hover {
+  background-color: var(--background-color);
+}
+
+/* Hide image in list view */
+#membership-card.list-view .member-card img {
+  display: none;
+}
+
+/* List view text styling - wrap normally */
+#membership-card.list-view .member-card h2 {
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: bold;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+#membership-card.list-view .member-card p {
+  color: var(--text-color);
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  width: 100%;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+/* List view links */
+#membership-card.list-view .member-card a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  display: inline;
+  word-break: break-all;
+  max-width: 100%;
+}
+
+#membership-card.list-view .member-card a:hover {
+  color: var(--quaternary-color);
+  text-decoration: underline;
 }
 

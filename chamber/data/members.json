@@ -84,11 +84,11 @@
       "address": "909 Medical Center Drive, Philadelphia, PA 19104",
       "phone": "(215) 555-6789",
       "website": "https://www.horizonpharma.com",
-      "image": "https://images.unsplash.com/photo-1586773860418-dc22f8b874bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80",
+      "image": "",
       "membership_level": 3,
       "join_date": "2016-09-12",
       "industry": "Pharmaceuticals",
-      "description": "Research-driven pharmaceutical company developing innovative treatments for rare diseases.",
+      "description": "https://www.theparliamentmagazine.eu/siteimg/news-main/ugc-1/fullnews/news/24494/24129_original.jpg",
       "services": ["Drug Development", "Clinical Trials", "Pharmaceutical Manufacturing", "Medical Research"]
     },
     {
