@@ -38,9 +38,15 @@
         margin: 20px auto;
     }
 
-    .view-toggle button {
-        font-size: 25px;
-        padding: 2px 40px;
+    .view-toggle #grid-btn::before {
+        content: "\25A6";
+    }
+    .view-toggle #list-btn::before {
+        content: "\2630";
+    }
+        .view-toggle button {
+        font-size: 30px;
+        padding: 2px 30px;
         border: none;
         cursor: pointer;
         background: none;
@@ -85,5 +91,4 @@
     #membership-card {
     display: grid;
     }
-
 }
