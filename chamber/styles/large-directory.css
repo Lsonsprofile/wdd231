@@ -1,7 +1,10 @@
-@media screen and (min-width:44rem) {
+@media screen and (min-width:47rem) {
     .site-header {
-        grid-template-columns: 40px auto 1fr;
-
+        grid-template-columns: auto 1fr;
+        align-items: start;
+    }
+    .header-container {
+        align-items: start;
     }
     .hamburger {
         display: none;
@@ -27,7 +30,61 @@
     footer {
         grid-template-columns: 1fr 1fr 1fr;
     }
-    .live-updates {
-        flex-direction: row;
+    .view-toggle {
+        display:flex;
+        justify-content: center;
+        gap: 20px;
+        background-color: var(--background-color);
+        margin: 20px auto;
     }
+
+    .view-toggle button {
+        font-size: 25px;
+        padding: 2px 40px;
+        border: none;
+        cursor: pointer;
+        background: none;
+        background-color: var(--body-color);
+        user-select: none;
+        box-shadow: 1px 1px 5px var(--text-color);
+    }
+
+    .view-toggle button:hover {
+        outline: 2px solid var(--quaternary-color);
+    }
+
+    .view-toggle button:focus {
+        border-bottom: 5px solid var(--quaternary-color);
+    }
+    .member-table {
+        display:table;
+        width: 100%;
+        border-collapse: collapse;
+        padding: 100px;
+        box-shadow: 1px 1px 5px var(--text-color);
+        border: 1px solid var(--primary-color);
+    }
+
+    .member-table th,
+    .member-table td {
+        padding: 10px;
+        border-bottom: 1px solid var(--primary-color);
+        border-left: 1px solid var(--primary-color);
+        text-align: left;
+        background-color: var(--body-color);
+    }
+
+    .member-table th {
+        background-color: var(--transparent-color);
+        font-weight: bold;
+        font-family: "Libre Baskerville", serif;
+    }
+
+    .member-table tr:hover {
+        background-color: var(--background-color);
+    }
+    #membership-card {
+    display: grid;
+    }
+
 }

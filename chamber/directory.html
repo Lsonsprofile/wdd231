@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>wdd231 | Chamber Directory Page</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Explore the Emmanuel Chamber of Commerce business directory. Discover local companies, view member profiles, contact details, and learn about membership levels of connecting with the businesses community.">
+    <meta name="author" content="Emmanuel Ndogo">
     
     <meta property="og:title" content="Chamber Directory | WDD231 Project">
     <meta property="og:description" content="Explore the business directory for Emmanuel internatinal Chamber of Commerce Home-page. View member profiles, contact details, and membership levels.">
@@ -23,18 +23,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-+vRZ9OYkJ6HkF2NLLl2+Z7vZzgK1DqVfIyykuv6bCkOe6Yj2ENw4p2tF+4N3Hnwl4nUjD7Ee6CrfUbKThH5T9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     
 </head>
 <body>
     <header class="site-header">
-        <img src="images/image-icon.webp" alt="Chamber of Commerce">
-        <span class="site-title">Emmanuel Chamber of Commerce</span>
+        <div class="header-container">
+            <img src="images/image-icon.webp" alt="Chamber of Commerce">
+            <span class="site-title">Emmanuel Chamber of Commerce</span>
+        </div>
         <button aria-label="Show navigational link" id="ham-btn" class="hamburger"></button>
         <nav class="navbar">
             <ul>
-                <li class="current"><a href="directory.html">Home</a></li>
-                <li><a href="direct.html">Directory</a></li>
+                <li><a href="directory.html">Home</a></li>
+                <li class="current"><a href="direct.html">Directory</a></li>
                 <li><a href="join.html">Join</a></li>
                 <li><a href="dicover.html">Discover</a></li>
             </ul>
@@ -53,56 +56,6 @@
         <section class="members">
             <h2 class="home">Home</h2>
 
-            <div class="live-updates">
-            <section class="events">
-                <h2>Events</h2>
-                <ul class="event-list">
-                <li>
-                    <h3>Lagos Study Abroad Expo</h3>
-                    <h4>Lagos Oriental Hotel, Lekki</h4>
-                    <p>January 28, 2026 · 10:00 AM – 12:00 PM</p>
-                    <a href="https://allevents.in/lagos/lagos-study-abroad-expo-january-2026/100001391847656809" target="_blank">More Info</a>
-                </li>
-                <li>
-                    <h3>Lagos Mainland International College Fair</h3>
-                    <h4>Lagos Marriott Hotel, Ikeja</h4>
-                    <p>January 29, 2026 · 10:00 AM – 4:00 PM</p>
-                    <a href="https://happeningnext.com/event/lagos-mainland-international-college-fair-2026-eid1ef09q2jxvir" target="_blank">More Info</a>
-                </li>
-                <li>
-                    <h3>Africa–Dubai Home Expo</h3>
-                    <h4>Landmark Event Center, Victoria Island</h4>
-                    <p>January 30–31, 2026 · 8:00 AM – 10:00 PM</p>
-                    <a href="https://allevents.in/victoria-island/africa-dubai-home-expo-lagos-2026/100001324887116029" target="_blank">More Info</a>
-                </li>
-                </ul>
-            </section>
-
-            <section class="current-weather">
-                <h2>Current Weather</h2>
-                <div class="weather-details">
-                <div class="weather-icon" aria-hidden="true"></div>
-                <div class="weather-info">
-                    <p><strong>Temperature:</strong> 75°F</p>
-                    <p><strong>Condition:</strong> Partly Cloudy</p>
-                    <p><strong>High:</strong> 85°F</p>
-                    <p><strong>Low:</strong> 52°F</p>
-                    <p><strong>Humidity:</strong> 34%</p>
-                    <p><strong>Sunrise:</strong> 7:30 AM</p>
-                    <p><strong>Sunset:</strong> 9:59 PM</p>
-                </div>
-                </div>
-            </section>
-
-            <section class="weather-forecast">
-                <h2>Weather Forecast</h2>
-                <ul class="forecast-list">
-                <li><strong>Today:</strong> <span>90°F</span></li>
-                <li><strong>Wednesday:</strong> <span>89°F</span></li>
-                <li><strong>Thursday:</strong> <span>68°F</span></li>
-                </ul>
-            </section>
-            </div>
         </section>
         <div class="view-toggle">
             <button id="grid-btn" aria-label="Show grid view">
@@ -114,7 +67,7 @@
         </div>
 
         <div id="membership-card"></div>
-</main>
+        <div id="membership-table"></div>
 
     </main>
 
@@ -142,7 +95,6 @@
             <p>Last modified: <span id="lastModified"></span></p>
         </div>
     </footer>
-    </main>
     
 </body>
 </html>

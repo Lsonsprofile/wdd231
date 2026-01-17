@@ -11,7 +11,7 @@ const displayMembers = (members) => {
     const name = document.createElement('h2');
     const industry = document.createElement('p');
     const discription = document.createElement('p');
-    const membership = document.createElement('p');
+    const membership = document.createElement('h3');
     const address = document.createElement('p');
     const phone = document.createElement('p');
     const website = document.createElement('a');
@@ -53,9 +53,9 @@ const displayMembers = (members) => {
 
     card.appendChild(name);
     card.appendChild(portrait);
+    card.appendChild(membership);
     card.appendChild(industry);
     card.appendChild(discription);
-    card.appendChild(membership);
     card.appendChild(address);
     card.appendChild(phone);
     card.appendChild(joindate);
@@ -66,26 +66,106 @@ const displayMembers = (members) => {
   });
 };
 
+const table = document.querySelector('#membership-table');
+
+const displayMembersTable = (members) => {
+  table.innerHTML = `
+    <table class="member-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Industry</th>
+          <th>Membership</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Website</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  `;
+
+  const tbody = table.querySelector('tbody');
+
+  members.forEach((member) => {
+    let icon = "";
+    switch (member.membership_level) {
+      case "Bronze Member":
+        icon = "&#129351;";
+        break;
+      case "Silver Member":
+        icon = "&#129352;";
+        break;
+      case "Gold Member":
+        icon = "&#129353;";
+        break;
+    }
+
+    const row = document.createElement('tr');
+
+    row.innerHTML = `
+      <td>${member.name}</td>
+      <td>${member.industry}</td>
+      <td>${member.membership_level} ${icon}</td>
+      <td>${member.phone}</td>
+      <td>${member.address}</td>
+      <td><a href="${member.website}" target="_blank">Visit</a></td>
+    `;
+
+    tbody.appendChild(row);
+  });
+};
+
+
 async function getMemberData() {
   const response = await fetch(url);
   const data = await response.json();
   displayMembers(data.members);
+  displayMembersTable(data.members);
 }
 
-gridBtn.addEventListener('click', () => {
-  cards.classList.add('grid-view');
-  cards.classList.remove('list-view');
-  gridBtn.classList.add('active');
-  listBtn.classList.remove('active');
-});
+if (gridBtn && listBtn) {
 
-listBtn.addEventListener('click', () => {
-  cards.classList.add('list-view');
-  cards.classList.remove('grid-view');
-  listBtn.classList.add('active');
-  gridBtn.classList.remove('active');
-});
+  gridBtn.addEventListener('click', () => {
+    cards.style.display = 'grid';
+    table.style.display = 'none';
 
+    cards.classList.add('grid-view');
+    cards.classList.remove('list-view');
+
+    gridBtn.classList.add('active');
+    listBtn.classList.remove('active');
+  });
+
+  listBtn.addEventListener('click', () => {
+    cards.style.display = 'none';
+    table.style.display = 'block';
+
+    listBtn.classList.add('active');
+    gridBtn.classList.remove('active');
+  });
+
+}
+
+function updateLayoutForScreen() {
+   if (window.innerWidth < 752) { 
+       cards.style.display = 'grid';
+       table.style.display = 'none';
+       cards.classList.add('grid-view');
+       cards.classList.remove('list-view');
+       gridBtn?.classList.remove('active');
+       listBtn?.classList.remove('active');
+   }
+}
+
+window.addEventListener('resize', updateLayoutForScreen);
+
+updateLayoutForScreen();
+
+
+
+cards.style.display = 'grid';
+table.style.display = 'none';
 
 cards.classList.add('grid-view');
 gridBtn.classList.add('active');
