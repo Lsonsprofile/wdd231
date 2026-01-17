@@ -60,14 +60,14 @@
         display:table;
         width: 100%;
         border-collapse: collapse;
-        padding: 100px;
+        margin: 10px;
         box-shadow: 1px 1px 5px var(--text-color);
         border: 1px solid var(--primary-color);
     }
 
     .member-table th,
     .member-table td {
-        padding: 10px;
+        padding: 15px;
         border-bottom: 1px solid var(--primary-color);
         border-left: 1px solid var(--primary-color);
         text-align: left;
