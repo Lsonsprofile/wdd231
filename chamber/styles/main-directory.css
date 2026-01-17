@@ -217,6 +217,7 @@ footer {
    transition: all 0.3s ease;
    padding: 10px;
    width: 100%;
+   max-width: 100%;
    box-shadow: 1px 1px 5px var(--text-color);
 }
 
@@ -230,7 +231,7 @@ footer {
 }
 
 #membership-card.grid-view {
-   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
 }
 
 #membership-card.grid-view .member-card:hover {
