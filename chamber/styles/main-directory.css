@@ -113,12 +113,6 @@ body {
    font-weight: bold;
 }
 
-
-
-.navbar.show {
-    display: block;
-}
-
 .navbar li.current {
     border-bottom: 5px ridge var(--secondary-color);
     border-radius: 5px;
