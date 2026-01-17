@@ -196,11 +196,14 @@ footer {
 .footer-text p {
     padding: 5px;
     font-size: 15px;
+    font-weight: bold;
+    font-family: "Libre Baskerville", serif;
 }
 
 .contact-info, 
 .footer-text {
     background-color: var(--transparent-color);
+    text-align: center;
 }
 
 .view-toggle {
