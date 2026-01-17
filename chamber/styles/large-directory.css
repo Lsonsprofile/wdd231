@@ -68,8 +68,7 @@
     .member-table th,
     .member-table td {
         padding: 15px;
-        border-bottom: 1px solid var(--primary-color);
-        border-left: 1px solid var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
         text-align: left;
         background-color: var(--body-color);
     }
