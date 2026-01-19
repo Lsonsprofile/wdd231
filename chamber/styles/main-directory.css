@@ -123,6 +123,7 @@ body {
     position: relative;
     width:100%;
     box-shadow: 1px 1px 5px var(--text-color);
+    user-select: none;
 }
 
 .hero img {
