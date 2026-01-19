@@ -238,7 +238,6 @@ footer {
 }
 
 #membership-card.grid-view .member-card:hover {
-   transform: translateY(-3px);
    box-shadow: 1px 1px 10px var(--text-color);
    border: 1px solid var(--primary-color);
    transform: scale(1.02);
