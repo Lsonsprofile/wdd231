@@ -46,8 +46,9 @@ body {
 }
 
 .hamburger {
-    position: relative;
-    bottom: 6px;
+   position: relative;
+   bottom: 5px;
+   right:4px;
    grid-column: 2 / 3;
    justify-self: end;
    border: none;
@@ -104,12 +105,12 @@ body {
 
 .hamburger::before {
    content: "\2630";
-   font-size: 2.5rem;
+   font-size: 2.4rem;
 }
 
 .hamburger.show::before {
    content: "\2715";
-   font-size: 2.5rem;
+   font-size: 2.4rem;
    font-weight: bold;
 }
 
@@ -219,6 +220,8 @@ footer {
    width: 100%;
    max-width: 100%;
    box-shadow: 1px 1px 5px var(--text-color);
+   margin-bottom: 15px;
+   background-color: var(--tertiary-color);
 }
 
 #membership-card .member-card {
@@ -227,7 +230,7 @@ footer {
    padding: 1rem;
    text-align: left;
    box-shadow: 1px 1px 5px var(--text-color);
-   transition: all 0.3s ease;
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #membership-card.grid-view {
@@ -238,6 +241,7 @@ footer {
    transform: translateY(-3px);
    box-shadow: 1px 1px 10px var(--text-color);
    border: 1px solid var(--primary-color);
+   transform: scale(1.02);
 }
 
 #membership-card.grid-view .member-card h2 {
