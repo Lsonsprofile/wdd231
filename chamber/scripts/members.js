@@ -1,5 +1,6 @@
 const url = 'https://lsonsprofile.github.io/wdd231/chamber/data/members.json';
 const cards = document.querySelector('#membership-card');
+const listContainer = document.querySelector('#membership-list');
 const gridBtn = document.querySelector('#grid-btn');
 const listBtn = document.querySelector('#list-btn');
 
@@ -20,7 +21,7 @@ const displayMembers = (members) => {
     const services = document.createElement('p');
 
     name.textContent = member.name;
-    industry.innerHTML = `<strong>Industry:</strong> ${member.industry}`
+    industry.innerHTML = `<strong>Industry:</strong> ${member.industry}`;
     address.innerHTML = `<strong>Address:</strong> ${member.address}`;
     phone.innerHTML = `<strong>Phone:</strong> ${member.phone}`;
     discription.innerHTML = `<strong>Description:</strong> ${member.description}`;
@@ -41,7 +42,7 @@ const displayMembers = (members) => {
     }
     membership.innerHTML = `<strong>Membership:</strong> ${member.membership_level} ${icon}`;
 
-    website.innerHTML = `<strong>Website:</strong> ${member.website}`
+    website.innerHTML = `<strong>Website:</strong> ${member.website}`;
     website.href = member.website;
     website.target = "_blank";
 
@@ -66,26 +67,20 @@ const displayMembers = (members) => {
   });
 };
 
-const table = document.querySelector('#membership-table');
-
-const displayMembersTable = (members) => {
-  table.innerHTML = `
-    <table class="member-table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Industry</th>
-          <th>Membership</th>
-          <th>Phone</th>
-          <th>Address</th>
-          <th>Website</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+const displayMembersList = (members) => {
+  listContainer.innerHTML = `
+    <div class="list-header">
+      <div>Name</div>
+      <div>Industry</div>
+      <div>Description</div>
+      <div>Membership</div>
+      <div>Address</div>
+      <div>Phone</div>
+      <div>Joined Date</div>
+      <div>Services</div>
+      <div>Website</div>
+    </div>
   `;
-
-  const tbody = table.querySelector('tbody');
 
   members.forEach((member) => {
     let icon = "";
@@ -101,73 +96,66 @@ const displayMembersTable = (members) => {
         break;
     }
 
-    const row = document.createElement('tr');
-
-    row.innerHTML = `
-      <td>${member.name}</td>
-      <td>${member.industry}</td>
-      <td>${member.membership_level} ${icon}</td>
-      <td>${member.phone}</td>
-      <td>${member.address}</td>
-      <td><a href="${member.website}" target="_blank">Visit</a></td>
+    const listItem = document.createElement('div');
+    listItem.classList.add('list-item');
+    
+    listItem.innerHTML = `
+      <div class="list-cell" data-label="Name:"><strong>${member.name}</strong></div>
+      <div class="list-cell" data-label="Industry:">${member.industry}</div>
+      <div class="list-cell" data-label="Description:">${member.description}</div>
+      <div class="list-cell" data-label="Membership:">${member.membership_level} ${icon}</div>
+      <div class="list-cell" data-label="Address:">${member.address}</div>
+      <div class="list-cell" data-label="Phone:">${member.phone}</div>
+      <div class="list-cell" data-label="Joined:">${member.join_date}</div>
+      <div class="list-cell" data-label="Services:">${member.services}</div>
+      <div class="list-cell" data-label="Website:">
+        <a href="${member.website}" target="_blank" class="website-link">Visit Website</a>
+      </div>
     `;
 
-    tbody.appendChild(row);
+    listContainer.appendChild(listItem);
   });
 };
-
 
 async function getMemberData() {
   const response = await fetch(url);
   const data = await response.json();
   displayMembers(data.members);
-  displayMembersTable(data.members);
+  displayMembersList(data.members);
 }
 
 if (gridBtn && listBtn) {
-
+  // Grid View
   gridBtn.addEventListener('click', () => {
     cards.style.display = 'grid';
-    table.style.display = 'none';
-
+    listContainer.style.display = 'none';
+    
     cards.classList.add('grid-view');
-    cards.classList.remove('list-view');
-
+    
     gridBtn.classList.add('active');
     listBtn.classList.remove('active');
   });
 
+  // List View
   listBtn.addEventListener('click', () => {
     cards.style.display = 'none';
-    table.style.display = 'block';
-
+    listContainer.style.display = 'block';
+    
     listBtn.classList.add('active');
     gridBtn.classList.remove('active');
   });
-
 }
 
-function updateLayoutForScreen() {
-   if (window.innerWidth < 752) { 
-       cards.style.display = 'grid';
-       table.style.display = 'none';
-       cards.classList.add('grid-view');
-       cards.classList.remove('list-view');
-       gridBtn?.classList.remove('active');
-       listBtn?.classList.remove('active');
-   }
-}
-
-window.addEventListener('resize', updateLayoutForScreen);
-
-updateLayoutForScreen();
-
-
-
+// Set initial view to grid
 cards.style.display = 'grid';
-table.style.display = 'none';
-
+listContainer.style.display = 'none';
 cards.classList.add('grid-view');
-gridBtn.classList.add('active');
+
+if (gridBtn) {
+  gridBtn.classList.add('active');
+}
+if (listBtn) {
+  listBtn.classList.remove('active');
+}
 
 getMemberData();
