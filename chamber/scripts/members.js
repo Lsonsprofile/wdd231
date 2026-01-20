@@ -125,7 +125,6 @@ async function getMemberData() {
 }
 
 if (gridBtn && listBtn) {
-  // Grid View
   gridBtn.addEventListener('click', () => {
     cards.style.display = 'grid';
     listContainer.style.display = 'none';
@@ -136,7 +135,6 @@ if (gridBtn && listBtn) {
     listBtn.classList.remove('active');
   });
 
-  // List View
   listBtn.addEventListener('click', () => {
     cards.style.display = 'none';
     listContainer.style.display = 'block';
@@ -146,7 +144,7 @@ if (gridBtn && listBtn) {
   });
 }
 
-// Set initial view to grid
+
 cards.style.display = 'grid';
 listContainer.style.display = 'none';
 cards.classList.add('grid-view');
