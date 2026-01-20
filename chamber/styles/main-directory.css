@@ -336,25 +336,11 @@ footer {
    border-radius: 8px;
    border: 1px solid var(--primary-color);
    box-shadow: 1px 1px 5px var(--text-color);
-}
-
-.list-header {
-   display: none;
-}
-
-.list-item {
-   display: block;
-   padding: 1rem;
-   margin-bottom: 0.75rem;
-   border: 1px solid var(--primary-color);
-   border-radius: 8px;
-   background-color: var(--body-color);
-   box-shadow: 1px 1px 5px var(--text-color);
-   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+   overflow-x: auto;
 }
 
 .list-item:hover {
-   background-color: var(--transparent-color);
+   background-color: var(--tertiary-color);
    box-shadow: 1px 1px 10px var(--text-color);
 }
 
@@ -395,10 +381,6 @@ footer {
    box-shadow: 1px 1px 10px var(--text-color);
 }
 
-#membership-list {
-   overflow-x: auto;
-}
-
 .list-header {
    display: grid;
    grid-template-columns: 1.2fr 1fr 1.4fr 0.9fr 1.6fr 1fr 0.9fr 1.2fr 1fr;
@@ -423,12 +405,10 @@ footer {
    min-width: 1200px;
 }
 
+
+
 .list-item:last-child {
    border-bottom: none;
-}
-
-.list-item:hover {
-   background-color: var(--tertiary-color);
 }
 
 .list-item .list-cell {
@@ -454,8 +434,4 @@ footer {
 
 .list-item .list-cell:nth-child(9) {
    text-align: center;
-}
-
-.website-link {
-   white-space: normal;
 }
