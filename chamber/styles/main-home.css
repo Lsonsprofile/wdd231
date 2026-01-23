@@ -1,0 +1,14 @@
+:root {
+    --primary-color: #c1b96a;
+    --secondary-color: #5d3508;
+    --tertiary-color: #ffe1a1;
+    --quaternary-color: #000000;
+    --text-color: #0c110a4f;
+    --background-color: #fffceb;
+    --body-color : #ffffff;
+    --transparent-color: #d6cbb9b6;;
+}
+
+.welcome-text {
+    color: var(--primary-color);
+}

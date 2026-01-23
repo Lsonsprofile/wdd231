@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wdd231 | Emmanuel Chamber Directory Page</title>
-    <meta name="description" content="Explore the Emmanuel Chamber of Commerce directory. View member profiles, contact info, and membership levels to connect with local businesses.">
+    <title>wdd231 | Emmanuel Chamber Home Page</title>
+    <meta name="description" content="Welcome to the Emmanuel Chamber of Commerce. Explore our business directory, upcoming events, local weather, and member spotlights.">
     <meta name="author" content="Emmanuel Ndogo">
     
     <meta property="og:title" content="Chamber Directory | WDD231 Project">
-    <meta property="og:description" content="Explore the business directory for Emmanuel internatinal Chamber of Commerce Home-page. View member profiles, contact details, and membership levels.">
+    <meta property="og:description" content="Welcome to the Emmanuel Chamber of Commerce homepage. Join us and engage with community events while staying updated with the latest Lagos City weather forecast.">
     <meta property="og:image" content="https://lsonsprofile.github.io/wdd231/chamber/images/websitepage.webp">
-    <meta property="og:url" content="https://lsonsprofile.github.io/wdd231/chamber/directory.html">
+    <meta property="og:url" content="https://lsonsprofile.github.io/wdd231/chamber/index.html">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/main-directory.css">
     <link rel="stylesheet" href="styles/large-directory.css">
+    <link rel="stylesheet" href="styles/main-home.css">
+    <link rel="stylesheet" href="styles/large-home.css">
     <script src="scripts/nav-directory.js" defer></script>
     <script src="scripts/lastmod.js" defer></script>
     <script src="scripts/members.js" defer></script>
@@ -34,37 +36,20 @@
         <button aria-label="Show navigational link" id="ham-btn" class="hamburger"></button>
         <nav class="navbar">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li class="current"><a href="directory.html">Directory</a></li>
+                <li class="current"><a href="index.html">Home</a></li>
+                <li><a href="directory.html">Directory</a></li>
                 <li><a href="join.html">Join</a></li>
                 <li><a href="dicover.html">Discover</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section class="hero">
-            <img src="images/lagos.webp" alt="City skyline" class="responsive-img">
-            <div class="hero-text">
-            <h1>Chamber's Directory</h1>
-            <span>Business Excellence</span>
-            <p>Connecting the heart of Lagos commerce</p>
-            </div>
+        <section class="hero-homepage">
+            <h1 class="welcome-text">Welcome to Emmanuel Chamber of Commerce</h1>
+            <p>Empowering Businesses in the Lagos Communities</p>
+            <p>Join the network that drives our community forward.</p>
+            <button><a href="join.html" class="cta-btn">Join the chamber today</a></button>
         </section>
-
-        <section class="members">
-            <h2 class="home">Home</h2>
-
-        </section>
-        <div class="view-toggle">
-            <button id="grid-btn" aria-label="Show grid view">
-            </button>
-            <button id="list-btn" aria-label="Show list view">
-            </button>
-        </div>
-
-        <section id="membership-card" class="grid-view"></section>
-        <div id="membership-list" class="list-view"></div>
-
     </main>
 
     <footer>
