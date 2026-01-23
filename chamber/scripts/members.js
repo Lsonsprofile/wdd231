@@ -30,13 +30,13 @@ const displayMembers = (members) => {
 
     let icon = "";
     switch (member.membership_level) {
-      case "Bronze Member":
+      case "Basic Member":
         icon = "&#129351;";
         break;
-      case "Silver Member":
+      case "Silver Partner":
         icon = "&#129352;";
         break;
-      case "Gold Member":
+      case "Gold Partner":
         icon = "&#129353;";
         break;
     }
@@ -85,13 +85,13 @@ const displayMembersList = (members) => {
   members.forEach((member) => {
     let icon = "";
     switch (member.membership_level) {
-      case "Bronze Member":
+      case "Basic Member":
         icon = "&#129351;";
         break;
-      case "Silver Member":
+      case "Silver Partner":
         icon = "&#129352;";
         break;
-      case "Gold Member":
+      case "Gold Partner":
         icon = "&#129353;";
         break;
     }
