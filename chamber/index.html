@@ -21,10 +21,15 @@
     <script src="scripts/nav-directory.js" defer></script>
     <script src="scripts/lastmod.js" defer></script>
     <script src="scripts/members.js" defer></script>
+    <script type="module" src="scripts/current-weather.js" defer></script>
     <link rel="icon" href="images/webpage.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -45,10 +50,64 @@
     </header>
     <main>
         <section class="hero-homepage">
-            <h1 class="welcome-text">Welcome to Emmanuel Chamber of Commerce</h1>
-            <p>Empowering Businesses in the Lagos Communities</p>
-            <p>Join the network that drives our community forward.</p>
-            <button><a href="join.html" class="cta-btn">Join the chamber today</a></button>
+            <img src="images/homepage-hero.webp" alt="Chamber of Commerce hero home page image">
+            <div class="hero-content">
+                <h1 class="welcome-text">Welcome to Emmanuel Chamber of Commerce</h1>
+                <p>Empowering Businesses in Lagos Communities.</p>
+                <p>Join the network that thrives on business.</p>
+                <a href="join.html" class="cta-btn">Join Our Community</a>
+            </div>
+        </section>
+
+        <section class="live-updates">
+            <section class="events">
+                <h2>Events</h2>
+                <ul class="event-list">
+                    <li>
+                        <h3>Lagos International Education Fair 2026</h3>
+                        <h4>Eko Convention Centre, Victoria Island</h4>
+                        <p>March 5-7, 2026 · 9:00 AM – 6:00 PM</p>
+                        <a href="https://eventbrite.com/coming-soon/lagos-education-fair-2026" target="_blank" rel="noopener noreferrer">More Info</a>
+                    </li>
+                    <li>
+                        <h3>West Africa Innovation Summit</h3>
+                        <h4>Landmark Events Centre, Victoria Island</h4>
+                        <p>March 12-14, 2026 · 8:00 AM – 7:00 PM</p>
+                        <a href="https://meetup.com/innovation-lagos/events" target="_blank" rel="noopener noreferrer">More Info</a>
+                    </li>
+                    <li>
+                        <h3>Naija Tech Fest Lagos 2026</h3>
+                        <h4>The Civic Centre, Victoria Island</h4>
+                        <p>March 25-27, 2026 · 9:00 AM – 9:00 PM</p>
+                        <a href="https://techfestlagos.com/2026" target="_blank" rel="noopener noreferrer">More Info</a>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="current-weather">
+        <h2>Current Weather | Lagos</h2>
+        <div class="weather-details">
+            <div class="weather-icon" id="weather-icon" aria-hidden="true"></div>
+            <div class="weather-info">
+            <p><strong>Temperature:</strong> <span id="current-temp"></span></p>
+            <p><strong>Condition:</strong> <span id="condition"></span></p>
+            <p><strong>High:</strong> <span id="high"></span></p>
+            <p><strong>Low:</strong> <span id="low"></span></p>
+            <p><strong>Humidity:</strong> <span id="humidity"></span></p>
+            <p><strong>Sunrise:</strong> <span id="sunrise"></span></p>
+            <p><strong>Sunset:</strong> <span id="sunset"></span></p>
+            </div>
+        </div>
+        </section>
+
+        <section class="weather-forecast">
+            <h2>Weather Forecast</h2>
+            <ul class="forecast-list">
+                <li><span id="day1"></span></li>
+                <li><span id="day2"></span></li>
+                <li><span id="day3"></span></li>
+            </ul>
+        </section>
         </section>
     </main>
 

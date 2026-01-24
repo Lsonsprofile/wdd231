@@ -1,0 +1,41 @@
+@media screen and (min-width:47rem) {
+    :root {
+    --primary-color: #c1b96a;
+    --secondary-color: #5d3508;
+    --tertiary-color: #ffe1a1;
+    --quaternary-color: #000000;
+    --text-color: #0c110a4f;
+    --background-color: #fffceb;
+    --body-color : #ffffff;
+    --transparent-color: #e5e0d1b6;
+    }
+    .hero-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    text-align: left;
+    padding: 0 4rem;
+  }
+
+  .hero-content h1,
+  .hero-content p {
+    grid-column: 1;
+  }
+
+  .cta-btn {
+    grid-column: 2;
+    font-size: 1.1rem;
+    padding: 1rem 3rem;
+    text-align: center;
+  }
+
+  .hero-content p {
+    position: relative;
+    top: 50px;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .live-updates {
+        flex-direction: row;
+    }
+}

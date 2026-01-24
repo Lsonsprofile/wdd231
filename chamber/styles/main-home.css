@@ -6,9 +6,200 @@
     --text-color: #0c110a4f;
     --background-color: #fffceb;
     --body-color : #ffffff;
-    --transparent-color: #f8f7f4b6;
+    --transparent-color: #e5e0d1b6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hero-homepage {
+   position: relative;
+   margin: 0 auto;
+   height: 500px;
+   overflow: hidden;
+   border-radius: 8px;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   box-shadow: 1px 1px 5px var(--text-color);
+}
+
+.hero-homepage img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   display: block;
+}
+
+.hero-content {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   display: flex;
+   flex-direction: column;
+   transform: translate(-50%, -50%);
+   text-align: center;
+   z-index: 2; 
+   width: 100%;
+}
+
+.hero-homepage::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: linear-gradient(rgba(0, 0, 0, 0.783), rgba(0, 0, 0, 0.792));
+   z-index: 1;
 }
 
 .welcome-text {
-    color: var(--primary-color);
+   color: var(--body-color);
+   font-family: "Special Gothic Expanded One", sans-serif;
+   font-size: clamp(1.5rem, 5vw, 3rem);
+   font-weight: bold;
+   text-shadow: 2px 2px 4px rgb(0, 0, 0);
+   letter-spacing: 2px;
 }
+
+.hero-content p {
+    color: var(--tertiary-color);
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-weight: bold;
+    display: inline-block;
+    text-shadow: 2px 2px 4px rgb(0, 0, 0);
+    font-family: "Libre Baskerville", serif;
+}
+
+.cta-btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--body-color);
+    padding: 10px 10px;
+    box-shadow: 2px 2px 4px rgb(0, 0, 0);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    font-size: clamp(1rem, 3vw, 2rem);
+    font-weight: 800;
+    border-radius: 20px;
+    width: 200px;
+    margin: 50px auto;
+    color: var(--quaternary-color);
+}
+
+.cta-btn:hover {
+  background-color: var(--quaternary-color);
+  transform: translateY(-1px);
+  color: var(--body-color);
+}
+
+.live-updates {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    box-shadow: 1px 1px 5px var(--text-color);
+    margin: 10px auto;
+    background-color: var(--body-color);
+}
+
+.events {
+    flex: 4;
+}
+
+.current-weather {
+    flex: 3;
+}
+
+.weather-forecast {
+    flex: 2;
+}
+
+.events,
+.current-weather,
+.weather-forecast {
+    background-color: var(--primary-color);
+    color: var(--quaternary-color);
+}
+
+.event-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.event-list li {
+    padding: 10px;
+    list-style-type: none;
+}
+
+.event-list h3,
+.event-list h4,
+.event-list p,
+.event-list a {
+    margin: 1px auto;
+    background-color: var(--transparent-color);
+    padding: 5px;
+}
+
+.event-list a::before {
+    content: "\1F310";
+}
+
+.event-list a {
+    text-decoration: none;
+    color: var(--body-color);
+    background-color: var(--secondary-color);
+    padding: 4px 6px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.weather-details {
+    display: flex;
+    padding: 15px;
+    gap: 15px;
+    align-items: flex-start;
+    height: 100%;
+    width: 100%;
+}
+
+.weather-icon {
+    position: relative;
+    bottom: 20px;
+    border-bottom: 1px solid var(--text-color);
+    font-size: 20px;
+}
+
+.live-updates h2 {
+    font-weight: 100;
+    background-color: var(--quaternary-color);
+    color: var(--body-color);
+    padding: 5px;
+}
+
+.forecast-list li {
+    list-style-type: none;
+    padding: 15px;
+    background-color: var(--background-color);
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.weather-info p {
+    padding: 10px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+}
+
+.forecast-day {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+

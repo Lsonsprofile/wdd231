@@ -1,17 +1,25 @@
+// members.js
+
 const url = 'https://lsonsprofile.github.io/wdd231/chamber/data/members.json';
+
+// Safe selectors
 const cards = document.querySelector('#membership-card');
 const listContainer = document.querySelector('#membership-list');
 const gridBtn = document.querySelector('#grid-btn');
 const listBtn = document.querySelector('#list-btn');
 
+// Display members as cards
 const displayMembers = (members) => {
+  if (!cards) return; // stop if element doesn't exist
+  cards.innerHTML = ''; // clear previous cards
+
   members.forEach((member) => {
     const card = document.createElement('div');
     card.classList.add('member-card');
 
     const name = document.createElement('h2');
     const industry = document.createElement('p');
-    const discription = document.createElement('p');
+    const description = document.createElement('p');
     const membership = document.createElement('h3');
     const address = document.createElement('p');
     const phone = document.createElement('p');
@@ -24,11 +32,11 @@ const displayMembers = (members) => {
     industry.innerHTML = `<strong>Industry:</strong> ${member.industry}`;
     address.innerHTML = `<strong>Address:</strong> ${member.address}`;
     phone.innerHTML = `<strong>Phone:</strong> ${member.phone}`;
-    discription.innerHTML = `<strong>Description:</strong> ${member.description}`;
+    description.innerHTML = `<strong>Description:</strong> ${member.description}`;
     joindate.innerHTML = `<strong>Joined:</strong> ${member.join_date}`;
     services.innerHTML = `<strong>Services:</strong> ${member.services}`;
 
-    let icon = "";
+    let icon = '';
     switch (member.membership_level) {
       case "Basic Member":
         icon = "&#129351;";
@@ -52,11 +60,12 @@ const displayMembers = (members) => {
     portrait.setAttribute('width', '300');
     portrait.setAttribute('height', '200');
 
+    // Append elements to card
     card.appendChild(name);
     card.appendChild(portrait);
     card.appendChild(membership);
     card.appendChild(industry);
-    card.appendChild(discription);
+    card.appendChild(description);
     card.appendChild(address);
     card.appendChild(phone);
     card.appendChild(joindate);
@@ -67,7 +76,9 @@ const displayMembers = (members) => {
   });
 };
 
+// Display members as list
 const displayMembersList = (members) => {
+  if (!listContainer) return; // stop if element doesn't exist
   listContainer.innerHTML = `
     <div class="list-header">
       <div>Name</div>
@@ -83,7 +94,7 @@ const displayMembersList = (members) => {
   `;
 
   members.forEach((member) => {
-    let icon = "";
+    let icon = '';
     switch (member.membership_level) {
       case "Basic Member":
         icon = "&#129351;";
@@ -98,7 +109,7 @@ const displayMembersList = (members) => {
 
     const listItem = document.createElement('div');
     listItem.classList.add('list-item');
-    
+
     listItem.innerHTML = `
       <div class="list-cell" data-label="Name:"><strong>${member.name}</strong></div>
       <div class="list-cell" data-label="Industry:">${member.industry}</div>
@@ -117,20 +128,27 @@ const displayMembersList = (members) => {
   });
 };
 
+// Fetch JSON data
 async function getMemberData() {
-  const response = await fetch(url);
-  const data = await response.json();
-  displayMembers(data.members);
-  displayMembersList(data.members);
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.members && data.members.length) {
+      displayMembers(data.members);
+      displayMembersList(data.members);
+    }
+  } catch (error) {
+    console.error("Error fetching member data:", error);
+  }
 }
 
-if (gridBtn && listBtn) {
+// Grid/List toggle
+if (gridBtn && listBtn && cards && listContainer) {
   gridBtn.addEventListener('click', () => {
     cards.style.display = 'grid';
     listContainer.style.display = 'none';
-    
     cards.classList.add('grid-view');
-    
     gridBtn.classList.add('active');
     listBtn.classList.remove('active');
   });
@@ -138,22 +156,17 @@ if (gridBtn && listBtn) {
   listBtn.addEventListener('click', () => {
     cards.style.display = 'none';
     listContainer.style.display = 'block';
-    
     listBtn.classList.add('active');
     gridBtn.classList.remove('active');
   });
-}
 
-
-cards.style.display = 'grid';
-listContainer.style.display = 'none';
-cards.classList.add('grid-view');
-
-if (gridBtn) {
+  // Initial view
+  cards.style.display = 'grid';
+  listContainer.style.display = 'none';
+  cards.classList.add('grid-view');
   gridBtn.classList.add('active');
-}
-if (listBtn) {
   listBtn.classList.remove('active');
 }
 
+// Run
 getMemberData();
