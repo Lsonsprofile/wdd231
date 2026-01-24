@@ -163,6 +163,8 @@
     background-color: var(--quaternary-color);
     color: var(--body-color);
     padding: 5px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .forecast-list li {
