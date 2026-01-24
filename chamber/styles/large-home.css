@@ -1,14 +1,5 @@
 @media screen and (min-width:47rem) {
-    :root {
-    --primary-color: #c1b96a;
-    --secondary-color: #5d3508;
-    --tertiary-color: #ffe1a1;
-    --quaternary-color: #000000;
-    --text-color: #0c110a4f;
-    --background-color: #fffceb;
-    --body-color : #ffffff;
-    --transparent-color: #e5e0d1b6;
-    }
+
     .hero-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
