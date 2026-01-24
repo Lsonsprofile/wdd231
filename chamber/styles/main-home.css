@@ -211,16 +211,11 @@
     text-transform: uppercase;
 }
 
-
-
-
-
-
 .spotlight-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    margin-top: 1rem;
+    margin: 1rem auto;
 }
 
 .spotlight-card {
@@ -253,16 +248,17 @@
     font-size: 1rem;
     font-weight: bold;
     background-color: var(--primary-color);
-    color: var(--secondary-color);
+    color: var(--quaternary-color);
     width: fit-content;
     text-align: center;
     margin-bottom: 0.5rem;
+    box-shadow: 1px 1px 5px var(--text-color);
 }
 
 .member-logo {
     display: block;
     max-width: 100%;
-    height: auto;
+    height: 200px;
     margin: 0 auto 0.8rem;
     border-radius: 8px;
 }

@@ -13,25 +13,24 @@
     <meta property="og:url" content="https://lsonsprofile.github.io/wdd231/chamber/index.html">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
+
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/main-directory.css">
     <link rel="stylesheet" href="styles/large-directory.css">
     <link rel="stylesheet" href="styles/main-home.css">
     <link rel="stylesheet" href="styles/large-home.css">
+
     <script src="scripts/nav-directory.js" defer></script>
     <script src="scripts/lastmod.js" defer></script>
     <script src="scripts/members.js" defer></script>
     <script src="scripts/chamber-members.js" defer></script>
-    <script type="module" src="scripts/current-weather.js" defer></script>
+    <script type="module" src="scripts/current-weather.js"></script>
+
     <link rel="icon" href="images/webpage.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <header class="site-header">
@@ -45,7 +44,7 @@
                 <li class="current"><a href="index.html">Home</a></li>
                 <li><a href="directory.html">Directory</a></li>
                 <li><a href="join.html">Join</a></li>
-                <li><a href="dicover.html">Discover</a></li>
+                <li><a href="discover.html">Discover</a></li>
             </ul>
         </nav>
     </header>
@@ -67,54 +66,65 @@
                     <li>
                         <h3>Lagos International Education Fair 2026</h3>
                         <h4>Eko Convention Centre, Victoria Island</h4>
-                        <p>March 5-7, 2026 · 9:00 AM – 6:00 PM</p>
-                        <a href="https://eventbrite.com/coming-soon/lagos-education-fair-2026" target="_blank" rel="noopener noreferrer">More Info</a>
+                        <p>March 5-7, 2026 - 9:00 AM to 6:00 PM</p>
+                        <a href="https://eventbrite.com/coming-soon/lagos-education-fair-2026" 
+                           target="_blank" rel="noopener noreferrer" 
+                           aria-label="More Info about Lagos International Education Fair 2026">
+                           Lagos International Education Fair 2026 - More Info
+                        </a>
                     </li>
                     <li>
                         <h3>West Africa Innovation Summit</h3>
                         <h4>Landmark Events Centre, Victoria Island</h4>
-                        <p>March 12-14, 2026 · 8:00 AM – 7:00 PM</p>
-                        <a href="https://meetup.com/innovation-lagos/events" target="_blank" rel="noopener noreferrer">More Info</a>
+                        <p>March 12-14, 2026 - 8:00 AM to 7:00 PM</p>
+                        <a href="https://meetup.com/innovation-lagos/events" 
+                           target="_blank" rel="noopener noreferrer" 
+                           aria-label="More Info about West Africa Innovation Summit">
+                           West Africa Innovation Summit - More Info
+                        </a>
                     </li>
                     <li>
                         <h3>Naija Tech Fest Lagos 2026</h3>
                         <h4>The Civic Centre, Victoria Island</h4>
-                        <p>March 25-27, 2026 · 9:00 AM – 9:00 PM</p>
-                        <a href="https://techfestlagos.com/2026" target="_blank" rel="noopener noreferrer">More Info</a>
+                        <p>March 25-27, 2026 - 9:00 AM to 9:00 PM</p>
+                        <a href="https://techfestlagos.com/2026" 
+                           target="_blank" rel="noopener noreferrer" 
+                           aria-label="More Info about Naija Tech Fest Lagos 2026">
+                           Naija Tech Fest Lagos 2026 - More Info
+                        </a>
                     </li>
                 </ul>
             </section>
 
             <section class="current-weather">
-        <h2>Current Weather | Lagos</h2>
-        <div class="weather-details">
-            <div class="weather-icon" id="weather-icon" aria-hidden="true"></div>
-            <div class="weather-info">
-            <p><strong>Temperature:</strong> <span id="current-temp"></span></p>
-            <p><strong>Condition:</strong> <span id="condition"></span></p>
-            <p><strong>High:</strong> <span id="high"></span></p>
-            <p><strong>Low:</strong> <span id="low"></span></p>
-            <p><strong>Humidity:</strong> <span id="humidity"></span></p>
-            <p><strong>Sunrise:</strong> <span id="sunrise"></span></p>
-            <p><strong>Sunset:</strong> <span id="sunset"></span></p>
-            </div>
-        </div>
-        </section>
+                <h2>Current Weather | Lagos</h2>
+                <div class="weather-details">
+                    <div class="weather-icon" id="weather-icon" aria-hidden="true"></div>
+                    <div class="weather-info">
+                        <p><strong>Temperature:</strong> <span id="current-temp"></span></p>
+                        <p><strong>Condition:</strong> <span id="condition"></span></p>
+                        <p><strong>High:</strong> <span id="high"></span></p>
+                        <p><strong>Low:</strong> <span id="low"></span></p>
+                        <p><strong>Humidity:</strong> <span id="humidity"></span></p>
+                        <p><strong>Sunrise:</strong> <span id="sunrise"></span></p>
+                        <p><strong>Sunset:</strong> <span id="sunset"></span></p>
+                    </div>
+                </div>
+            </section>
 
-        <section class="weather-forecast">
-            <h2>Weather Forecast</h2>
-            <ul class="forecast-list">
-                <li><span id="day1"></span></li>
-                <li><span id="day2"></span></li>
-                <li><span id="day3"></span></li>
-            </ul>
-        </section>
-    </div>
+            <section class="weather-forecast">
+                <h2>Weather Forecast</h2>
+                <ul class="forecast-list">
+                    <li><span id="day1"></span></li>
+                    <li><span id="day2"></span></li>
+                    <li><span id="day3"></span></li>
+                </ul>
+            </section>
+        </div>
 
         <section class="spotlights">
             <h3>Member Spotlights</h3>
             <div id="spotlight-container" class="spotlight-grid">
-                
                 <p>Loading featured members...</p>
             </div>
         </section>
@@ -125,17 +135,13 @@
             <p><strong>Emmanuel Chamber of Commerce</strong></p>
             <p>42 Unity Crescent</p>
             <p>Victoria Island, Lagos 101241</p>
-            <p>
-                <a href="mailto:info@lagoscc.org.ng">info@lagoscc.org.ng</a>
-            </p>
-            <p>
-                <a href="tel:+2348095551234">(+234) 809-555-1234</a>
-            </p>
+            <p><a href="mailto:info@lagoscc.org.ng">info@lagoscc.org.ng</a></p>
+            <p><a href="tel:+2348095551234">(+234) 809-555-1234</a></p>
         </div>
         <div class="social-link">
             <a href="https://github.com/brightcoder21" target="_blank"><img src="images/github.svg" alt="Github icon"></a>
-            <a href="https://www.linkedin.com/in/creative-dev-2026" target="_blank"><img src="images/linkedin.svg" alt="linkedin icon"></a>
-            <a href="https://wa.me/2348123456789" target="_blank"><img src="images/whatsapp.svg" alt="whatsapp icon"></a>
+            <a href="https://www.linkedin.com/in/creative-dev-2026" target="_blank"><img src="images/linkedin.svg" alt="LinkedIn icon"></a>
+            <a href="https://wa.me/2348123456789" target="_blank"><img src="images/whatsapp.svg" alt="WhatsApp icon"></a>
         </div>
         <div class="footer-text">
             <p><strong>WDD231 Class Project</strong></p>
@@ -144,6 +150,5 @@
             <p>Last modified: <span id="lastModified"></span></p>
         </div>
     </footer>
-    
 </body>
 </html>
