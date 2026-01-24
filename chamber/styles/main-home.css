@@ -202,4 +202,13 @@
     color: var(--secondary-color);
 }
 
+.spotlights h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    padding: 12px 15px;
+    text-transform: uppercase;
+}
+
 
