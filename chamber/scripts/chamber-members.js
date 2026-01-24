@@ -1,5 +1,5 @@
 const spotlightContainer = document.querySelector('#spotlight-container');
-const membersUrl = "https://lsonsprofile.github.io/wdd231/chamber/data/members.json";
+const membersUrl = "https://lsonsprofile.github.io/wdd231/chamber/data/chamber-members.json";
 
 async function displaySpotlights() {
     if (!spotlightContainer) return;
@@ -43,7 +43,7 @@ async function displaySpotlights() {
                 <span class="membership-badge ${member.membership_level.toLowerCase().replace(" ", "-")}">
                     ${member.membership_level} ${icon}
                 </span>
-                <img src="${member.logo}" alt="Logo of ${member.name}" class="member-logo" loading="lazy">
+                <img src="${member.image}" alt="Logo of ${member.name}" class="member-logo" loading="lazy">
                 <h4>${member.name}</h4>
                 <div class="contact-info">
                     <p><img src="images/location-dot-solid-full.svg" alt="Address icon" class="icon"> ${member.address}</p>

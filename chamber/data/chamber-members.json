@@ -9,20 +9,20 @@
       "image": "https://cchub.africa/wp-content/themes/heelas/img/logo.png"
     },
     {
-      "name": "Lagos Island Textile Market",
+      "name": "FInelib",
       "membership_level": "Silver Partner",
       "address": "123 Balogun Street, Lagos Island",
       "phone": "+234-802-345-6789",
-      "website": "https://www.lagostextilemarket.ng",
-      "image": "images/lagos-textile.png"
+      "website": "https://www.finelib.com/cities/lagos/business/manufacturing-industries/textile-manufacturing",
+      "image": "https://www.finelib.com/images/logo.png"
     },
     {
       "name": "Eko Hotel & Suites Business Center",
       "membership_level": "Silver Partner",
       "address": "Adetokunbo Ademola Street, Victoria Island",
       "phone": "+234-703-456-7890",
-      "website": "https://www.ekohotelbusiness.ng",
-      "image": "images/eko-hotel.png"
+      "website": "https://ekohotels.com/",
+      "image": "https://tse2.mm.bing.net/th/id/OIP.peowc_COggaDIl58v7NY_wHaDt?rs=1&pid=ImgDetMain&o=7&rm=3"
     },
     {
       "name": "Ultimate Fitness Gym Lekki",
@@ -30,23 +30,23 @@
       "address": "Plot 15B, Admiralty Way, Lekki Phase 1",
       "phone": "+234-814-567-8901",
       "website": "https://www.ultimatefitnesslekki.ng",
-      "image": "images/ultimate-fitness.png"
+      "image": "https://png.pngtree.com/png-clipart/20220605/original/pngtree-fitness-gym-logo-png-png-image_7964069.png"
     },
     {
-      "name": "Apapa Port Logistics Services",
+      "name": "Nick Logistics Services",
       "membership_level": "Basic Member",
       "address": "Tin Can Island Port, Apapa",
       "phone": "+234-815-678-9012",
       "website": "https://www.apapalogistics.ng",
-      "image": "images/apapa-port.png"
+      "image": "https://tse3.mm.bing.net/th/id/OIP.t6RAHxhbid-OtW46Pqv0GAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3"
     },
     {
-      "name": "TechPoint Africa Media",
+      "name": "Allteck Technologies",
       "membership_level": "Gold Partner",
       "address": "24, Karimu Kotun Street, Victoria Island",
       "phone": "+234-816-789-0123",
-      "website": "https://www.techpoint.africa",
-      "image": "images/techpoint.png"
+      "website": "https://www.alltecktech.com",
+      "image": "https://images.seeklogo.com/logo-png/0/1/allteck-logo-png_seeklogo-6955.png"
     },
     {
       "name": "Reddington Hospital",
@@ -54,7 +54,7 @@
       "address": "12, Idowu Martins Street, Victoria Island",
       "phone": "+234-817-890-1234",
       "website": "https://www.reddingtonhospital.com",
-      "image": "images/reddington.png"
+      "image": "https://reddingtonhospital.com/wp-content/uploads/2020/02/REDDINGTON-LOGO-FOR-WEBSITE-1-1-300x110-1.png"
     }
   ]
 }
