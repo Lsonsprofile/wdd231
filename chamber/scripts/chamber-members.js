@@ -43,7 +43,7 @@ async function displaySpotlights() {
                 <span class="membership-badge ${member.membership_level.toLowerCase().replace(" ", "-")}">
                     ${member.membership_level} ${icon}
                 </span>
-                <img src="${member.logo}" alt="Logo of ${member.name}" class="member-logo" loading="lazy" width="300" height="200">
+                <img src="${member.logo}" alt="Logo of ${member.name}" class="member-logo" loading="lazy">
                 <h4>${member.name}</h4>
                 <div class="contact-info">
                     <p><img src="images/location-dot-solid-full.svg" alt="Address icon" class="icon"> ${member.address}</p>

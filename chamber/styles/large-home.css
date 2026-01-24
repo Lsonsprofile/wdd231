@@ -39,6 +39,6 @@
         flex-direction: row;
     }
   .spotlight-grid {
-    grid-template-columns: repeat(auto-fit, minmax(218px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }

@@ -219,7 +219,6 @@
 .spotlight-grid {
     display: grid;
     grid-template-columns: 1fr;
-
     gap: 1.5rem;
     margin-top: 1rem;
 }
@@ -249,9 +248,9 @@
 
 .membership-badge {
     display: inline-block;
-    padding: 4px 12px;
+    padding: 5px 12px;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: bold;
     background-color: var(--primary-color);
     color: var(--secondary-color);
@@ -268,12 +267,6 @@
     border-radius: 8px;
 }
 
-.spotlight-card p {
-    margin: 0;
-    font-size: 0.9rem;
-    line-height: 1.4;
-}
-
 .spotlight-card .contact-info {
     font-size: 0.85rem;
     border-top: 1px solid var(--primary-color);
@@ -282,11 +275,12 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    line-height: 1.4;
 }
 
 .spotlight-card .contact-info .icon {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     vertical-align: middle;
     margin-right: 6px;
 }
@@ -297,12 +291,4 @@
     text-decoration: none;
 }
 
-h3, h2 {
-    margin: 0;
-    font-size: 1.2rem;
-    background-color: var(--secondary-color);
-    color: var(--tertiary-color);
-    padding: 12px 15px;
-    text-transform: uppercase;
-    border-radius: 6px;
-}
+
