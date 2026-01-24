@@ -38,4 +38,7 @@
   .live-updates {
         flex-direction: row;
     }
+  .spotlight-grid {
+    grid-template-columns: repeat(auto-fit, minmax(218px, 1fr));
+  }
 }

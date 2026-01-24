@@ -44,11 +44,11 @@ async function displaySpotlights() {
                     ${member.membership_level} ${icon}
                 </span>
                 <img src="${member.logo}" alt="Logo of ${member.name}" class="member-logo" loading="lazy" width="300" height="200">
-                <h3>${member.name}</h3>
+                <h4>${member.name}</h4>
                 <div class="contact-info">
-                    <p><img src="icons/location.png" alt="Address icon" class="icon"> ${member.address}</p>
-                    <p><img src="icons/phone.png" alt="Phone icon" class="icon"> ${member.phone}</p>
-                    <p><img src="icons/website.png" alt="Website icon" class="icon"> 
+                    <p><img src="images/location-dot-solid-full.svg" alt="Address icon" class="icon"> ${member.address}</p>
+                    <p><img src="images/phone-solid-full.svg" alt="Phone icon" class="icon"> ${member.phone}</p>
+                    <p><img src="images/earth-africa-solid-full.svg" alt="Website icon" class="icon"> 
                         <a href="${member.website}" target="_blank" class="website-link">Visit Website</a>
                     </p>
                 </div>

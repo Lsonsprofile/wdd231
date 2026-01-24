@@ -202,7 +202,7 @@
     color: var(--secondary-color);
 }
 
-.spotlights h2 {
+.spotlights h3 {
     margin: 0;
     font-size: 1.2rem;
     background-color: var(--secondary-color);
@@ -212,3 +212,97 @@
 }
 
 
+
+
+
+
+.spotlight-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.spotlight-card {
+    background-color: var(--background-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    box-shadow: 0 4px 10px rgba(93, 53, 8, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.spotlight-card:hover {
+    transform: translateY(-5px);
+}
+
+.spotlight-card h4 {
+    margin: 0;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.membership-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    width: fit-content;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.member-logo {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 0.8rem;
+    border-radius: 8px;
+}
+
+.spotlight-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.spotlight-card .contact-info {
+    font-size: 0.85rem;
+    border-top: 1px solid var(--primary-color);
+    padding-top: 10px;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.spotlight-card .contact-info .icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+.spotlight-card .website-link {
+    color: var(--secondary-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+h3, h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    padding: 12px 15px;
+    text-transform: uppercase;
+    border-radius: 6px;
+}
