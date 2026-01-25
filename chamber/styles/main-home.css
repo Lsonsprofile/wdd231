@@ -267,7 +267,6 @@
 }
 
 .spotlight-card .website-link {
-    color: var(--secondary-color);
     font-weight: bold;
     text-decoration: none;
 }
