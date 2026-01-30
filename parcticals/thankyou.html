@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thank you for joining Emmanuel Chamber of Commerce">
+    <meta name="author" content="Emmanuel Ndogo">
+    <title>Thank You - Emmanuel Chamber of Commerce</title>
+    <style>
+        :root {
+            --primary-color: #c1b96a;
+            --secondary-color: #5d3508;
+            --tertiary-color: #ffe1a1;
+            --quaternary-color: #000000;
+            --text-color: #0c110a4f;
+            --background-color: #fffceb;
+            --body-color: #ffffff;
+            --transparent-color: #e5e0d1b6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--quaternary-color);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: var(--body-color);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .thank-you-message {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--quaternary-color);
+        }
+
+        .submitted-info {
+            background-color: var(--transparent-color);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: left;
+            border: 2px solid var(--tertiary-color);
+        }
+
+        .info-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--tertiary-color);
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-value {
+            color: var(--quaternary-color);
+            font-size: 1.1rem;
+        }
+
+        .membership-level {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .membership-np {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .membership-bronze {
+            background-color: #CD7F32;
+            color: white;
+        }
+
+        .membership-silver {
+            background-color: #C0C0C0;
+            color: black;
+        }
+
+        .membership-gold {
+            background-color: #FFD700;
+            color: black;
+        }
+
+        .next-steps {
+            background-color: var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            color: var(--quaternary-color);
+        }
+
+        .next-steps h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .next-steps ul {
+            list-style-position: inside;
+            text-align: left;
+            margin: 0 auto;
+            max-width: 500px;
+        }
+
+        .next-steps li {
+            margin-bottom: 0.5rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--body-color);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 2rem;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .back-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--quaternary-color);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .submitted-info {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Thank You for Joining!</h1>
+        
+        <div class="thank-you-message">
+            <p>Your membership application has been successfully submitted to the Emmanuel Chamber of Commerce.</p>
+            <p>We appreciate your interest in joining our business community!</p>
+        </div>
+        
+        <div class="submitted-info">
+            <h2>Submitted Information</h2>
+            <div id="submittedData">
+                <!-- Data will be populated by JavaScript -->
+                <p>Loading your submission details...</p>
+            </div>
+        </div>
+        
+        <div class="next-steps">
+            <h2>What Happens Next?</h2>
+            <ul>
+                <li>You will receive a confirmation email within 24 hours</li>
+                <li>Our membership coordinator will contact you within 2 business days</li>
+                <li>You'll receive your member welcome package</li>
+                <li>Access to member resources will be activated upon payment verification</li>
+            </ul>
+        </div>
+        
+        <a href="index.html" class="back-btn">Return to Homepage</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Get form data from URL parameters
+            const firstName = urlParams.get('firstName') || 'Not provided';
+            const lastName = urlParams.get('lastName') || 'Not provided';
+            const title = urlParams.get('title') || 'Not provided';
+            const email = urlParams.get('email') || 'Not provided';
+            const phone = urlParams.get('phone') || 'Not provided';
+            const organization = urlParams.get('organization') || 'Not provided';
+            const description = urlParams.get('description') || 'Not provided';
+            const membership = urlParams.get('membership') || 'Not provided';
+            const timestamp = urlParams.get('timestamp') || 'Not provided';
+            
+            // Map membership values to display names
+            const membershipMap = {
+                'np': 'NP Membership',
+                'bronze': 'Bronze Membership',
+                'silver': 'Silver Membership',
+                'gold': 'Gold Membership'
+            };
+            
+            const membershipDisplay = membershipMap[membership] || 'Not selected';
+            const membershipClass = membership ? `membership-${membership}` : '';
+            
+            // Create HTML for submitted data
+            const submittedDataHTML = `
+                <div class="info-item">
+                    <span class="info-label">Name:</span>
+                    <span class="info-value">${firstName} ${lastName}</span>
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">Organization Title:</span>
+                    <span class="info-value">${title}</span>
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">Email:</span>
+                    <span class="info-value">${email}</span>
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">Phone:</span>
+                    <span class="info-value">${phone}</span>
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">Business/Organization:</span>
+                    <span class="info-value">${organization}</span>
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">Business Description:</span>
+                    <span class="info-value">${description}</span>
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">Membership Level:</span>
+                    <span class="info-value ${membershipClass} membership-level">${membershipDisplay}</span>
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">Application Date & Time:</span>
+                    <span class="info-value">${timestamp}</span>
+                </div>
+            `;
+            
+            // Insert the data into the page
+            document.getElementById('submittedData').innerHTML = submittedDataHTML;
+            
+            // If no data was submitted (direct access to thankyou.html)
+            if (!urlParams.toString()) {
+                document.getElementById('submittedData').innerHTML = `
+                    <div class="info-item">
+                        <span class="info-label">No submission data found.</span>
+                        <span class="info-value">Please complete the membership form first.</span>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

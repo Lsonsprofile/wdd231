@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/form-structure.css">
+</head>
+<body>
+    <form id="appointmentForm" action="confirmation.html" method="GET">
+
+  <!-- ──── Group 1 ──── -->
+  <fieldset>
+    <legend>Personal Information</legend>
+
+    <label for="firstName">First Name *</label>
+    <input type="text" id="firstName" name="first" required minlength="2">
+
+    <label for="lastName">Last Name *</label>
+    <input type="text" id="lastName" name="last" required minlength="2">
+
+    <label for="phone">Phone Number *</label>
+    <input type="tel" id="phone" name="phone" required pattern="[0-9]{8,15}">
+
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="email" required>
+  </fieldset>
+
+  <!-- ──── Group 2 ──── -->
+  <fieldset>
+    <legend>Appointment Details</legend>
+
+    <label for="date">Preferred Date *</label>
+    <input type="date" id="date" name="date" required min="2026-01-29">
+
+    <label for="time">Preferred Time *</label>
+    <select id="time" name="time" required>
+      <option value="">Select time slot</option>
+      <option value="09:00">9:00 AM</option>
+      <option value="10:00">10:00 AM</option>
+      <option value="14:00">2:00 PM</option>
+      <option value="15:00">3:00 PM</option>
+    </select>
+  </fieldset>
+
+  <button type="submit">Confirm Booking →</button>
+</form>
+</body>
+</html>

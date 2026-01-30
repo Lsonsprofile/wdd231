@@ -1,0 +1,41 @@
+.loader-t {
+  position: relative;
+  margin: 2rem;
+  width: 50px;
+  height: 50px;
+
+  border: 5px solid transparent;
+  border-color: #999 transparent #999 transparent;
+  border-radius: 50%;
+
+  transition: transform 1.5s linear;
+  /* transition animates the transform property
+     only when it changes (on hover) */
+
+  box-shadow: 0 0 1rem rgb(0 0 255 / 40%);
+}
+
+.loader-t::after {
+  content: '⚙️';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%) scale(0);
+  /* gear is hidden at start */
+
+  transition: transform 1.5s ease-in-out;
+  /* smoothly scales the gear when hovered */
+
+  font-size: 2rem;
+}
+
+.loader-t:hover {
+  transform: rotate(360deg);
+  /* rotate the loader once when hovered */
+}
+
+.loader-t:hover::after {
+  transform: translate(-50%, -50%) scale(1.5);
+  /* scale the gear emoji larger on hover */
+}

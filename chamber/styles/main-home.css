@@ -43,7 +43,7 @@
 .welcome-text {
    color: var(--body-color);
    font-family: "Special Gothic Expanded One", sans-serif;
-   font-size: clamp(1.5rem, 5vw, 3rem);
+   font-size: clamp(1.5rem, 6vw, 3rem);
    font-weight: bold;
    text-shadow: 2px 2px 4px rgb(0, 0, 0);
    letter-spacing: 2px;
@@ -70,7 +70,7 @@
     font-weight: 800;
     border-radius: 20px;
     width: 200px;
-    margin: 50px auto;
+    margin: 2rem auto;
     color: var(--quaternary-color);
 }
 

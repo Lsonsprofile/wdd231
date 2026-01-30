@@ -1,0 +1,55 @@
+#loader {
+  position: relative;
+  margin: 2rem;
+  width: 50px;              /* width of the loader */
+  height: 50px;             /* height of the loader */
+
+  border: 5px solid transparent; 
+  border-color: #999 transparent #999 transparent; 
+  /* alternating border colors create the spinning effect */
+
+  border-radius: 50%;       /* makes the loader circular */
+
+  animation: spin 1.5s linear infinite;
+  /* spin rotates the circle forever
+     1.5s = duration
+     linear = constant speed
+     infinite = makes it loop */
+
+  box-shadow: 0 0 1rem rgb(0 0 255 / 40%);
+  /* blue glow around the loader */
+}
+
+#loader::after {
+  content: '⚙️';            /* gear emoji inside the loader */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  /* centers the gear emoji */
+
+  animation: pulse 1.5s ease-in-out infinite;
+  /* pulse scales the gear emoji in and out
+     ease-in-out = smooth scaling
+     infinite = keeps pulsing */
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+    /* spin rotates the loader 360 degrees */
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    /* normal size at start and end */
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.25);
+    /* scale the gear emoji larger at midpoint */
+  }
+}

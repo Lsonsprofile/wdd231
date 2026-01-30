@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fruit Nutrition Info</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
+    .btn-group {
+      margin-bottom: 1rem;
+    }
+    button {
+      margin-right: 10px;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    dialog {
+      padding: 1rem;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      max-width: 300px;
+      text-align: center;
+    }
+    dialog button {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Fruit Nutrition Info</h1>
+  <div class="btn-group">
+    <button id="openButton1">Apple</button>
+    <button id="openButton2">Orange</button>
+    <button id="openButton3">Banana</button>
+  </div>
+
+  <dialog id="dialogBox">
+    <div id="dialogText"></div>
+    <button id="closeButton">Close</button>
+  </dialog>
+
+  <script>
+    const dialogBox = document.getElementById("dialogBox");
+    const dialogText = document.getElementById("dialogText");
+    const closeButton = document.getElementById("closeButton");
+
+    // Buttons open dialog with different content
+    document.getElementById("openButton1").addEventListener("click", () => {
+      dialogBox.showModal();
+      dialogText.innerHTML = "🍎 One Apple contains 95 calories";
+    });
+
+    document.getElementById("openButton2").addEventListener("click", () => {
+      dialogBox.showModal();
+      dialogText.innerHTML = "🍊 One Orange contains 45 calories";
+    });
+
+    document.getElementById("openButton3").addEventListener("click", () => {
+      dialogBox.showModal();
+      dialogText.innerHTML = "🍌 One Banana contains 105 calories";
+    });
+
+    // Close button
+    closeButton.addEventListener("click", () => {
+      dialogBox.close();
+    });
+
+    // Close when clicking the backdrop
+    dialogBox.addEventListener("click", (event) => {
+      const rect = dialogBox.getBoundingClientRect();
+      const inside =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom;
+
+      if (!inside) {
+        dialogBox.close();
+      }
+    });
+  </script>
+
+</body>
+</html>
