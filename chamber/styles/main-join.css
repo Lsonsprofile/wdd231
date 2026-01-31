@@ -240,7 +240,6 @@ textarea {
 }
 
 .membership-cards-container {
-   margin: 3rem 0;
    text-align: center;
    background-color: var(--primary-color);
    padding: 1rem 1rem;
@@ -295,7 +294,6 @@ textarea {
 
 .card-header {
    display: flex;
-   align-items: center;
    gap: 2rem;
    margin-bottom: 1.2rem;
    border-bottom: 2px solid var(--tertiary-color);
