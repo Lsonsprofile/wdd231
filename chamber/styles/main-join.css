@@ -478,18 +478,19 @@ dialog {
 .submission-summary h2 {
     margin-top: 0;
     color: var(--secondary-color);
+    text-align: center;
 }
 
 .process-steps {
     background-color: var(--transparent-color);
-    padding: 1rem;
+    padding: 3rem;
     border-radius: 8px;
     margin-bottom: 2.5rem;
 }
 
 .process-steps h2 {
     color: var(--secondary-color);
-    margin-top: 0;
+    margin: 0 0 1rem 0;
 }
 
 .process-steps ul {
@@ -502,7 +503,8 @@ dialog {
 }
 
 .process-steps li {
-    margin-bottom: 30px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 20px;
 }
 
 .home-link {
@@ -555,6 +557,7 @@ dialog {
     letter-spacing: 0.5px;
     padding-right: 5px;
     margin-bottom: 5px;
+    overflow-wrap: break-word;
 }
 
 .info-value {
