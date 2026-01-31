@@ -6,7 +6,11 @@
     --text-color: #0c110a4f;
     --background-color: #fffceb;
     --body-color : #ffffff;
-    --transparent-color: #e5e0d1b6;
+    --transparent-color: #e5e0d1e2;
+    --box-shadow: 0 0 10px rgb(29, 15, 0,0.5);
+    --text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    --invalid-color: #2205ff;
+    --linear-gradient: linear-gradient(rgba(6, 3, 0, 0.7), rgba(63, 36, 5, 0.7));
 }
 
 main{

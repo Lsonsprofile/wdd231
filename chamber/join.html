@@ -71,14 +71,14 @@
                         <label for="firstName">First Name <span class="required">*</span></label>
                         <input type="text" id="firstName" name="firstName" required
                                autocomplete="given-name" minlength="5"
-                               placeholder="e.g., Emmanuel">
+                               placeholder="e.g., Emmanuel" title="Enter your first name">
                     </div>
 
                     <div class="form-group">
                         <label for="lastName">Last Name <span class="required">*</span></label>
                         <input type="text" id="lastName" name="lastName" required
                                autocomplete="family-name" minlength="5"
-                               placeholder="e.g., Ndogo">
+                               placeholder="e.g., Ndogo" title="Enter your last name">
                     </div>
 
                     <div class="form-group">
@@ -86,7 +86,8 @@
                         <input type="text" id="orgTitle" name="orgTitle"
                                autocomplete="organization-title"
                                pattern="[A-Za-z\s\-]{7,}"
-                               placeholder="e.g., Marketing Director">
+                               placeholder="e.g., Marketing Director" 
+                               title="Enter your role or title in the organization">
                         <p class="help-text">Minimum 7 characters, only letters, spaces, and hyphens allowed</p>
                     </div>
                 </fieldset>
@@ -98,14 +99,16 @@
                         <label for="email">Email Address <span class="required">*</span></label>
                         <input type="email" id="email" name="email" required
                                autocomplete="email"
-                               placeholder="example@email.com">
+                               placeholder="example@email.com"
+                               title="Enter a valid email address">
                     </div>
 
                     <div class="form-group">
                         <label for="phone">Mobile Phone Number <span class="required">*</span></label>
                         <input type="tel" id="phone" name="phone" required
                                autocomplete="tel"
-                               placeholder="e.g., 123-456-7890">
+                               placeholder="e.g., 123-456-7890"
+                               title="Enter your mobile phone number">
                     </div>
                 </fieldset>
 
@@ -116,13 +119,15 @@
                         <label for="organization">Business/Organization Name <span class="required">*</span></label>
                         <input type="text" id="organization" name="organization" required
                                autocomplete="organization"
-                               placeholder="e.g., ABC Company">
+                               placeholder="e.g., ABC Company"
+                               title="Enter your business or organization name">
                     </div>
 
                     <div class="form-group">
                         <label for="description">Business Description</label>
                         <textarea id="description" name="description"
-                                  placeholder="Please describe your business activities, products, or services..."></textarea>
+                                  placeholder="Please describe your business activities, products, or services..."
+                                  title="Describe your business or organization"></textarea>
                     </div>
                 </fieldset>
 
