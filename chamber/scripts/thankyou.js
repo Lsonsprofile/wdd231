@@ -27,7 +27,7 @@ submittedDataDiv.innerHTML = `
 
     <div class="info-item">
         <span class="info-label">Email:</span>
-        <span class="info-value">${email}</span>
+        <span class="info-value email">${email}</span>
     </div>
 
     <div class="info-item">

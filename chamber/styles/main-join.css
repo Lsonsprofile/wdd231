@@ -558,13 +558,8 @@ dialog {
 
 
 
-
-
-
-
-
 #submittedData {
-    font-family:'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .info-item {
@@ -589,7 +584,10 @@ dialog {
     font-weight: 500;
 }
 
-/* Membership badges using your variables */
+.email {
+    overflow-wrap: break-word;
+}
+
 .membership-np {
     background-color: var(--primary-color);
     color: var(--quaternary-color);
@@ -621,5 +619,3 @@ dialog {
     border-radius: 4px;
     font-weight: bold;
 }
-
-
