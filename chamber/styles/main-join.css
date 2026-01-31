@@ -576,6 +576,7 @@ dialog {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding-right: 5px;
+    margin-bottom: 5px;
 }
 
 .info-value {
