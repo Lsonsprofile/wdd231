@@ -1,2 +1,12 @@
-@media screen and (min-width:47rem) {
+@media screen and (min-width:60rem) {
+    .Form-membership-section {
+        grid-template-columns: 1fr 1fr;
+    }
+    .thankyou-card {
+        padding: 1.5rem;
+    }
+
+    .submission-summary {
+        padding: 1.25rem;
+    }
 }

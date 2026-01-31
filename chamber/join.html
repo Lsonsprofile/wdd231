@@ -3,283 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wdd231 | Emmanuel Chamber Home Page</title>
+    <title>wdd231 | Emmanuel Chamber Join Page</title>
+
     <meta name="description" content="Apply to join the Emmanuel Chamber of Commerce by completing our membership application and exploring available membership levels and benefits.">
     <meta name="author" content="Emmanuel Ndogo">
-    
-    <meta property="og:title" content="Chamber Directory | WDD231 Project">
-    <meta property="og:description" content="Emmanuel Chamber of Commerce. Join our community, explore business directory, events, and Lagos City weather updates.">
+
+    <meta property="og:title" content="Join Emmanuel Chamber of Commerce | WDD231 Project">
+    <meta property="og:description" content="Join the Emmanuel Chamber of Commerce. Explore membership levels, benefits, and connect with the Lagos business community.">
     <meta property="og:image" content="https://lsonsprofile.github.io/wdd231/chamber/images/websitepage.webp">
-    <meta property="og:url" content="https://lsonsprofile.github.io/wdd231/chamber/jion.html">
+    <meta property="og:url" content="https://lsonsprofile.github.io/wdd231/chamber/join.html">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
 
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/main-directory.css">
     <link rel="stylesheet" href="styles/large-directory.css">
-    <script src="scripts/nav-directory.js" defer></script>
-    <script src="scripts/lastmod.js" defer></script>
-    <script src="scripts/members.js" defer></script>
     <link rel="stylesheet" href="styles/main-join.css">
     <link rel="stylesheet" href="styles/large-join.css">
+
+    <script src="scripts/nav-directory.js" defer></script>
+    <script src="scripts/lastmod.js" defer></script>
+    <script src="scripts/membership-modal.js" defer></script>
+     <script src="scripts/join.js" defer></script>
+
     <link rel="icon" href="images/webpage.ico">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <header class="site-header">
-        <div class="header-container">
-            <img src="images/image-icon.webp" alt="Chamber of Commerce">
-            <span class="site-title">Emmanuel Chamber of Commerce</span>
+<header class="site-header">
+    <div class="header-container">
+        <img src="images/image-icon.webp" alt="Emmanuel Chamber of Commerce logo">
+        <span class="site-title">Emmanuel Chamber of Commerce</span>
+    </div>
+    <button aria-label="Show navigation menu" id="ham-btn" class="hamburger"></button>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="directory.html">Directory</a></li>
+            <li class="current"><a href="join.html">Join</a></li>
+            <li><a href="discover.html">Discover</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero-join">
+        <span class="hero-badge">Welcome to Excellence</span>
+        <h1>Let's Build Our Businesses Together</h1>
+        <p>Join the Emmanuel Chamber of Commerce to connect with industry leaders, access exclusive resources, and grow your professional network.</p>
+        <a href="discover.html" class="btn btn-outline">Discover More</a>
+    </section>
+
+    <section class="Form-membership-section">
+        <div class="form-card">
+
+            <form method="get" action="thankyou.html" target="_blank">
+
+                <fieldset>
+                    <legend>Chamber Membership Application</legend>
+
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required
+                               autocomplete="given-name" minlength="5"
+                               placeholder="e.g., Emmanuel">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required
+                               autocomplete="family-name" minlength="5"
+                               placeholder="e.g., Ndogo">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="orgTitle">Organization Title</label>
+                        <input type="text" id="orgTitle" name="orgTitle"
+                               autocomplete="organization-title"
+                               pattern="[A-Za-z\s\-]{7,}"
+                               placeholder="e.g., Marketing Director">
+                        <p class="help-text">Minimum 7 characters, only letters, spaces, and hyphens allowed</p>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Contact Information</legend>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required
+                               autocomplete="email"
+                               placeholder="example@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Mobile Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required
+                               autocomplete="tel"
+                               placeholder="e.g., 123-456-7890">
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Business Information</legend>
+
+                    <div class="form-group">
+                        <label for="organization">Business/Organization Name <span class="required">*</span></label>
+                        <input type="text" id="organization" name="organization" required
+                               autocomplete="organization"
+                               placeholder="e.g., ABC Company">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Business Description</label>
+                        <textarea id="description" name="description"
+                                  placeholder="Please describe your business activities, products, or services..."></textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Select Membership Level</legend>
+
+                    <div class="membership-option">
+                        <label>
+                            <input type="radio" name="membership" value="np" required>
+                            <strong>NP Membership</strong>
+                        </label>
+                        <p class="help-text">For non-profit organizations (No fee)</p>
+                    </div>
+
+                    <div class="membership-option">
+                        <label>
+                            <input type="radio" name="membership" value="bronze" required>
+                            <strong>Bronze Membership</strong>
+                        </label>
+                        <p class="help-text">Basic membership level</p>
+                    </div>
+
+                    <div class="membership-option">
+                        <label>
+                            <input type="radio" name="membership" value="silver" required>
+                            <strong>Silver Membership</strong>
+                        </label>
+                        <p class="help-text">Enhanced benefits and visibility</p>
+                    </div>
+
+                    <div class="membership-option">
+                        <label>
+                            <input type="radio" name="membership" value="gold" required>
+                            <strong>Gold Membership</strong>
+                        </label>
+                        <p class="help-text">Premium benefits and business exposure</p>
+                    </div>
+                </fieldset>
+
+                <input type="hidden" id="timestamp" name="timestamp">
+
+                <button type="submit" class="submit-btn">Submit Membership Application</button>
+
+            </form>
         </div>
-        <button aria-label="Show navigational link" id="ham-btn" class="hamburger"></button>
-        <nav class="navbar">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="directory.html">Directory</a></li>
-                <li class="current"><a href="join.html">Join</a></li>
-                <li><a href="discover.html">Discover</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="hero-join">
-            <span class="hero-badge">Welcome to Excellence</span>
-            <h1>Let's Build Our Businesses Together</h1>
-            <p>Join the Emmanuel Chamber of Commerce to connect with industry leaders, access exclusive resources, and grow your professional network.</p>
-            <a href="discover.html" class="btn btn-outline">Discover More</a>
-        </section>
-        <section class="form-card">
-            <form method="get" action="thankyou.html">
-
-  <fieldset>
-    <legend>Chamber Membership Application</legend>
-      <div class="form-group">
-        <label for="firstName">
-          First Name <span class="required">*</span>
-        </label>
-        <input
-          type="text"
-          id="firstName"
-          name="firstName"
-          required
-          autocomplete="given-name"
-          title="Enter your first name"
-          minlength="5"
-          placeholder="e.g., Emmanuel">
-      </div>
-
-      <div class="form-group">
-        <label for="lastName">
-          Last Name <span class="required">*</span>
-        </label>
-        <input
-          type="text"
-          id="lastName"
-          name="lastName"
-          required
-          autocomplete="family-name"
-          title="Enter your last name"
-          minlength="5"
-          placeholder="e.g., Ndogo">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="orgTitle">Organization Title</label>
-      <input
-        type="text"
-        id="orgTitle"
-        name="orgTitle"
-        autocomplete="organization-title"
-        title="Your title within the organization"
-        pattern="[A-Za-z\s\-]{7,}"
-        placeholder="e.g., Marketing Director">
-      <p class="help-text">
-        Minimum 7 characters, only letters, spaces, and hyphens allowed
-      </p>
-    </div>
-  </fieldset>
-
-  <fieldset>
-    <legend>Contact Information</legend>
-
-    <div class="form-group">
-      <label for="email">
-        Email Address <span class="required">*</span>
-      </label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        required
-        autocomplete="email"
-        title="Enter a valid email address"
-        placeholder="example@email.com">
-    </div>
-
-    <div class="form-group">
-      <label for="phone">
-        Mobile Phone Number<span class="required">*</span>
-      </label>
-      <input
-        type="tel"
-        id="phone"
-        name="phone"
-        required
-        autocomplete="tel"
-        title="Enter your mobile phone number"
-        placeholder="e.g., 123-456-7890">
-    </div>
-  </fieldset>
-
-  <fieldset>
-    <legend>Business Information</legend>
-
-    <div class="form-group">
-      <label for="organization">
-        Business/Organization Name <span class="required">*</span>
-      </label>
-      <input
-        type="text"
-        id="organization"
-        name="organization"
-        required
-        autocomplete="organization"
-        title="Business or organization name"
-        placeholder="e.g., ABC Company">
-    </div>
-
-    <div class="form-group">
-      <label for="description">Business Description</label>
-      <textarea
-        id="description"
-        name="description"
-        title="Describe your business"
-        placeholder="Please describe your business activities, products, or services..."></textarea>
-    </div>
-  </fieldset>
-
-  <fieldset>
-    <legend>Select Membership Level</legend>
-
-      <div class="membership-option">
-        <label>
-          <input type="radio" name="membership" value="np" required>
-          <strong>NP Membership</strong>
-        </label>
-        <p class="help-text">For non-profit organizations (No fee)</p>
-      </div>
-
-      <div class="membership-option">
-        <label>
-          <input type="radio" name="membership" value="bronze" required>
-          <strong>Bronze Membership</strong>
-        </label>
-        <p class="help-text">Basic membership level</p>
-      </div>
-
-      <div class="membership-option">
-        <label>
-          <input type="radio" name="membership" value="silver" required>
-          <strong>Silver Membership</strong>
-        </label>
-        <p class="help-text">Enhanced benefits and visibility</p>
-      </div>
-
-      <div class="membership-option">
-        <label>
-          <input type="radio" name="membership" value="gold" required>
-          <strong>Gold Membership</strong>
-        </label>
-        <p class="help-text">Premium benefits and Business exposure</p>
-      </div>
-  </fieldset>
 
 
-  <input type="hidden" id="timestamp" name="timestamp">
+        <div class="membership-section">
+            <h2>Membership Levels</h2>
 
-  <input
-    type="submit"
-    value="Submit Membership Application"
-    class="submit-btn">
+            <div class="membership-cards-container">
 
-</form>
-        </section>
+                <div class="membership-card" data-level="np">
+                    <div class="card-header">
+                        <span class="card-icon">&#127963;</span>
+                        <h3>NP Membership</h3>
+                    </div>
+                    <p class="card-description">For non-profit organizations</p>
+                    <p class="card-fee"><strong>Fee:</strong> Free</p>
+                    <button class="info-btn" data-modal="modal-np">View Benefits</button>
+                </div>
 
-        <!-- Membership Cards Section -->
-<section class="membership-section">
-    <h2>Membership Levels</h2>
-    
-    <div class="membership-cards-container">
-        <!-- NP Card -->
-        <div class="membership-card" data-level="np">
-            <div class="card-header">
-                <span class="card-icon">&#127963;</span>
-                <h3>NP Membership</h3>
+                <div class="membership-card" data-level="bronze">
+                    <div class="card-header">
+                        <span class="card-icon">&#129353;</span>
+                        <h3>Bronze Membership</h3>
+                    </div>
+                    <p class="card-description">Solid starting point for businesses</p>
+                    <p class="card-fee"><strong>Fee:</strong> $150/year</p>
+                    <button class="info-btn" data-modal="modal-bronze">View Benefits</button>
+                </div>
+
+                <div class="membership-card" data-level="silver">
+                    <div class="card-header">
+                        <span class="card-icon">&#129352;</span>
+                        <h3>Silver Membership</h3>
+                    </div>
+                    <p class="card-description">More visibility & training</p>
+                    <p class="card-fee"><strong>Fee:</strong> $300/year</p>
+                    <button class="info-btn" data-modal="modal-silver">View Benefits</button>
+                </div>
+
+                <div class="membership-card" data-level="gold">
+                    <div class="card-header">
+                        <span class="card-icon">&#129351;</span>
+                        <h3>Gold Membership</h3>
+                    </div>
+                    <p class="card-description">Premium exposure & perks</p>
+                    <p class="card-fee"><strong>Fee:</strong> $500/year</p>
+                    <button class="info-btn" data-modal="modal-gold">View Benefits</button>
+                </div>
+
             </div>
-            <p class="card-description">For non-profit organizations</p>
-            <p class="card-fee"><strong>Fee:</strong> Free</p>
-            <button class="info-btn" data-modal="modal-np">View Benefits</button>
         </div>
+    </section>
+    <dialog id="membershipDialog">
+    <div id="dialogText"></div>
+    <button id="closeButton">&times;</button>
+    </dialog>
+</main>
 
-        <!-- Bronze Card -->
-        <div class="membership-card" data-level="bronze">
-            <div class="card-header">
-                <span class="card-icon">&#129353;</span>
-                <h3>Bronze Membership</h3>
-            </div>
-            <p class="card-description">Solid starting point for businesses</p>
-            <p class="card-fee"><strong>Fee:</strong> $150/year</p>
-            <button class="info-btn" data-modal="modal-bronze">View Benefits</button>
-        </div>
-
-        <!-- Silver Card -->
-        <div class="membership-card" data-level="silver">
-            <div class="card-header">
-                <span class="card-icon">&#129352;</span>
-                <h3>Silver Membership</h3>
-            </div>
-            <p class="card-description">More visibility & training</p>
-            <p class="card-fee"><strong>Fee:</strong> $300/year</p>
-            <button class="info-btn" data-modal="modal-silver">View Benefits</button>
-        </div>
-
-        <!-- Gold Card -->
-        <div class="membership-card" data-level="gold">
-            <div class="card-header">
-                <span class="card-icon">&#129351;</span>
-                <h3>Gold Membership</h3>
-            </div>
-            <p class="card-description">Premium exposure & perks</p>
-            <p class="card-fee"><strong>Fee:</strong> $500/year</p>
-            <button class="info-btn" data-modal="modal-gold">View Benefits</button>
-        </div>
+<footer>
+    <div class="contact-info">
+        <p><strong>Emmanuel Chamber of Commerce</strong></p>
+        <p>42 Unity Crescent</p>
+        <p>Victoria Island, Lagos 101241</p>
+        <p><a href="mailto:info@lagoscc.org.ng">info@lagoscc.org.ng</a></p>
+        <p><a href="tel:+2348095551234">(+234) 809-555-1234</a></p>
     </div>
-</section>
-    </main>
-        
-    <footer>
-        <div class="contact-info">
-            <p><strong>Emmanuel Chamber of Commerce</strong></p>
-            <p>42 Unity Crescent</p>
-            <p>Victoria Island, Lagos 101241</p>
-            <p><a href="mailto:info@lagoscc.org.ng">info@lagoscc.org.ng</a></p>
-            <p><a href="tel:+2348095551234">(+234) 809-555-1234</a></p>
-        </div>
-        <div class="social-link">
-            <a href="https://github.com/brightcoder21" target="_blank"><img src="images/github.svg" alt="Github icon"></a>
-            <a href="https://www.linkedin.com/in/creative-dev-2026" target="_blank"><img src="images/linkedin.svg" alt="LinkedIn icon"></a>
-            <a href="https://wa.me/2348123456789" target="_blank"><img src="images/whatsapp.svg" alt="WhatsApp icon"></a>
-        </div>
-        <div class="footer-text">
-            <p><strong>WDD231 Class Project</strong></p>
-            <p>Emmanuel Ndogo</p>
-            <p>&copy; <span id="year"></span>. Emmanuel Chamber of Commerce.</p>
-            <p>Last modified: <span id="lastModified"></span></p>
-        </div>
-    </footer>
+
+    <div class="social-link">
+        <a href="https://github.com/brightcoder21" target="_blank">
+            <img src="images/github.svg" alt="GitHub icon">
+        </a>
+        <a href="https://www.linkedin.com/in/creative-dev-2026" target="_blank">
+            <img src="images/linkedin.svg" alt="LinkedIn icon">
+        </a>
+        <a href="https://wa.me/2348123456789" target="_blank">
+            <img src="images/whatsapp.svg" alt="WhatsApp icon">
+        </a>
+    </div>
+
+    <div class="footer-text">
+        <p><strong>WDD231 Class Project</strong></p>
+        <p>Emmanuel Ndogo</p>
+        <p>&copy; <span id="year"></span> Emmanuel Chamber of Commerce.</p>
+        <p>Last modified: <span id="lastModified"></span></p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById("timestamp").value = new Date().toISOString();
+</script>
+
 </body>
 </html>
