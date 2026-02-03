@@ -11,6 +11,7 @@
     box-sizing: border-box;
     overflow: hidden;
     color: var(--body-color);
+    background-color: var(--secondary-color)
 }
 
 .hero-image {
@@ -20,8 +21,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -2;
-    background-color: var(--secondary-color)
+    z-index: 2;
 }
 
 .hero-overlay {
@@ -31,7 +31,7 @@
     width: 100%;
     height: 100%;
     background: var(--linear-gradient);
-    z-index: -1;
+    z-index: 2;
 }
 
 .hero-badge {
@@ -45,6 +45,7 @@
     margin-bottom: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 2px;
+    z-index: 3;
 }
 
 .hero-join h1 {
@@ -52,6 +53,7 @@
     margin: 0 0 1rem 0;
     line-height: 1.1;
     text-shadow: var(--text-shadow);
+    z-index: 3;
 }
 
 .hero-join p {
@@ -60,6 +62,7 @@
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    z-index: 3;
 }
 
 .btn {
