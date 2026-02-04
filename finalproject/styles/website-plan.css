@@ -87,6 +87,13 @@ h3 {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+.color-box li {
+    display: fle;
+    font-style: italic;
+    margin: 1rem;
+    list-style-type: circle;
+}
+
 .color-box:nth-child(1) {
     color: var(--light-bg);
     background-color:  var(--primary-color);
