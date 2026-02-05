@@ -73,8 +73,10 @@
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
+    margin: 1rem auto;
     border: none;
     cursor: pointer;
+    z-index: 3;
 }
 
 .btn-outline {
