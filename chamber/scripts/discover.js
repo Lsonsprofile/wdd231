@@ -4,7 +4,7 @@ const gridplace = document.querySelector("#discoverGrid");
 const modal = document.querySelector("#cardModal");
 const modalTitle = document.querySelector("#modalTitle");
 const modalImage = document.querySelector("#modalImage");
-const modalDescription = document.querySelector("#modalDescription");
+const modalDescription = document.querySelector("#modalDescrib");
 const closeModal = document.querySelector("#closeModal");
 
 attractions.forEach(place => {
