@@ -307,7 +307,7 @@
     aspect-ratio: 3/2;
 }
 
-.discoverCard h3 {
+.discoverCard h2 {
     padding: 0.5rem;
     color: var(--body-color);
     background-color: var(--secondary-color);

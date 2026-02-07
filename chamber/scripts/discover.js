@@ -11,7 +11,7 @@ attractions.forEach(place => {
   const card = document.createElement("div");
   card.classList.add("discoverCard");
   card.innerHTML = `
-    <h3>${place.name}</h3>
+    <h2>${place.name}</h2>
     <figure>
       <img src="${place.image}" alt="${place.name}" loading="lazy">
     </figure>
