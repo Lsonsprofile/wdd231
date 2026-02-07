@@ -9,7 +9,7 @@ export const attractions = [
     name: "National Museum Lagos",
     address: "Onikan, Lagos Island, Lagos",
     description: "Established in 1957, this museum houses artifacts from Nigeria's rich cultural heritage and historical exhibitions. The collection includes archaeological and ethnographic artifacts, traditional Nigerian art, Benin bronzes, and historical documents. The museum also features a gallery dedicated to traditional Nigerian textiles and crafts, providing insight into the country's diverse cultural history.",
-    image: "images/nationa-museum.webp"
+    image: "images/national-museum.webp"
   },
   {
     name: "Nike Art Gallery",
