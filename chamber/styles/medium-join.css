@@ -1,0 +1,18 @@
+@media screen and (min-width: 35.05rem) {
+
+  .grid-places .discoverCard {
+    grid-template-areas:
+        "image header"
+        "image address"
+        "image description"
+        "image button";
+  }
+
+  .grid-places .discoverCard figure {
+    width: 300px;
+  }
+
+  .discoverCard img:hover {
+    transform: scale(1.08);
+  }
+}

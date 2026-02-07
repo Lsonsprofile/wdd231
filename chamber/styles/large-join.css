@@ -10,3 +10,10 @@
         padding: 1.25rem;
     }
 }
+
+@media screen and (min-width: 72rem) {
+  .grid-places {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+  }
+}

@@ -19,11 +19,14 @@
     <link rel="stylesheet" href="styles/main-directory.css">
     <link rel="stylesheet" href="styles/large-directory.css">
     <link rel="stylesheet" href="styles/main-join.css">
+    <link rel="stylesheet" href="styles/medium-join.css">
     <link rel="stylesheet" href="styles/large-join.css">
+    <link rel="stylesheet" href="styles/main-home.css">
 
     <script src="scripts/nav-directory.js" defer></script>
     <script src="scripts/lastmod.js" defer></script>
-    <script src="scripts/discover.js" type="module" defer></script>
+    <script src="scripts/discover.js" type="module"></script>
+    <script src="scripts/last-visit.js" defer></script>
 
     <link rel="icon" href="images/webpage.ico">
 
@@ -44,13 +47,13 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="directory.html">Directory</a></li>
-            <li class="current"><a href="join.html">Join</a></li>
-            <li><a href="discover.html">Discover</a></li>
+            <li><a href="join.html">Join</a></li>
+            <li class="current"><a href="discover.html">Discover</a></li>
         </ul>
     </nav>
 </header>
 
-<main>
+<main class="main-style">
     <section class="hero-join">
         <img 
             src="images/discover-hero.webp" 
@@ -60,9 +63,26 @@
         <h1>Discover interesting places in Lagos</h1>
     </section>
 
-    <section class="discover">
-        
+    <section>
+        <h2 class="discover-title">Discover Places</h2>
+        <div id="discoverGrid" class="grid-places"></div>
     </section>
+    
+    <dialog id="cardModal">
+    <div id="modalContent">
+        <h3 id="modalTitle">Place details</h3>
+        <figure>
+            <img id="modalImage" src="images/placeholder.webp" alt="image of a place">
+        </figure>
+        <p id="modalDescription"></p>
+        <button id="closeModal">Close</button>
+    </div>
+    </dialog>
+
+    <div id="visitBanner" class="visit-banner">
+        <span id="visitText"></span>
+        <button id="visitClose">&times;</button>
+    </div>
 
 </main>  
 
