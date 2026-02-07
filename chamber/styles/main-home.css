@@ -1,25 +1,3 @@
-:root {
-    --primary-color: #c1b96a;
-    --secondary-color: #5d3508;
-    --tertiary-color: #ffe1a1;
-    --quaternary-color: #000000;
-    --text-color: #0c110a4f;
-    --background-color: #fffceb;
-    --body-color : #ffffff;
-    --transparent-color: #e5e0d1e2;
-    --box-shadow: 0 0 10px rgb(29, 15, 0,0.5);
-    --text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    --invalid-color: #2205ff;
-    --linear-gradient: linear-gradient(rgba(6, 3, 0, 0.7), rgba(63, 36, 5, 0.7));
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
 .hero-homepage {
    position: relative;
    margin: 0 auto;
@@ -181,7 +159,6 @@
 }
 
 .live-updates h2 {
-    font-weight: 100;
     background-color: var(--quaternary-color);
     color: var(--body-color);
     padding: 5px;
@@ -308,9 +285,6 @@
     "address"
     "description"
     "button";
-}
-
-.discoverCard {
     margin: 0.5rem;
     background-color: var(--quaternary-color);
     border-radius: 8px;
@@ -333,7 +307,7 @@
     aspect-ratio: 3/2;
 }
 
-.discoverCard h2 {
+.discoverCard h3 {
     padding: 0.5rem;
     color: var(--body-color);
     background-color: var(--secondary-color);
@@ -354,6 +328,7 @@
     padding: 0.5rem;
     margin: 0.5rem auto;
     width: 90%;
+    grid-area: description;
 }
 
 .discoverCard address {
@@ -362,10 +337,6 @@
     color: var(--body-color);
     grid-area: address;
     margin: 0.5rem 0.2rem;
-}
-
-.discoverCard p {
-    grid-area: description;
 }
 
 .discoverCard button {
@@ -397,7 +368,7 @@
 
 #cardModal {
     width: 90%;
-    max-width: 500px;
+    max-width: 600px;
     border: none;
     border-radius: 8px;
     padding: 1rem;
@@ -461,7 +432,6 @@
 
 #modalContent figure,
 #modalContent img {
-    width: 100%;
     width: 100%;
 }
 
