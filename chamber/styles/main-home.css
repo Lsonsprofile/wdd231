@@ -367,6 +367,7 @@
 
 
 #cardModal {
+    position: fixed;
     width: 90%;
     max-width: 600px;
     border: none;
@@ -375,6 +376,10 @@
     box-shadow: var(--box-shadow);
     overflow-y: auto;
     background-color: var(--secondary-color);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
 }
 
 #cardModal::backdrop {
