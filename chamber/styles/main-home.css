@@ -374,7 +374,7 @@
     padding: 1rem;
     box-shadow: var(--box-shadow);
     overflow-y: auto;
-    background-color: var(--quaternary-color);
+    background-color: var(--secondary-color);
 }
 
 #cardModal::backdrop {
@@ -426,7 +426,7 @@
 }
 
 #modalContent button:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--quaternary-color);
     color: var(--tertiary-color);
 }
 
