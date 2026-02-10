@@ -15,8 +15,11 @@ attractions.forEach(place => {
     <figure>
       <img src="${place.image}" alt="${place.name}" loading="lazy">
     </figure>
-    <address><img src="images/google-location.svg" alt="google location icon" class="icon">${place.address}</address>
-    <p>${place.description.substring(0, 100)}...</p>
+    <address>
+      <img src="images/google-location.svg" alt="google location icon" class="icon">
+      ${place.address}
+    </address>
+    <p class="description">${place.description.substring(0, 100)}...</p>
     <button>Learn More</button>
   `;
 
