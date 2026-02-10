@@ -2,10 +2,10 @@
 
   .grid-places .discoverCard {
     grid-template-areas:
-        "image header"
-        "image address"
-        "image description"
-        "image button";
+      "header      image"
+      "address     image"
+      "description image"
+      "button      image";
   }
 
   .grid-places .discoverCard figure {

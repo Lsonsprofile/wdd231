@@ -16,4 +16,12 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
   }
+  .grid-places .discoverCard {
+    grid-template-areas:
+        "image header"
+        "image address"
+        "image description"
+        "image button";
+  }
+  
 }
