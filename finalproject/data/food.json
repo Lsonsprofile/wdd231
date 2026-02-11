@@ -1,0 +1,436 @@
+{
+  "food": [
+    {
+      "id": 101,
+      "name": "Egusi Soup",
+      "category": "Soups",
+      "image": "images/egusi.webp",
+      "price": 2800,
+      "availability": true,
+      "rating": 4.8
+    },
+    {
+      "id": 102,
+      "name": "Ogbono Soup",
+      "category": "Soups",
+      "image": "images/ogbono.webp",
+      "price": 2700,
+      "availability": true,
+      "rating": 4.6
+    },
+    {
+      "id": 103,
+      "name": "Okra Soup",
+      "category": "Soups",
+      "image": "images/okra.webp",
+      "price": 2500,
+      "availability": true,
+      "rating": 4.5
+    },
+    {
+      "id": 104,
+      "name": "Oha Soup",
+      "category": "Soups",
+      "image": "images/oha.webp",
+      "price": 2600,
+      "availability": true,
+      "rating": 4.7
+    },
+    {
+      "id": 105,
+      "name": "Afang Soup",
+      "category": "Soups",
+      "image": "images/afang.webp",
+      "price": 2600,
+      "availability": true,
+      "rating": 4.8
+    },
+    {
+      "id": 106,
+      "name": "Pepper Soup",
+      "category": "Soups",
+      "image": "images/pepper-soup.webp",
+      "price": 2400,
+      "availability": true,
+      "rating": 4.9
+    },
+    {
+      "id": 201,
+      "name": "Stockfish",
+      "category": "Seafood",
+      "image": "images/stockfish.webp",
+      "price": 3000,
+      "availability": true,
+      "rating": 4.7
+    },
+    {
+      "id": 202,
+      "name": "Catfish Pepper Soup",
+      "category": "Seafood",
+      "image": "images/catfish.webp",
+      "price": 3200,
+      "availability": true,
+      "rating": 4.8
+    },
+    {
+      "id": 203,
+      "name": "Grilled Tilapia",
+      "category": "Seafood",
+      "image": "images/tilapia.webp",
+      "price": 3500,
+      "availability": true,
+      "rating": 4.9
+    },
+    {
+      "id": 204,
+      "name": "Fisherman’s Soup",
+      "category": "Seafood",
+      "image": "images/fisherman-soup.webp",
+      "price": 3600,
+      "availability": true,
+      "rating": 4.8
+    },
+    {
+      "id": 205,
+      "name": "Prawn",
+      "category": "Seafood",
+      "image": "images/prawn.webp",
+      "price": 3400,
+      "availability": true,
+      "rating": 4.7
+    },
+    {
+      "id": 301,
+      "name": "Goat Meat",
+      "category": "Meat",
+      "image": "images/goat.webp",
+      "price": 3000,
+      "availability": true,
+      "rating": 4.8
+    },
+    {
+      "id": 302,
+      "name": "Chicken",
+      "category": "Meat",
+      "image": "images/chicken.webp",
+      "price": 2500,
+      "availability": true,
+      "rating": 4.6
+    },
+    {
+      "id": 303,
+      "name": "Beef",
+      "category": "Meat",
+      "image": "images/beef.webp",
+      "price": 2600,
+      "availability": true,
+      "rating": 4.5
+    },
+    {
+      "id": 304,
+      "name": "Turkey",
+      "category": "Meat",
+      "image": "images/turkey.webp",
+      "price": 2700,
+      "availability": true,
+      "rating": 4.7
+    },
+    {
+      "id": 305,
+      "name": "Cow Foot",
+      "category": "Meat",
+      "image": "images/cowfoot.webp",
+      "price": 2600,
+      "availability": true,
+      "rating": 4.5
+    },
+    {
+      "id": 306,
+      "name": "Cow Tail",
+      "category": "Meat",
+      "image": "images/cowtail.webp",
+      "price": 2800,
+      "availability": true,
+      "rating": 4.6
+    },
+    {
+      "id": 307,
+      "name": "Cow Meat",
+      "category": "Meat",
+      "image": "images/cowmeat.webp",
+      "price": 2500,
+      "availability": true,
+      "rating": 4.5
+    },
+    {
+      "id": 401,
+      "name": "Fufu",
+      "category": "Grains & Starches",
+      "image": "images/fufu.webp",
+      "price": 700,
+      "availability": true,
+      "rating": 4.7
+    },
+    {
+      "id": 402,
+      "name": "Pounded Yam",
+      "category": "Grains & Starches",
+      "image": "images/pounded-yam.webp",
+      "price": 900,
+      "availability": true,
+      "rating": 4.9
+    },
+    {
+      "id": 403,
+      "name": "Garri (Eba)",
+      "category": "Grains & Starches",
+      "image": "images/eba.webp",
+      "price": 600,
+      "availability": true,
+      "rating": 4.6
+    },
+    {
+      "id": 404,
+      "name": "Tuwo Shinkafa",
+      "category": "Grains & Starches",
+      "image": "images/tuwo.webp",
+      "price": 800,
+      "availability": true,
+      "rating": 4.7
+    },
+    {
+      "id": 405,
+      "name": "Amala",
+      "category": "Grains & Starches",
+      "image": "images/amala.webp",
+      "price": 700,
+      "availability": true,
+      "rating": 4.6
+    },
+    {
+      "id": 406,
+      "name": "Ofada Rice",
+      "category": "Grains & Starches",
+      "image": "images/ofada.webp",
+      "price": 2200,
+      "availability": true,
+      "rating": 4.8
+    },
+    {
+      "id": 407,
+      "name": "Jollof Rice",
+      "category": "Grains & Starches",
+      "image": "images/jollof.webp",
+      "price": 2500,
+      "availability": true,
+      "rating": 5.0
+    },
+    {
+      "id": 501,
+      "name": "Ayamase Sauce",
+      "category": "Extras",
+      "image": "images/ayamase.webp",
+      "price": 400,
+      "availability": true,
+      "rating": 4.7
+    },
+    {
+      "id": 502,
+      "name": "Fried Plantain",
+      "category": "Extras",
+      "image": "images/fried-plantain.webp",
+      "price": 600,
+      "availability": true,
+      "rating": 4.8
+    },
+    {
+      "id": 503,
+      "name": "Boiled Plantain",
+      "category": "Extras",
+      "image": "images/boiled-plantain.webp",
+      "price": 600,
+      "availability": true,
+      "rating": 4.5
+    },
+    {
+      "id": 504,
+      "name": "Roasted Plantain",
+      "category": "Extras",
+      "image": "images/roasted-plantain.webp",
+      "price": 700,
+      "availability": true,
+      "rating": 4.6
+    },
+    {
+      "id": 601,
+      "name": "Chin Chin",
+      "category": "Snacks & Small Bites",
+      "image": "images/chinchin.webp",
+      "price": 500,
+      "availability": true,
+      "rating": 4.7
+    },
+    {
+      "id": 602,
+      "name": "Meat Pie",
+      "category": "Snacks & Small Bites",
+      "image": "images/meatpie.webp",
+      "price": 800,
+      "availability": true,
+      "rating": 4.6
+    },
+    {
+      "id": 603,
+      "name": "Samosa",
+      "category": "Snacks & Small Bites",
+      "image": "images/samosa.webp",
+      "price": 900,
+      "availability": true,
+      "rating": 4.5
+    },
+    {
+      "id": 604,
+      "name": "Coconut Candy",
+      "category": "Snacks & Small Bites",
+      "image": "images/coconut.webp",
+      "price": 400,
+      "availability": true,
+      "rating": 4.4
+    },
+    {
+      "id": 605,
+      "name": "Puff Puff (Sweet)",
+      "category": "Snacks & Small Bites",
+      "image": "images/puff.webp",
+      "price": 600,
+      "availability": true,
+      "rating": 4.8
+    },
+    {
+      "id": 701,
+      "name": "Coconut Cake",
+      "category": "Desserts & Sweets",
+      "image": "images/cake.webp",
+      "price": 1200,
+      "availability": true,
+      "rating": 4.7
+    },
+    {
+      "id": 702,
+      "name": "Akamu with Sugar",
+      "category": "Desserts & Sweets",
+      "image": "images/akamu.webp",
+      "price": 700,
+      "availability": true,
+      "rating": 4.5
+    },
+    {
+      "id": 703,
+      "name": "Plantain Mosa",
+      "category": "Desserts & Sweets",
+      "image": "images/mosa.webp",
+      "price": 900,
+      "availability": true,
+      "rating": 4.6
+    },
+    {
+      "id": 704,
+      "name": "Suya",
+      "category": "Desserts & Sweets",
+      "image": "images/suya.webp",
+      "price": 1500,
+      "availability": true,
+      "rating": 4.9
+    },
+    {
+      "id": 705,
+      "name": "Akara",
+      "category": "Desserts & Sweets",
+      "image": "images/akara.webp",
+      "price": 700,
+      "availability": true,
+      "rating": 4.6
+    },
+    {
+      "id": 706,
+      "name": "Kilishi",
+      "category": "Desserts & Sweets",
+      "image": "images/kilishi.webp",
+      "price": 1300,
+      "availability": true,
+      "rating": 4.8
+    },
+    {
+      "id": 801,
+      "name": "Jollof Pasta",
+      "category": "Fusion / Contemporary",
+      "image": "images/jollof-pasta.webp",
+      "price": 2600,
+      "availability": true,
+      "rating": 4.7
+    },
+    {
+      "id": 802,
+      "name": "Plantain Burgers",
+      "category": "Fusion / Contemporary",
+      "image": "images/burger.webp",
+      "price": 2800,
+      "availability": true,
+      "rating": 4.6
+    },
+    {
+      "id": 803,
+      "name": "Pizza with Suya Toppings",
+      "category": "Fusion / Contemporary",
+      "image": "images/pizza.webp",
+      "price": 3500,
+      "availability": true,
+      "rating": 4.8
+    },
+    {
+      "id": 804,
+      "name": "Nigerian Shawarma",
+      "category": "Fusion / Contemporary",
+      "image": "images/shawarma.webp",
+      "price": 2000,
+      "availability": true,
+      "rating": 4.9
+    },
+    {
+      "id": 805,
+      "name": "Yam Fries with Spicy Dip",
+      "category": "Fusion / Contemporary",
+      "image": "images/yam-fries.webp",
+      "price": 1800,
+      "availability": true,
+      "rating": 4.7
+    },
+    {
+      "id": 901,
+      "name": "Zobo",
+      "category": "Drinks",
+      "image": "images/zobo.webp",
+      "price": 600,
+      "availability": true,
+      "rating": 4.8
+    },
+    {
+      "id": 902,
+      "name": "Palm Wine",
+      "category": "Drinks",
+      "image": "images/palmwine.webp",
+      "price": 1200,
+      "availability": true,
+      "rating": 4.6
+    },
+    {
+      "id": 904,
+      "name": "Kunu",
+      "category": "Drinks",
+      "image": "images/kunu.webp",
+      "price": 700,
+      "availability": true,
+      "rating": 4.5
+    }
+  ]
+}
