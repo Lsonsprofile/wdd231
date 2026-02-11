@@ -47,5 +47,8 @@
         width: 100%;
         max-height: 60vh;
     }
+    .shopingcart p {
+        display: none;
+    }
 
 }

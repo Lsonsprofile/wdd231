@@ -23,7 +23,7 @@
    --gradient-dark: linear-gradient(180deg, #2b2118 0%, #1a140f 100%);
 
    --gradient-warm: linear-gradient(
-      135deg,
+      100deg,
       #fffaf3 50%,
       #f7efe6  80%,
       #024228 5%
@@ -84,7 +84,7 @@ header {
    top: 0;
    right: 0;
    height: 35rem;
-   width: 50%;
+   width: 70%;
    background: var(--color-bg);
    box-shadow: var(--shadow-lg);
    transform: translateX(100%);
@@ -105,8 +105,8 @@ header {
    width: 40px;
    height: 40px;
    border-radius: 50%;
+   padding-top: 5px;
    font-size: 1.8rem;
-   padding-bottom: 5px;
    cursor: pointer;
    color: var(--color-secondary);
    display: flex;
@@ -168,6 +168,15 @@ header {
    width: 100%;
 }
 
+.shopingcart p {
+   background-color: var(--color-muted);
+   font-size: 1rem;
+   display: inline-block;
+   margin: 0.5rem 0 0 0;
+   position: relative;
+   right: 2.5rem;
+}
+
 .shopingcart svg {
    width: 40px;
    height: 30px;
@@ -201,6 +210,8 @@ header {
 .bi-list {
    font-weight: 800;
    color: var(--color-text);
+   width: 40px;
+   height: 40px;
 }
 
 .nav-overlay {
@@ -222,8 +233,6 @@ header {
    opacity: 1;
    visibility: visible;
 }
-
-
 
 main {
    padding-top: 8.7rem;
@@ -315,7 +324,7 @@ main {
    transition: all 0.3s ease;
    box-shadow: 0 8px 15px rgba(232, 93, 4, 0.3);
    width: fit-content;
-   margin: 1rem auto;
+   margin: 0.5rem auto;
 }
 
 .hero-content .order-btn:hover {
@@ -324,4 +333,5 @@ main {
    box-shadow: var(--shadow-lg);
    color: var(--color-surface);
 }
+
 
