@@ -24,9 +24,9 @@
 
    --gradient-warm: linear-gradient(
       135deg,
-      #fffaf3,
-      #f7efe6,
-      #024228 10%
+      #fffaf3 50%,
+      #f7efe6  80%,
+      #024228 5%
    );
 
    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
@@ -252,7 +252,6 @@ main {
 
 .hero-content {
    background: var(--gradient-dark);
-   padding: 1rem;
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -263,6 +262,7 @@ main {
 
 .badge {
    color: var(--call-btn);
+   margin: 0.5rem auto 0 auto;
    text-transform: uppercase;
    letter-spacing: 3px;
    font-weight: 700;
@@ -275,6 +275,7 @@ main {
 
 .hero-title {
    font-family: var(--font-heading);
+   padding: 0 0.5rem;
    font-size: 2.5rem;
    line-height: 1.1;
    margin-bottom: 0.5rem;
@@ -294,6 +295,7 @@ main {
 
 .hero-content .paragraph {
    font-size: 1rem;
+   padding: 0 0.5rem;
    line-height: 1;
    color: var(--color-bg);
    margin-bottom: 1rem;
@@ -313,6 +315,7 @@ main {
    transition: all 0.3s ease;
    box-shadow: 0 8px 15px rgba(232, 93, 4, 0.3);
    width: fit-content;
+   margin: 1rem auto;
 }
 
 .hero-content .order-btn:hover {
