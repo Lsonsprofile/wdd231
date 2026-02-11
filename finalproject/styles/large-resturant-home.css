@@ -38,6 +38,7 @@
         background: none;
         padding: auto;
         width: auto;
+        padding: 0;
     }
     .nav-overlay {
         display: none;

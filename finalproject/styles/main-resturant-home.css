@@ -163,9 +163,9 @@ header {
 }
 
 .shopingcart {
-   border: 1px solid var(--color-muted);
-   background: var(--gradient-warm);
+   border: 2px solid var(--color-muted);
    width: 100%;
+   padding: 0.5rem;
 }
 
 .shopingcart p {
