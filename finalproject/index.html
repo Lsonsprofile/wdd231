@@ -9,34 +9,62 @@
     
     <meta property="og:title" content="">
     <meta property="og:description" content="">
-    <meta property="og:image" content="https://lsonsprofile.github.io/wdd231/chamber/images/websitepage.webp">
-    <meta property="og:url" content="https://lsonsprofile.github.io/wdd231/chamber/index.html">
+    <meta property="og:image" content="https://lsonsprofile.github.io/wdd231/finalproject/images/elonskitchen-og.webp">
+    <meta property="og:url" content="https://lsonsprofile.github.io/wdd231/finalproject/index.html">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
 
     <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/resturant-home.css">
+    <link rel="stylesheet" href="styles/main-resturant-home.css">
+    <link rel="stylesheet" href="styles/large-resturant-home.css">
+    <link rel="icon" href="images/elonsfavicon.ico">
+
+    <script src="scripts/nav.js" defer></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     
 </head>
 <body>
     <header>
+        <div class="nav-overlay"></div>
         <div class="logo">
             <img src="images/elonlogo.png" alt="elon hot spicy red food and ingridients logo">
         </div>
-        <nav>
+        <nav class="navigation-bar">
+            <button aria-label="close button" id="menuToggle"  
+        class="close-btn">&times;</button>
             <ul class="nav-link">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Place Order</a></li>
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="order.html">Place Order</a></li>
             </ul>
-            <button class="shopingcart">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-dash-fill" viewBox="0 0 16 16" class="svg">
-  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1" />
-</svg>
-</button>
+            <button id="shopcart" class="shopingcart" aria-label="Shopping cart" title="View added items in shoping cart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi-cart-dash-fill" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1" />
+                </svg>
+            </button>
         </nav>
+        <button id="menu-openbtn" class="hamburger-menu" aria-label="Open menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi-list" viewBox="0 0 16 16" role="img" aria-labelledby="menuTitle"> <title id="menuTitle">menu</title> <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/> </svg>
+        </button>
     </header>
-    <main></main>
+    <main>
+        <section class="hero-container">
+            <div class="img-container">
+                <img src="images/jelof.webp" alt="a hot jelof rice dish"
+                srcset="images/jelof.webp 600w, images/jelof-large.webp 1000w" loading="eager">
+            </div>
+            <div class="hero-content">
+                <span class="badge">ElonsKitchen</span>
+                <h1 class="hero-title">A MESMERIZING TASTE OF <span>NIGERIAN DISHES</span></h1>
+                <p class="paragraph">Enjoy farm-fresh ingredients, and Elon's signature touch. Every bite is an explosion of spice and flavor.</p>
+                <a href="/order" class="order-btn" aria-label="Order food now">Order Now</a>
+
+            </div>
+        </section>
+    </main>
     <footer></footer>
 </body>
 </html>
