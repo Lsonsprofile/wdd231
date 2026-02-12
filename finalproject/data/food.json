@@ -25,7 +25,7 @@
       "image": "images/okra.webp",
       "price": 2500,
       "availability": true,
-      "rating": 4.5
+      "rating": 3.5
     },
     {
       "id": 104,
@@ -43,7 +43,7 @@
       "image": "images/afang.webp",
       "price": 2600,
       "availability": true,
-      "rating": 4.8
+      "rating": 5.0
     },
     {
       "id": 106,
@@ -61,7 +61,7 @@
       "image": "images/stockfish.webp",
       "price": 3000,
       "availability": true,
-      "rating": 4.7
+      "rating": 2.7
     },
     {
       "id": 202,
@@ -79,7 +79,7 @@
       "image": "images/tilapia.webp",
       "price": 3500,
       "availability": true,
-      "rating": 4.9
+      "rating": 3.9
     },
     {
       "id": 204,
@@ -88,7 +88,7 @@
       "image": "images/fisherman-soup.webp",
       "price": 3600,
       "availability": true,
-      "rating": 4.8
+      "rating": 1.8
     },
     {
       "id": 205,
@@ -97,7 +97,7 @@
       "image": "images/prawn.webp",
       "price": 3400,
       "availability": true,
-      "rating": 4.7
+      "rating": 1.7
     },
     {
       "id": 301,
@@ -142,7 +142,7 @@
       "image": "images/cowfoot.webp",
       "price": 2600,
       "availability": true,
-      "rating": 4.5
+      "rating": 1.5
     },
     {
       "id": 306,
@@ -151,7 +151,7 @@
       "image": "images/cowtail.webp",
       "price": 2800,
       "availability": true,
-      "rating": 4.6
+      "rating": 1.6
     },
     {
       "id": 307,
@@ -196,7 +196,7 @@
       "image": "images/tuwo.webp",
       "price": 800,
       "availability": true,
-      "rating": 4.7
+      "rating": 3.7
     },
     {
       "id": 405,
@@ -205,7 +205,7 @@
       "image": "images/amala.webp",
       "price": 700,
       "availability": true,
-      "rating": 4.6
+      "rating": 3.6
     },
     {
       "id": 406,
@@ -232,7 +232,7 @@
       "image": "images/ayamase.webp",
       "price": 400,
       "availability": true,
-      "rating": 4.7
+      "rating": 3.7
     },
     {
       "id": 502,
@@ -259,7 +259,7 @@
       "image": "images/roasted-plantain.webp",
       "price": 700,
       "availability": true,
-      "rating": 4.6
+      "rating": 1.6
     },
     {
       "id": 601,
@@ -295,7 +295,7 @@
       "image": "images/coconut.webp",
       "price": 400,
       "availability": true,
-      "rating": 4.4
+      "rating": 2.4
     },
     {
       "id": 605,
@@ -322,7 +322,7 @@
       "image": "images/akamu.webp",
       "price": 700,
       "availability": true,
-      "rating": 4.5
+      "rating": 0.5
     },
     {
       "id": 703,
@@ -403,7 +403,7 @@
       "image": "images/yam-fries.webp",
       "price": 1800,
       "availability": true,
-      "rating": 4.7
+      "rating": 3.7
     },
     {
       "id": 901,
