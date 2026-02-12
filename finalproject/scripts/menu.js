@@ -30,16 +30,21 @@ function displayFood(foodArray) {
   const container = document.getElementById("featured-food");
 
   foodArray.forEach(item => {
-    const card = document.createElement("article");
+    const card = document.createElement("div");
     card.classList.add("food-card");
 
     card.innerHTML = `
+    <div class="image-wrapper">
+      <p class="category-ribbon">${item.category}</p>
       <img src="${item.image}" alt="${item.name}" loading="lazy">
+      <p class="price-tag">₦${item.price}</p>
+    </div>
+    <div class="content-wrapper">
       <h3>${item.name}</h3>
-      <p class="category">${item.category}</p>
-      <p class="price">₦${item.price}</p>
+      
       <p class="rating">
         ${getStars(item.rating)} (${item.rating})</p>
+    </div>
     `;
 
     container.appendChild(card);

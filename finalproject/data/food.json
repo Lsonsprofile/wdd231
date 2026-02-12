@@ -3,7 +3,7 @@
     {
       "id": 101,
       "name": "Egusi Soup",
-      "category": "Soups",
+      "category": "Soup",
       "image": "images/egusi.webp",
       "price": 2800,
       "availability": true,
@@ -12,7 +12,7 @@
     {
       "id": 102,
       "name": "Ogbono Soup",
-      "category": "Soups",
+      "category": "Soup",
       "image": "images/ogbono.webp",
       "price": 2700,
       "availability": true,
@@ -21,7 +21,7 @@
     {
       "id": 103,
       "name": "Okra Soup",
-      "category": "Soups",
+      "category": "Soup",
       "image": "images/okra.webp",
       "price": 2500,
       "availability": true,
@@ -30,7 +30,7 @@
     {
       "id": 104,
       "name": "Oha Soup",
-      "category": "Soups",
+      "category": "Soup",
       "image": "images/oha.webp",
       "price": 2600,
       "availability": true,
@@ -39,7 +39,7 @@
     {
       "id": 105,
       "name": "Afang Soup",
-      "category": "Soups",
+      "category": "Soup",
       "image": "images/afang.webp",
       "price": 2600,
       "availability": true,
@@ -48,7 +48,7 @@
     {
       "id": 106,
       "name": "Pepper Soup",
-      "category": "Soups",
+      "category": "Soup",
       "image": "images/pepper-soup.webp",
       "price": 2400,
       "availability": true,
@@ -165,7 +165,7 @@
     {
       "id": 401,
       "name": "Fufu",
-      "category": "Grains & Starches",
+      "category": "Grain & Starch",
       "image": "images/fufu.webp",
       "price": 700,
       "availability": true,
@@ -174,7 +174,7 @@
     {
       "id": 402,
       "name": "Pounded Yam",
-      "category": "Grains & Starches",
+      "category": "Grain & Starch",
       "image": "images/pounded-yam.webp",
       "price": 900,
       "availability": true,
@@ -183,7 +183,7 @@
     {
       "id": 403,
       "name": "Garri (Eba)",
-      "category": "Grains & Starches",
+      "category": "Grain & Starch",
       "image": "images/eba.webp",
       "price": 600,
       "availability": true,
@@ -192,7 +192,7 @@
     {
       "id": 404,
       "name": "Tuwo Shinkafa",
-      "category": "Grains & Starches",
+      "category": "Grain & Starch",
       "image": "images/tuwo.webp",
       "price": 800,
       "availability": true,
@@ -201,7 +201,7 @@
     {
       "id": 405,
       "name": "Amala",
-      "category": "Grains & Starches",
+      "category": "Grain & Starch",
       "image": "images/amala.webp",
       "price": 700,
       "availability": true,
@@ -210,7 +210,7 @@
     {
       "id": 406,
       "name": "Ofada Rice",
-      "category": "Grains & Starches",
+      "category": "Grain & Starch",
       "image": "images/ofada.webp",
       "price": 2200,
       "availability": true,
@@ -219,7 +219,7 @@
     {
       "id": 407,
       "name": "Jollof Rice",
-      "category": "Grains & Starches",
+      "category": "Grain & Starch",
       "image": "images/jollof.webp",
       "price": 2500,
       "availability": true,
@@ -228,7 +228,7 @@
     {
       "id": 501,
       "name": "Ayamase Sauce",
-      "category": "Extras",
+      "category": "Extra",
       "image": "images/ayamase.webp",
       "price": 400,
       "availability": true,
@@ -237,7 +237,7 @@
     {
       "id": 502,
       "name": "Fried Plantain",
-      "category": "Extras",
+      "category": "Extra",
       "image": "images/fried-plantain.webp",
       "price": 600,
       "availability": true,
@@ -246,7 +246,7 @@
     {
       "id": 503,
       "name": "Boiled Plantain",
-      "category": "Extras",
+      "category": "Extra",
       "image": "images/boiled-plantain.webp",
       "price": 600,
       "availability": true,
@@ -255,7 +255,7 @@
     {
       "id": 504,
       "name": "Roasted Plantain",
-      "category": "Extras",
+      "category": "Extra",
       "image": "images/roasted-plantain.webp",
       "price": 700,
       "availability": true,
@@ -264,7 +264,7 @@
     {
       "id": 601,
       "name": "Chin Chin",
-      "category": "Snacks & Small Bites",
+      "category": "Snack & Small Bite",
       "image": "images/chinchin.webp",
       "price": 500,
       "availability": true,
@@ -273,7 +273,7 @@
     {
       "id": 602,
       "name": "Meat Pie",
-      "category": "Snacks & Small Bites",
+      "category": "Snack & Small Bite",
       "image": "images/meatpie.webp",
       "price": 800,
       "availability": true,
@@ -282,7 +282,7 @@
     {
       "id": 603,
       "name": "Samosa",
-      "category": "Snacks & Small Bites",
+      "category": "Snack & Small Bite",
       "image": "images/samosa.webp",
       "price": 900,
       "availability": true,
@@ -291,7 +291,7 @@
     {
       "id": 604,
       "name": "Coconut Candy",
-      "category": "Snacks & Small Bites",
+      "category": "Snack & Small Bite",
       "image": "images/coconut.webp",
       "price": 400,
       "availability": true,
@@ -300,7 +300,7 @@
     {
       "id": 605,
       "name": "Puff Puff (Sweet)",
-      "category": "Snacks & Small Bites",
+      "category": "Snack & Small Bite",
       "image": "images/puff.webp",
       "price": 600,
       "availability": true,
@@ -309,7 +309,7 @@
     {
       "id": 701,
       "name": "Coconut Cake",
-      "category": "Desserts & Sweets",
+      "category": "Dessert & Sweet",
       "image": "images/cake.webp",
       "price": 1200,
       "availability": true,
@@ -318,7 +318,7 @@
     {
       "id": 702,
       "name": "Akamu with Sugar",
-      "category": "Desserts & Sweets",
+      "category": "Dessert & Sweet",
       "image": "images/akamu.webp",
       "price": 700,
       "availability": true,
@@ -327,7 +327,7 @@
     {
       "id": 703,
       "name": "Plantain Mosa",
-      "category": "Desserts & Sweets",
+      "category": "Dessert & Sweet",
       "image": "images/mosa.webp",
       "price": 900,
       "availability": true,
@@ -336,7 +336,7 @@
     {
       "id": 704,
       "name": "Suya",
-      "category": "Desserts & Sweets",
+      "category": "Dessert & Sweet",
       "image": "images/suya.webp",
       "price": 1500,
       "availability": true,
@@ -345,7 +345,7 @@
     {
       "id": 705,
       "name": "Akara",
-      "category": "Desserts & Sweets",
+      "category": "Dessert & Sweet",
       "image": "images/akara.webp",
       "price": 700,
       "availability": true,
@@ -354,7 +354,7 @@
     {
       "id": 706,
       "name": "Kilishi",
-      "category": "Desserts & Sweets",
+      "category": "Dessert & Sweet",
       "image": "images/kilishi.webp",
       "price": 1300,
       "availability": true,
@@ -363,7 +363,7 @@
     {
       "id": 801,
       "name": "Jollof Pasta",
-      "category": "Fusion / Contemporary",
+      "category": "Fusion & Contemporary",
       "image": "images/jollof-pasta.webp",
       "price": 2600,
       "availability": true,
@@ -372,7 +372,7 @@
     {
       "id": 802,
       "name": "Plantain Burgers",
-      "category": "Fusion / Contemporary",
+      "category": "Fusion & Contemporary",
       "image": "images/burger.webp",
       "price": 2800,
       "availability": true,
@@ -381,7 +381,7 @@
     {
       "id": 803,
       "name": "Pizza with Suya Toppings",
-      "category": "Fusion / Contemporary",
+      "category": "Fusion & Contemporary",
       "image": "images/pizza.webp",
       "price": 3500,
       "availability": true,
@@ -390,7 +390,7 @@
     {
       "id": 804,
       "name": "Nigerian Shawarma",
-      "category": "Fusion / Contemporary",
+      "category": "Fusion & Contemporary",
       "image": "images/shawarma.webp",
       "price": 2000,
       "availability": true,
@@ -399,7 +399,7 @@
     {
       "id": 805,
       "name": "Yam Fries with Spicy Dip",
-      "category": "Fusion / Contemporary",
+      "category": "Fusion & Contemporary",
       "image": "images/yam-fries.webp",
       "price": 1800,
       "availability": true,
@@ -408,7 +408,7 @@
     {
       "id": 901,
       "name": "Zobo",
-      "category": "Drinks",
+      "category": "Drink",
       "image": "images/zobo.webp",
       "price": 600,
       "availability": true,
@@ -417,7 +417,7 @@
     {
       "id": 902,
       "name": "Palm Wine",
-      "category": "Drinks",
+      "category": "Drink",
       "image": "images/palmwine.webp",
       "price": 1200,
       "availability": true,
@@ -426,7 +426,7 @@
     {
       "id": 904,
       "name": "Kunu",
-      "category": "Drinks",
+      "category": "Drink",
       "image": "images/kunu.webp",
       "price": 700,
       "availability": true,
