@@ -371,8 +371,8 @@
     },
     {
       "id": 802,
-      "name": "Plantain Burgers",
-      "category": "Fusion & Contemporary",
+      "name": "Burger",
+      "category": "Snack & Small Bite",
       "image": "images/burger.webp",
       "price": 2800,
       "availability": true,

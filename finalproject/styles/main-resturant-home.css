@@ -443,7 +443,7 @@ header {
             top: 0;
             left: 0;
             background-color: var(--color-primary);
-            color: white;
+            color: var(--color-surface);
             padding: 8px 6px 12px;
             font-weight: 700;
             font-family: var(--source-san3-font);
