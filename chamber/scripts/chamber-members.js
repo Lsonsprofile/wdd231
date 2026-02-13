@@ -1,65 +1,39 @@
-const spotlightContainer = document.querySelector('#spotlight-container');
-const membersUrl = "https://lsonsprofile.github.io/wdd231/chamber/data/chamber-members.json";
+// cartData.js
+export const foodDataUrl = "https://lsonsprofile.github.io/wdd231/finalproject/data/food.json";
 
-async function displaySpotlights() {
-    if (!spotlightContainer) return;
+export let cart = [];
 
-    try {
-        const response = await fetch(membersUrl);
-        if (!response.ok) throw new Error('Network response was not ok');
-
-        const data = await response.json();
-        const members = data.members;
-
-        if (!members || members.length === 0) {
-            spotlightContainer.innerHTML = '<p>No featured members available.</p>';
-            return;
-        }
-
-        // Filter Gold or Silver members only
-        const eligibleMembers = members.filter(member => {
-            return member.membership_level === "Gold Partner" || member.membership_level === "Silver Partner";
-        });
-
-        const shuffled = eligibleMembers.sort(() => 0.5 - Math.random());
-        const selected = shuffled.slice(0, 3);
-
-        spotlightContainer.innerHTML = '';
-
-        selected.forEach(member => {
-            let icon = '';
-            switch (member.membership_level) {
-                case "Silver Partner":
-                    icon = "&#129352;";
-                    break;
-                case "Gold Partner":
-                    icon = "&#129353;";
-                    break;
-            }
-
-            const card = document.createElement('div');
-            card.className = 'spotlight-card';
-            card.innerHTML = `
-                <span class="membership-badge ${member.membership_level.toLowerCase().replace(" ", "-")}">
-                    ${member.membership_level} ${icon}
-                </span>
-                <img src="${member.image}" alt="Logo of ${member.name}" class="member-logo" loading="lazy">
-                <h4>${member.name}</h4>
-                <div class="contact-info">
-                    <p><img src="images/location-dot-solid-full.svg" alt="Address icon" class="icon"> ${member.address}</p>
-                    <p><img src="images/phone-solid-full.svg" alt="Phone icon" class="icon"> ${member.phone}</p>
-                    <p><img src="images/earth-africa-solid-full.svg" alt="Website icon" class="icon"> 
-                        <a href="${member.website}" target="_blank" class="website-link">Visit Website</a>
-                    </p>
-                </div>
-            `;
-            spotlightContainer.appendChild(card);
-        });
-
-    } catch (error) {
-        spotlightContainer.innerHTML = '<p style="padding:20px;">Unable to load spotlights at this time.</p>';
-        console.error('Error fetching members:', error);
-    }
+// Fetch food items
+export async function fetchFoodData() {
+   try {
+      const response = await fetch(foodDataUrl);
+      if (!response.ok) throw new Error("Network response was not ok");
+      const data = await response.json();
+      return data.food || [];
+   } catch (err) {
+      console.error("Error fetching food data:", err);
+      return [];
+   }
 }
 
-window.addEventListener('DOMContentLoaded', displaySpotlights);
+// Add item to cart
+export function addToCart(item) {
+   const existing = cart.find(i => i.id === item.id);
+   if (existing) {
+      existing.quantity += 1;
+   } else {
+      cart.push({ ...item, quantity: 1, selected: false });
+   }
+}
+
+// Remove selected items
+export function removeSelectedItems() {
+   cart = cart.filter(item => !item.selected);
+}
+
+// Calculate totals
+export function calculateTotals() {
+   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+   const totalPrice = cart.reduce((sum, item) => sum + item.quantity * item.price, 0);
+   return { totalItems, totalPrice };
+}

@@ -34,7 +34,6 @@
     .shopingcart {
         border: none;
         background: none;
-        padding: auto;
         width: auto;
         padding: 0;
     }
@@ -45,9 +44,6 @@
         grid-template-columns: minmax(150px, 500px) 1fr;
         width: 100%;
         max-height: 60vh;
-    }
-    .shopingcart p {
-        display: none;
     }
     .about-img-wrapper {
         float: right;
@@ -70,5 +66,122 @@
     .contact-item {
         justify-content: center;
     }
+
+    .cart-modal {
+    width: min(90%, 600px);
+    max-height: 85vh;
+    }
+
+    .modal-header {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .modal-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .close-modal {
+        padding: 0.25rem 0.75rem;
+    }
+
+    .cart-items-list {
+        padding: 1.25rem;
+        max-height: calc(85vh - 140px);
+    }
+
+    .empty-cart {
+        padding: 3rem;
+        font-size: 1.1rem;
+    }
+
+    .cart-item {
+        flex-wrap: nowrap;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .cart-item img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .item-info {
+        flex: 2;
+    }
+
+    .item-info strong {
+        font-size: 1.15rem;
+    }
+
+    .item-price {
+        font-size: 1rem;
+    }
+
+    .qty-controls {
+        order: 0;
+        margin-left: 0;
+    }
+
+    .qty-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+    }
+
+    .qty-input {
+        width: 55px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
+    .item-total {
+        width: auto;
+        min-width: 100px;
+        text-align: right;
+        margin-top: 0;
+        order: 0;
+        font-size: 1.2rem;
+    }
+
+    .modal-footer {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .footer-row {
+        margin-bottom: 1.25rem;
+        font-size: 1.1rem;
+    }
+
+    .footer-row span:last-child {
+        font-size: 1.3rem;
+    }
+
+    .action-row {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .btn-remove,
+    .btn-place-order {
+        padding: 0.875rem 1rem;
+        font-size: 1rem;
+    }
+
+    .cart-items-list::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .select-item {
+        width: 20px;
+        height: 20px;
+    }
+
+    .cart-badge {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+        min-width: 22px;
+        height: 22px;
+    }
+
 
 }

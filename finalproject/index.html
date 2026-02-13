@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <meta name="description" content="">
+    <title>ElsonsKitchen | Authentic Nigerian Cuisine & Local Favorites</title>
+    <meta name="description" content="Enjoy authentic Nigerian dishes at ElsonsKitchen. From jollof rice and egusi soup to grilled meats and street food favorites, freshly prepared every day.">
     <meta name="author" content="Emmanuel Ndogo">
     
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
+    <meta property="og:title" content="ElsonsKitchen, A Mesmerizing Taste of Nigerian Dishes">
+    <meta property="og:description" content="Experience the rich flavors of Lagos with freshly cooked jollof rice, hearty soups, grilled meats, snacks, and local drinks. Taste tradition served hot.">
     <meta property="og:image" content="https://lsonsprofile.github.io/wdd231/finalproject/images/elonskitchen-og.webp">
     <meta property="og:url" content="https://lsonsprofile.github.io/wdd231/finalproject/index.html">
     <meta property="og:type" content="website">
@@ -19,8 +19,8 @@
     <link rel="icon" href="images/elonsfavicon.ico">
 
     <script src="scripts/nav.js" defer></script>
-    <script src="scripts/menu.js" defer></script>
     <script src="scripts/lastmod.js" defer></script>
+    <script type="module" src="scripts/main.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
@@ -42,11 +42,12 @@
                 <li><a href="order.html">Place Order</a></li>
             </ul>
             <button id="shopcart" class="shopingcart" aria-label="Shopping cart" title="View added items in shoping cart">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi-cart-dash-fill" viewBox="0 0 16 16" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1" />
-                </svg>
-                <p>view added item in cart</p>
-            </button>
+            </svg>
+            <span id="cart-counter-bubble" class="cart-count">0</span>
+            <strong>Cart</strong>
+        </button>
         </nav>
         <button id="menu-openbtn" class="hamburger-menu" aria-label="Open menu">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi-list" viewBox="0 0 16 16" role="img" aria-labelledby="menuTitle"> <title id="menuTitle">menu</title> <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/> </svg>
@@ -55,8 +56,11 @@
     <main>
         <section class="hero-container">
             <div class="img-container">
-                <img src="images/jelof.webp" alt="a hot jelof rice dish"
-                srcset="images/jelof.webp 600w, images/jelof-large.webp 1000w" loading="eager">
+                <img
+                src="images/jelof.webp"
+                alt="A hot plate of jollof rice"
+                srcset="images/jelof.webp 600w, images/jelof-large.webp 1000w"
+                sizes="(max-width: 768px) 100vw, 50vw">
             </div>
             <div class="hero-content">
                 <span class="badge">ElonsKitchen</span>
@@ -65,23 +69,29 @@
                 <a href="/order" class="order-btn" aria-label="Order food now">Order Now</a>
             </div>
         </section>
-        <section class="featured">
+        <section class="featured-meal">
+        <div class="featured">
             <div class="section-header">
                 <h2>Featured menu</h2>
                 <div class="divider"></div>
             </div>
+        </div>
+        <article id="featured-food" class="food-flex">
+            <h3 class="visually-hidden">Featured Food Items</h3>
+        </article>
+
         </section>
-        <article id="featured-food" class="food-flex"></article>
+        <div id="cart-modal-container"></div>
 
         <section class="about-us-section">
             <h4 class="about-title">About us</h4>
          
             <div class="about-img-wrapper">
                 <div class="about-picture">
-                    <img src="images/resturant.webp" loading="lazy">
+                    <img src="images/resturant.webp" alt="Interior view of ElsonsKitchen restaurant dining area">
                 </div>
                 <div class="about-picture">
-                    <img src="images/kitchen-chef.webp" alt="ElsonsKitchen Chef at work" loading="lazy">
+                    <img src="images/kitchen-chef.webp" alt="ElsonsKitchen Chef at work">
                 </div>
             </div>
 
@@ -127,6 +137,7 @@
                 <h4>Information</h4>
                 <ul>
                     <li><a href="reference.html">Reference page</a></li>
+                    <li><a href="media/video">video</a></li>
                 </ul>
             </div>
 
@@ -147,8 +158,8 @@
                     </svg>
                     <span>122A Street Name, City, State 56789</span>
                 </div>
-                <div class="contact-item">📞 (01) 4656-1990</div>
-                <div class="contact-item">📩 info@email.com</div>
+                <div class="contact-item">&#128222; (01) 4656-1990</div>
+                <div class="contact-item">&#128233; info@email.com</div>
             </div>
 
         </div>
