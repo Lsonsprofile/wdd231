@@ -20,6 +20,7 @@
 
     <script src="scripts/nav.js" defer></script>
     <script src="scripts/menu.js" defer></script>
+    <script src="scripts/lastmod.js" defer></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
@@ -44,7 +45,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi-cart-dash-fill" viewBox="0 0 16 16" aria-hidden="true">
                 <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1" />
                 </svg>
-                <p>view add item in cart</p>
+                <p>view added item in cart</p>
             </button>
         </nav>
         <button id="menu-openbtn" class="hamburger-menu" aria-label="Open menu">
@@ -70,8 +71,88 @@
                 <div class="divider"></div>
             </div>
         </section>
-        <article id="featured-food"></article>
+        <article id="featured-food" class="food-flex"></article>
+
+        <section class="about-us-section">
+            <h4 class="about-title">About us</h4>
+         
+            <div class="about-img-wrapper">
+                <div class="about-picture">
+                    <img src="images/resturant.webp" loading="lazy">
+                </div>
+                <div class="about-picture">
+                    <img src="images/kitchen-chef.webp" alt="ElsonsKitchen Chef at work" loading="lazy">
+                </div>
+            </div>
+
+            <p>
+                ElsonsKitchen is a vibrant Nigerian restaurant created to celebrate the rich flavors, colors, and cultural warmth of African cuisine. Inspired by the lively food streets of Lagos and the comforting meals shared at family tables, ElsonsKitchen brings together tradition and modern taste in one welcoming space. Every dish is prepared with care, using fresh ingredients, bold spices, and time-honored cooking methods that highlight the true essence of Nigerian food.
+            </p>
+            <br>
+            <p>
+                Our menu showcases a wide variety of beloved classics and contemporary favorites. From steaming plates of smoky jollof rice and perfectly grilled chicken to hearty soups like egusi, ogbono, and okra, each meal tells a story of heritage and home. Guests can enjoy flavorful street food snacks, satisfying protein-rich dishes, plant-based options, and refreshing local drinks such as zobo and kunu. Whether you crave something spicy, savory, or sweet, there is always something special waiting for you.
+            </p>
+
+            <div class="about-link-container">
+                <a href="menu.html" class="about-link">
+                    <span class="line"></span>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
+                </a>
+            </div>
+        </section>
     </main>
-    <footer></footer>
+    <footer class="footer">
+        <div class="footer-container">
+            
+            <div class="footer-column footer-brand">
+                <p><strong>WDD231 Class Project</strong></p>
+                <p>Emmanuel Ndogo</p>
+                <p>&copy; <span id="year"></span> Emmanuel Chamber of Commerce.</p>
+                <p>Last modified: <span id="lastModified"></span></p>
+
+                <div class="social-links">
+                    <a href="https://github.com/brightcoder21" target="_blank">
+                        <img src="images/github.svg" alt="GitHub icon">
+                    </a>
+                    <a href="https://www.linkedin.com/in/creative-dev-2026" target="_blank">
+                        <img src="images/linkedin.svg" alt="LinkedIn icon">
+                    </a>
+                    <a href="https://wa.me/2348123456789" target="_blank">
+                        <img src="images/whatsapp.svg" alt="WhatsApp icon">
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="reference.html">Reference page</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Working Time</h4>
+                <ul class="working-time">
+                    <li><strong>Monday - Friday:</strong> 10:00 AM - 10:00 PM</li>
+                    <li><strong>Saturday:</strong> 12:00 PM - 12:00 PM</li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <div class="contact-item">
+                    <div class="location-item"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                    </svg>
+                    <span>122A Street Name, City, State 56789</span>
+                </div>
+                <div class="contact-item">📞 (01) 4656-1990</div>
+                <div class="contact-item">📩 info@email.com</div>
+            </div>
+
+        </div>
+    </footer>
+
 </body>
 </html>

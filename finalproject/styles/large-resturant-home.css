@@ -1,23 +1,21 @@
 @media screen and (min-width: 40rem) {
-    .navigation-bar {
-        display: flex;
-    }
     .hamburger-menu {
         display: none;
     }
     .navigation-bar {
-      position: static;
-      transform: none;
-      height: auto;
-      width: auto;
-      box-shadow: none;
-      padding: 0;
-      flex-direction: row;
-      display: flex;
-      border-bottom: none;
-      width: auto;
-      height: auto;
-      background-color: transparent;
+        display: flex;
+        position: static;
+        transform: none;
+        height: auto;
+        width: auto;
+        box-shadow: none;
+        padding: 0;
+        flex-direction: row;
+        display: flex;
+        border-bottom: none;
+        width: auto;
+        height: auto;
+        background-color: transparent;
     }
     .close-btn {
         display: none;
@@ -50,6 +48,27 @@
     }
     .shopingcart p {
         display: none;
+    }
+    .about-img-wrapper {
+        float: right;
+        width: 40%;
+        margin-left: 2rem;
+    }
+    .about-picture {
+        height: 300px;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .footer {
+        text-align: center;
+    }
+    .social-links {
+        justify-content: center;
+    }
+    .contact-item {
+        justify-content: center;
     }
 
 }

@@ -7,11 +7,9 @@ async function getFoodData() {
     const response = await fetch(url);
     const data = await response.json();
 
-    // your JSON uses "food"
     if (data.food && data.food.length) {
 
-      // randomly pick only 4
-      const randomFood = getRandomItems(data.food, 4);
+      const randomFood = getRandomItems(data.food, 10);
 
       displayFood(randomFood);
     }
@@ -27,7 +25,7 @@ function getRandomItems(array, count) {
 }
 
 function displayFood(foodArray) {
-  const container = document.getElementById("featured-food");
+  const container = document.querySelector("#featured-food");
 
   foodArray.forEach(item => {
     const card = document.createElement("div");
@@ -45,6 +43,9 @@ function displayFood(foodArray) {
       <p class="rating">
         ${getStars(item.rating)} (${item.rating})</p>
     </div>
+    <button class="add-to-cart" data-id="${item.id}">Add to Cart
+    </button>
+
     `;
 
     container.appendChild(card);
