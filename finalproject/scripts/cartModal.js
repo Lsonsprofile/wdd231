@@ -186,9 +186,11 @@ function attachModalEventListeners(modal) {
         // Attach item-specific event listeners
         attachItemEventListeners(modal);
 
-        // Remove selected button
+        // Remove selected button - FIXED: No confirmation alert
         const removeBtn = modal.querySelector('#remove-selected');
         if (removeBtn && !removeBtn.disabled) {
+            // Remove any existing listeners first
+            removeBtn.removeEventListener('click', handleRemoveSelected);
             removeBtn.addEventListener('click', handleRemoveSelected);
         }
 
@@ -228,23 +230,16 @@ function attachItemEventListeners(modal) {
     try {
         // Quantity buttons
         modal.querySelectorAll('.qty-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                try {
-                    updateQuantity(btn.dataset.id, btn.dataset.action);
-                    renderCartModal(modal);
-                } catch (error) {
-                    console.error('Error updating quantity:', error);
-                }
-            });
+            // Remove old listeners first
+            btn.removeEventListener('click', handleQuantityBtnClick);
+            btn.addEventListener('click', handleQuantityBtnClick);
         });
 
         // Quantity input changes
         modal.querySelectorAll('.qty-input').forEach(input => {
-            input.addEventListener('change', (e) => {
-                e.stopPropagation();
-                handleQuantityChange(e, modal);
-            });
+            // Remove old listeners first
+            input.removeEventListener('change', handleQuantityInputChange);
+            input.addEventListener('change', handleQuantityInputChange);
         });
 
         // Checkbox toggle - SINGLE IMPLEMENTATION
@@ -261,6 +256,45 @@ function attachItemEventListeners(modal) {
         
     } catch (error) {
         console.error('Error in attachItemEventListeners:', error);
+    }
+}
+
+// Handle quantity button clicks
+function handleQuantityBtnClick(e) {
+    e.stopPropagation();
+    try {
+        const modal = e.currentTarget.closest('.cart-modal');
+        updateQuantity(e.currentTarget.dataset.id, e.currentTarget.dataset.action);
+        if (modal) renderCartModal(modal);
+    } catch (error) {
+        console.error('Error updating quantity:', error);
+    }
+}
+
+// Handle quantity input changes
+function handleQuantityInputChange(e) {
+    e.stopPropagation();
+    try {
+        const modal = e.currentTarget.closest('.cart-modal');
+        const newQty = parseInt(e.target.value);
+        const id = e.target.dataset.id;
+        const item = cart.find(item => item.id === Number(id));
+        
+        if (item && newQty >= 1 && !isNaN(newQty)) {
+            const diff = newQty - item.quantity;
+            if (diff > 0) {
+                for (let i = 0; i < diff; i++) {
+                    updateQuantity(id, 'plus');
+                }
+            } else if (diff < 0) {
+                for (let i = 0; i < Math.abs(diff); i++) {
+                    updateQuantity(id, 'minus');
+                }
+            }
+        }
+        if (modal) renderCartModal(modal);
+    } catch (error) {
+        console.error('Error handling quantity change:', error);
     }
 }
 
@@ -285,36 +319,13 @@ function handleCheckboxChange(e) {
     }
 }
 
-function handleQuantityChange(e, modal) {
-    try {
-        const newQty = parseInt(e.target.value);
-        const id = e.target.dataset.id;
-        const item = cart.find(item => item.id === Number(id));
-        
-        if (item && newQty >= 1 && !isNaN(newQty)) {
-            const diff = newQty - item.quantity;
-            if (diff > 0) {
-                for (let i = 0; i < diff; i++) {
-                    updateQuantity(id, 'plus');
-                }
-            } else if (diff < 0) {
-                for (let i = 0; i < Math.abs(diff); i++) {
-                    updateQuantity(id, 'minus');
-                }
-            }
-        }
-        renderCartModal(modal);
-    } catch (error) {
-        console.error('Error handling quantity change:', error);
-    }
-}
-
+// FIXED: Removed confirmation alert - now removes silently with visual feedback
 function handleRemoveSelected(e) {
     e.stopPropagation();
     console.log('🗑️ Remove Selected button clicked');
     
     try {
-        // Check current state before confirmation
+        // Check current state before removal
         const selectedItems = cart.filter(item => item.selected);
         console.log('Currently selected items:', selectedItems.map(item => ({
             name: item.name,
@@ -323,31 +334,75 @@ function handleRemoveSelected(e) {
         
         if (selectedItems.length === 0) {
             console.log('⚠️ No items selected to remove');
-            alert('Please select items to remove first.');
+            // Show subtle tooltip instead of alert
+            showRemoveTooltip(e.currentTarget, 'No items selected');
             return;
         }
         
-        if (confirm(`Are you sure you want to remove ${selectedItems.length} selected item(s)?`)) {
-            console.log('✅ User confirmed removal');
-            
-            // Call removeSelectedItems
-            removeSelectedItems();
-            
-            // Manually refresh the modal after a short delay to ensure cart is updated
-            setTimeout(() => {
-                console.log('🔄 Manually refreshing modal after removal');
-                const modal = document.querySelector('.cart-modal');
-                if (modal && modal.hasAttribute('open')) {
-                    renderCartModal(modal);
-                }
-            }, 100);
-            
-        } else {
-            console.log('❌ User cancelled removal');
-        }
+        // NO CONFIRMATION ALERT - Remove immediately
+        console.log('✅ Removing selected items silently');
+        
+        // Call removeSelectedItems
+        removeSelectedItems();
+        
+        // Show success feedback
+        showRemoveSuccess(e.currentTarget);
+        
+        // Manually refresh the modal after a short delay to ensure cart is updated
+        setTimeout(() => {
+            console.log('🔄 Manually refreshing modal after removal');
+            const modal = document.querySelector('.cart-modal');
+            if (modal && modal.hasAttribute('open')) {
+                renderCartModal(modal);
+            }
+        }, 100);
+        
     } catch (error) {
         console.error('Error removing selected items:', error);
+        showRemoveTooltip(e.currentTarget, 'Error removing items');
     }
+}
+
+// Show subtle tooltip instead of alert
+function showRemoveTooltip(button, message) {
+    const tooltip = document.createElement('div');
+    tooltip.textContent = message;
+    tooltip.style.cssText = `
+        position: absolute;
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        pointer-events: none;
+        z-index: 10000;
+        transform: translateY(-100%);
+        margin-top: -8px;
+    `;
+    
+    const rect = button.getBoundingClientRect();
+    tooltip.style.left = rect.left + 'px';
+    tooltip.style.top = rect.top - 10 + 'px';
+    
+    document.body.appendChild(tooltip);
+    
+    setTimeout(() => {
+        if (tooltip.parentNode) tooltip.remove();
+    }, 1500);
+}
+
+// Show success feedback
+function showRemoveSuccess(button) {
+    const originalText = button.textContent;
+    button.textContent = '✓ Removed';
+    button.style.backgroundColor = '#4caf50';
+    button.style.color = 'white';
+    
+    setTimeout(() => {
+        button.textContent = originalText;
+        button.style.backgroundColor = '';
+        button.style.color = '';
+    }, 1500);
 }
 
 function attachPlaceOrderListener(button, modal) {
@@ -381,11 +436,12 @@ function attachPlaceOrderListener(button, modal) {
                 const orderPage = 'order.html';
                 window.location.href = orderPage;
             } else {
-                alert('Your cart is empty. Please add items before placing an order.');
+                // Show subtle tooltip instead of alert
+                showRemoveTooltip(e.currentTarget, 'Cart is empty');
             }
         } catch (error) {
             console.error('Error placing order:', error);
-            alert('There was an error placing your order. Please try again.');
+            showRemoveTooltip(e.currentTarget, 'Error placing order');
         }
     });
 }
