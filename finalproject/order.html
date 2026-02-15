@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElsonsKitchen | Authentic Nigerian Cuisine & Local Favorites</title>
+    <meta name="description" content="Enjoy authentic Nigerian dishes at ElsonsKitchen. From jollof rice and egusi soup to grilled meats and street food favorites, freshly prepared every day.">
+    <meta name="author" content="Emmanuel Ndogo">
+    
+    <meta property="og:title" content="ElsonsKitchen, A Mesmerizing Taste of Nigerian Dishes">
+    <meta property="og:description" content="Experience the rich flavors of Lagos with freshly cooked jollof rice, hearty soups, grilled meats, snacks, and local drinks. Taste tradition served hot.">
+    <meta property="og:image" content="https://lsonsprofile.github.io/wdd231/finalproject/images/elonskitchen-og.webp">
+    <meta property="og:url" content="https://lsonsprofile.github.io/wdd231/finalproject/index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+
+    <link rel="stylesheet" href="styles/main-resturant-home.css">
+    <link rel="stylesheet" href="styles/large-resturant-home.css">
+    <link rel="stylesheet" href="styles/order-main.css">
+    <link rel="icon" href="images/elonsfavicon.ico">
+
+    <script src="scripts/nav.js" defer></script>
+    <script src="scripts/lastmod.js" defer></script>
+    <script type="module" src="scripts/main.js"></script>
+    <script src="scripts/order-form.js" defer></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <header>
+        <div class="nav-overlay"></div>
+        <div class="logo">
+            <img src="images/elonlogo.png" alt="elon hot spicy red food and ingridients logo">
+        </div>
+        <nav class="navigation-bar">
+            <button aria-label="close button" id="menuToggle"  
+        class="close-btn">&times;</button>
+            <ul class="nav-link">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li class="active"><a href="order.html">Place Order</a></li>
+            </ul>
+            <button id="shopcart" class="shopingcart" aria-label="Shopping cart" title="View added items in shoping cart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1" />
+            </svg>
+            <span id="cart-counter-bubble" class="cart-count"></span>
+            <strong>Cart</strong>
+        </button>
+        </nav>
+        <button id="menu-openbtn" class="hamburger-menu" aria-label="Open menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi-list" viewBox="0 0 16 16" role="img" aria-labelledby="menuTitle"> <title id="menuTitle">menu</title> <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/> </svg>
+        </button>
+    </header>
+    <main>
+        <div id="cart-modal-container"></div>
+
+
+        
+
+            <div class="form-card order-checkout">
+        <h1>🍽️ Complete Your Order</h1>
+        
+       
+        <div id="notificationContainer"></div>
+
+        <form id="checkoutForm" action="thankyou.html" method="GET">
+            
+          
+            <fieldset class="order-summary">
+                <legend>Order Summary</legend>
+                <div id="orderSummaryItems">
+                    <div class="summary-item">
+                        <span>Loading your cart...</span>
+                    </div>
+                </div>
+                <hr class="divider">
+                <div class="summary-total" id="subtotalRow">
+                    <span>Subtotal</span>
+                    <span id="subtotalAmount">₦0</span>
+                </div>
+                <div class="summary-total">
+                    <span>Delivery Fee</span>
+                    <span id="deliveryFee">₦500</span>
+                </div>
+                <div class="summary-total grand-total">
+                    <span>Total</span>
+                    <span id="totalAmount">₦500</span>
+                </div>
+            </fieldset>
+
+          
+            <fieldset>
+                <legend>Customer Information</legend>
+                <div class="form-group">
+                    <label for="fullName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="fullName" name="fullName" required
+                           autocomplete="name"
+                           placeholder="e.g., John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" required
+                           autocomplete="tel"
+                           placeholder="080 1234 5678">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required
+                           autocomplete="email"
+                           placeholder="john@example.com">
+                </div>
+            </fieldset>
+
+            
+            <fieldset>
+                <legend>Delivery Details</legend>
+                <div class="form-group">
+                    <label for="address">Delivery Address <span class="required">*</span></label>
+                    <textarea id="address" name="address" required
+                              placeholder="12, Peace Avenue, Ikeja, Lagos State"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="deliveryTime">Delivery Time</label>
+                    <select id="deliveryTime" name="deliveryTime">
+                        <option value="asap">As soon as possible</option>
+                        <option value="30min">Within 30 minutes</option>
+                        <option value="1hour">Within 1 hour</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="instructions">Special Instructions</label>
+                    <textarea id="instructions" name="instructions"
+                              placeholder="Extra spicy please, gate code is 1234"></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Payment Method</legend>
+                <div class="payment-options">
+                    <div class="payment-option">
+                        <label>
+                            <input type="radio" name="payment" value="cash" required>
+                            <span>Cash on Delivery</span>
+                        </label>
+                    </div>
+                    <div class="payment-option">
+                        <label>
+                            <input type="radio" name="payment" value="card" required checked>
+                            <span>Card Payment</span>
+                        </label>
+                    </div>
+                    <div class="payment-option">
+                        <label>
+                            <input type="radio" name="payment" value="bank" required>
+                            <span>Bank Transfer</span>
+                        </label>
+                    </div>
+                </div>
+
+              
+                <div class="card-details" id="cardDetailsContainer">
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" name="cardNumber"
+                               placeholder="4242 4242 4242 4242">
+                    </div>
+                    <div class="card-row">
+                        <div class="form-group flex-1">
+                            <label for="expiry">MM/YY</label>
+                            <input type="text" id="expiry" name="expiry"
+                                   placeholder="12/25">
+                        </div>
+                        <div class="form-group flex-1">
+                            <label for="cvc">CVC</label>
+                            <input type="text" id="cvc" name="cvc"
+                                   placeholder="123">
+                        </div>
+                    </div>
+                </div>
+
+              
+                <div class="bank-details" id="bankDetailsContainer" style="display: none;">
+                    <div class="bank-info-row">
+                        <span class="bank-info-label">Bank Name</span>
+                        <span class="bank-info-value">GTBank PLC</span>
+                    </div>
+                    <div class="bank-info-row">
+                        <span class="bank-info-label">Account Number</span>
+                        <span class="bank-info-value">0123456789</span>
+                    </div>
+                    <div class="bank-info-row">
+                        <span class="bank-info-label">Account Name</span>
+                        <span class="bank-info-value">ELSONS KITCHEN LTD</span>
+                    </div>
+                    <p class="bank-note">
+                        Use your Full Name as transfer description
+                    </p>
+                </div>
+            </fieldset>
+
+         
+            <input type="hidden" id="timestamp" name="timestamp">
+
+            <button type="submit" class="submit-btn" id="placeOrderBtn">
+                PLACE ORDER – ₦500
+            </button>
+        </form>
+    </div>  
+
+    <section class="testimonials">
+  <div class="testimonial-card">
+    <img src="images/black-man.webp" alt="Chinedu Okafor's profile picture" class="chef-photo">
+    <p class="testimonial-text">
+      Chinedu is a seasoned chef from Enugu State, known for his mastery of traditional Igbo delicacies. He blends local flavors with modern techniques, creating dishes that celebrate Nigeria’s rich culinary heritage.
+    </p>
+    <h3 class="chef-name">Chinedu Okafor</h3>
+    <div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+  </div>
+
+  <div class="testimonial-card">
+    <img src="images/older-lady.webp" alt="Amina Yusuf's profile picture" class="chef-photo">
+    <p class="testimonial-text">
+      Amina, from Kano State, is a passionate cook specializing in Northern Nigerian cuisine. Her signature dishes include suya and tuwo shinkafa, which she prepares with authentic spices passed down through generations.
+    </p>
+    <h3 class="chef-name">Amina Yusuf</h3>
+    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+  </div>
+
+  <div class="testimonial-card">
+    <img src="images/young-lady.webp" alt="Funke Adewale's profile picture" class="chef-photo">
+    <p class="testimonial-text">
+       Funke hails from Lagos and has built a reputation for her innovative takes on Yoruba classics like efo riro and jollof rice. She is admired for her creativity and dedication to promoting Nigerian food culture globally.
+    </p>
+    <h3 class="chef-name">Funke Adewale</h3>
+    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+  </div>
+</section>
+
+
+
+
+
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            
+            <div class="footer-column footer-brand">
+                <p><strong>WDD231 Class Project</strong></p>
+                <p>Emmanuel Ndogo</p>
+                <p>&copy; <span id="year"></span> Emmanuel Chamber of Commerce.</p>
+                <p>Last modified: <span id="lastModified"></span></p>
+
+                <div class="social-links">
+                    <a href="https://github.com/brightcoder21" target="_blank">
+                        <img src="images/github.svg" alt="GitHub icon">
+                    </a>
+                    <a href="https://www.linkedin.com/in/creative-dev-2026" target="_blank">
+                        <img src="images/linkedin.svg" alt="LinkedIn icon">
+                    </a>
+                    <a href="https://wa.me/2348123456789" target="_blank">
+                        <img src="images/whatsapp.svg" alt="WhatsApp icon">
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="https://www.loom.com/share/5ae83a0b776d41f99d8ad57758d78435" target="_blank">video 1</a></li>
+                    <li><a href="https://www.loom.com/share/a398270b6b6f463d997f497c210a4d5f" target="_blank">video 2</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Working Time</h4>
+                <ul class="working-time">
+                    <li><strong>Monday - Friday:</strong> 10:00 AM - 10:00 PM</li>
+                    <li><strong>Saturday:</strong> 12:00 PM - 12:00 PM</li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <div class="contact-item">
+                    <div class="location-item"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                    </svg>
+                    <span>122A Street Name, City, State 56789</span>
+                </div>
+                <div class="contact-item">&#128222; (01) 4656-1990</div>
+                <div class="contact-item">&#128233; info@email.com</div>
+            </div>
+
+        </div>
+    </footer>
+</body>
+</html>

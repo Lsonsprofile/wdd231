@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElsonsKitchen | Authentic Nigerian Cuisine & Local Favorites</title>
+    <meta name="description" content="Browse the full ElsonsKitchen menu featuring authentic Nigerian soups, seafood, grilled meats, jollof rice, snacks, desserts, and refreshing drinks. Freshly prepared and ready to order.">
+    <meta name="author" content="Emmanuel Ndogo">
+    
+    <meta property="og:title" content="ElsonsKitchen, A Mesmerizing Taste of Nigerian Dishes">
+    <meta property="og:description" content="Discover traditional Nigerian soups, seafood, grilled meats, grains, snacks, desserts, and drinks. View categories, filter your favorites, and order fresh meals today.">
+    <meta property="og:image" content="https://lsonsprofile.github.io/wdd231/finalproject/images/elonskitchen-og.webp">
+    <meta property="og:url" content="https://lsonsprofile.github.io/wdd231/finalproject/index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/main-resturant-home.css">
+    <link rel="stylesheet" href="styles/large-resturant-home.css">
+    <link rel="stylesheet" href="styles/main-menu.css">
+    <link rel="stylesheet" href="styles/large-menu.css">
+    <link rel="icon" href="images/elonsfavicon.ico">
+
+    <script src="scripts/nav.js" defer></script>
+    <script src="scripts/lastmod.js" defer></script>
+    <script type="module" src="scripts/menu.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <header>
+        <div class="nav-overlay"></div>
+        <div class="logo">
+            <img src="images/elonlogo.png" alt="elon hot spicy red food and ingridients logo">
+        </div>
+        <nav class="navigation-bar">
+            <button aria-label="close button" id="menuToggle" class="close-btn">&times;</button>
+            <ul class="nav-link">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="menu.html">Menu</a></li>
+                <li><a href="order.html">Place Order</a></li>
+            </ul>
+            <button id="shopcart" class="shopingcart" aria-label="Shopping cart" title="View added items in shoping cart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1" />
+                </svg>
+                <span id="cart-counter-bubble" class="cart-count">0</span>
+                <strong>Cart</strong>
+            </button>
+        </nav>
+        <button id="menu-openbtn" class="hamburger-menu" aria-label="Open menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi-list" viewBox="0 0 16 16" role="img" aria-labelledby="menuTitle"> 
+                <title id="menuTitle">menu</title> 
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/> 
+            </svg>
+        </button>
+    </header>
+    
+    <main>
+        <section class="hero-banner">
+            <div class="hero-section">
+                <h1>Our Menu</h1>
+                <p>Authentic flavors delivered to your heart. Click any category to filter and shuffle your choices.</p>
+            </div>
+        </section>
+
+
+        <nav class="category-filter-wrapper" id="categoryFilterBar">
+            <button class="filter-pill active-filter" data-group="All">All</button>
+            <button class="filter-pill" data-group="Soup">Soups</button>
+            <button class="filter-pill" data-group="Seafood">Seafood</button>
+            <button class="filter-pill" data-group="Meat">Meat</button>
+            <button class="filter-pill" data-group="Grain & Starch">Grains & Starches</button>
+            <button class="filter-pill" data-group="Extra">Extras</button>
+            <button class="filter-pill" data-group="Snack & Small Bite">Snacks & Small Bites</button>
+            <button class="filter-pill" data-group="Dessert & Sweet">Desserts & Sweets</button>
+            <button class="filter-pill" data-group="Fusion / Contemporary">Fusion / Contemporary</button>
+            <button class="filter-pill" data-group="Drink">Drinks</button>
+        </nav>
+
+        <div id="menuItemsGrid" class="grid-flex">
+            <p>Loading menu…</p>
+        </div>
+
+        <div class="load-more-wrapper" id="loadMoreContainer" style="text-align:center; padding: 2rem;">
+            <button class="load-more-button" id="loadMoreBtn">View More</button>
+        </div>
+
+        <div id="shoppingCartModal"></div>
+
+        <div class="favorites-container">
+            <div id="favoritesDropdown" class="favorites-dropdown">
+                <div id="favoritesList"></div>
+            </div>
+            <button id="favoritesToggleBtn" class="favorites-button" aria-label="View Favorites">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01z"/>
+                </svg>
+                <span id="favoritesCount" class="favorites-badge">0</span>
+            </button>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column footer-brand">
+                <p><strong>WDD231 Class Project</strong></p>
+                <p>Emmanuel Ndogo</p>
+                <p>&copy; <span id="year"></span> Emmanuel Chamber of Commerce.</p>
+                <p>Last modified: <span id="lastModified"></span></p>
+
+                <div class="social-links">
+                    <a href="https://github.com/brightcoder21" target="_blank">
+                        <img src="images/github.svg" alt="GitHub icon">
+                    </a>
+                    <a href="https://www.linkedin.com/in/creative-dev-2026" target="_blank">
+                        <img src="images/linkedin.svg" alt="LinkedIn icon">
+                    </a>
+                    <a href="https://wa.me/2348123456789" target="_blank">
+                        <img src="images/whatsapp.svg" alt="WhatsApp icon">
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="reference.html">Reference page</a></li>
+                    <li><a href="https://www.loom.com/share/5ae83a0b776d41f99d8ad57758d78435" target="_blank">video 1</a></li>
+                    <li><a href="https://www.loom.com/share/a398270b6b6f463d997f497c210a4d5f" target="_blank">video 2</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h2>Working Time</h2>
+                <ul class="working-time">
+                    <li><strong>Monday - Friday:</strong> 10:00 AM - 10:00 PM</li>
+                    <li><strong>Saturday:</strong> 12:00 PM - 12:00 PM</li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h2>Contact Us</h2>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                    </svg>
+                    <span>122A Street Name, City, State 56789</span>
+                </div>
+                <div class="contact-item">&#128222; (01) 4656-1990</div>
+                <div class="contact-item">&#128233; info@email.com</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -69,7 +69,7 @@
 
     .cart-modal {
     width: min(90%, 600px);
-    max-height: 85vh;
+    max-height: 100%;
     }
 
     .modal-header {
