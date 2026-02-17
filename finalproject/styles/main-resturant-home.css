@@ -698,6 +698,11 @@ header {
    text-decoration: none;
 }
 
+.contact-item:nth-child(2):hover,
+.contact-item:nth-child(3):hover { 
+   text-decoration: underline; 
+}
+
 .contact-item svg {
    position: relative;
    left: 0;
