@@ -698,8 +698,7 @@ header {
    text-decoration: none;
 }
 
-.contact-item:nth-child(2):hover,
-.contact-item:nth-child(3):hover { 
+.contact-item[href]:hover { 
    text-decoration: underline; 
 }
 
