@@ -120,7 +120,7 @@ export function removeSelectedItems() {
                 dispatchCartUpdate();
             }, 50);
             
-            console.log('✅ Selected items removed successfully');
+            console.log('Selected items removed successfully');
         } else {
             console.log('⚠️ No items were removed - cart length unchanged');
         }
@@ -128,7 +128,7 @@ export function removeSelectedItems() {
         console.log('🔧 removeSelectedItems FINISHED');
         
     } catch (error) {
-        console.error('❌ Error removing selected items:', error);
+        console.error('Error removing selected items:', error);
     }
 }
 
@@ -192,9 +192,9 @@ export function toggleSelectItem(id) {
             // Dispatch update event
             dispatchCartUpdate();
             
-            console.log('✅ toggleSelectItem completed successfully');
+            console.log('toggleSelectItem completed successfully');
         } else {
-            console.log(`❌ Item with ID ${numericId} not found in cart`);
+            console.log(`Item with ID ${numericId} not found in cart`);
             console.log('Available IDs:', cart.map(item => item.id));
         }
     } catch (error) {

@@ -47,7 +47,6 @@ function initializeCartModal() {
     try {
         const modalContainer = document.querySelector('#cart-modal-container');
         
-        // ✅ FIX: Exit silently if container doesn't exist
         if (!modalContainer) {
             console.log('Cart modal container not present on this page - skipping');
             return;
@@ -129,7 +128,6 @@ async function handleCartClick(e) {  // Add 'async' here
         
     } catch (error) {
         console.error('Error handling cart click:', error);
-        // Remove the alert - just log the error
     }
 }
 

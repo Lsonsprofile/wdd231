@@ -340,7 +340,7 @@ function handleRemoveSelected(e) {
         }
         
         // NO CONFIRMATION ALERT - Remove immediately
-        console.log('✅ Removing selected items silently');
+        console.log('Removing selected items silently');
         
         // Call removeSelectedItems
         removeSelectedItems();
