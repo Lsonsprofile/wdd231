@@ -502,7 +502,13 @@ function handleCartClick(e) {
     e.stopPropagation();
     
     try {
-        const dialogModal = document.querySelector('.cart-modal');
+        // Try to find by ID first, then by class
+        let dialogModal = document.querySelector('#shoppingCartModal');
+        
+        if (!dialogModal) {
+            dialogModal = document.querySelector('.cart-modal');
+        }
+        
         if (!dialogModal) {
             console.warn('Cart modal not found');
             return;
@@ -513,7 +519,7 @@ function handleCartClick(e) {
         
     } catch (error) {
         console.error('Error opening cart:', error);
-        alert('Failed to open cart. Please try again.');
+        // Remove the alert - just log error
     }
 }
 

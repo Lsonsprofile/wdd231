@@ -91,28 +91,45 @@ function setupCartButton() {
 /**
  * Handle cart button click
  */
-function handleCartClick(e) {
+async function handleCartClick(e) {  // Add 'async' here
     e.preventDefault();
     e.stopPropagation();
     
     try {
         console.log('Cart button clicked');
         
-        const cartModal = document.querySelector('.cart-modal');
+        // Try to find by ID first (more specific), then by class
+        let cartModal = document.querySelector('#shoppingCartModal');
+        
+        // If not found by ID, try by class
+        if (!cartModal) {
+            cartModal = document.querySelector('.cart-modal');
+        }
         
         if (!cartModal) {
             console.error('Cart modal not found');
-            alert('Unable to open cart. Please try again.');
-            return;
+            // Don't show alert - just log error
+            console.log('Creating cart modal...');
+            
+            // Try to create the modal if it doesn't exist
+            const modalContainer = document.querySelector('#cart-modal-container') || document.body;
+            const { createCartModal } = await import('./cartModal.js');
+            cartModal = createCartModal(modalContainer);
+            
+            if (!cartModal) {
+                console.error('Failed to create cart modal');
+                return;
+            }
         }
         
         // Render cart contents and show modal
+        const { renderCartModal } = await import('./cartModal.js');
         renderCartModal(cartModal);
         cartModal.showModal();
         
     } catch (error) {
         console.error('Error handling cart click:', error);
-        alert('Failed to open cart. Please try again.');
+        // Remove the alert - just log the error
     }
 }
 
