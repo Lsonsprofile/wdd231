@@ -695,6 +695,7 @@ header {
    margin-bottom: 1rem;
    color: var(--color-surface);
    font-size: 0.9rem;
+   text-decoration: none;
 }
 
 .contact-item svg {
