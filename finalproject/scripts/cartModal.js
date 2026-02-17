@@ -1,5 +1,5 @@
 // scripts/cartModal.js
-import { cart, removeSelectedItems, updateQuantity, toggleSelectItem, getCartTotals, getCartItemCount } from './cart.js';
+import { cart, removeSelectedItems, updateQuantity, toggleSelectItem, getCartTotals } from './cart.js';
 console.log('cartModal.js loaded');
 
 // Listen for cart updates to refresh the modal if it's open

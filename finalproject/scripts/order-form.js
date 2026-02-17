@@ -522,7 +522,7 @@ function clearOrderData() {
 }
 
 function showOrderSuccess(orderId) {
-    alert(`✅ Order placed successfully!\nOrder ID: ${orderId}`);
+    // Redirect to thank you page without alert
     window.location.href = 'thankyou.html?id=' + encodeURIComponent(orderId);
 }
 

@@ -1,7 +1,9 @@
 // scripts/main.js
 
-import { displayFeaturedFood } from './foodData.js';
-import { createCartModal, renderCartModal} from './cartModal.js';
+import { createCartModal, renderCartModal } from './cartModal.js';
+import { displayFeaturedFood } from './foodData.js'; 
+import { addToCart, getCartItemCount } from './cart.js';
+
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
@@ -186,3 +188,41 @@ function showErrorMessage(message) {
         }
     }, 5000);
 }
+
+function attachAddToCartListeners() {
+    const buttons = document.querySelectorAll('.add-to-cart-btn'); // make sure buttons have this class
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Grab item data from dataset attributes or your JS object
+            const item = {
+                id: Number(btn.dataset.id),
+                name: btn.dataset.name,
+                price: Number(btn.dataset.price),
+                image: btn.dataset.image
+            };
+            
+            const success = addToCart(item);
+            if (success) {
+                console.log(`Added ${item.name} to cart`);
+            } else {
+                console.error(`Failed to add ${item.name} to cart`);
+            }
+        });
+    });
+}
+
+
+function updateCartBadge() {
+    const badge = document.querySelector('#cart-counter-bubble');
+    if (!badge) return;
+
+    const count = getCartItemCount();
+    badge.textContent = count;
+    badge.style.display = count > 0 ? 'inline' : 'none';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateCartBadge();
+});
+
+
