@@ -446,35 +446,3 @@ function attachPlaceOrderListener(button, modal) {
     });
 }
 
-export function updateCartBadge() {
-    try {
-        const cartButton = document.querySelector('#shopcart');
-        if (!cartButton) {
-            console.warn('Cart button not found for badge update');
-            return;
-        }
-
-        const count = getCartItemCount();
-        
-        // Remove existing badge
-        const existingBadge = cartButton.querySelector('.cart-badge');
-        if (existingBadge) existingBadge.remove();
-
-        // Add new badge if count > 0
-        if (count > 0) {
-            const badge = document.createElement('span');
-            badge.classList.add('cart-badge');
-            badge.textContent = count > 99 ? '99+' : count;
-            badge.setAttribute('aria-label', `${count} items in cart`);
-            
-            // Ensure button has position relative
-            if (window.getComputedStyle(cartButton).position === 'static') {
-                cartButton.style.position = 'relative';
-            }
-            
-            cartButton.appendChild(badge);
-        }
-    } catch (error) {
-        console.error('Error updating cart badge:', error);
-    }
-}

@@ -32,13 +32,13 @@
     <header>
         <div class="nav-overlay"></div>
         <div class="logo">
-            <img src="images/elonlogo.png" alt="elon hot spicy red food and ingridients logo">
+            <img src="images/elonlogo.png" alt="ElsonsKitchen logo">
         </div>
         <nav class="navigation-bar">
             <button aria-label="close button" id="menuToggle"  
         class="close-btn">&times;</button>
             <ul class="nav-link">
-                <li class="active"><a href="index.html">Home</a></li>
+                <li class="active"><a href="index.html" aria-current="page">Home</a></li>
                 <li><a href="menu.html">Menu</a></li>
                 <li><a href="order.html">Place Order</a></li>
             </ul>
@@ -46,7 +46,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1" />
             </svg>
-            <span id="cart-counter-bubble" class="cart-count">0</span>
+            <span id="cart-counter-bubble" class="cart-count" aria-live="polite">0</span>
             <strong>Cart</strong>
         </button>
         </nav>
@@ -123,13 +123,13 @@
 
                 <div class="social-links">
                     <a href="https://github.com/brightcoder21" target="_blank">
-                        <img src="images/github.svg" alt="GitHub icon">
+                        <img src="images/github.svg" aria-label="github profile" alt="GitHub icon">
                     </a>
                     <a href="https://www.linkedin.com/in/creative-dev-2026" target="_blank">
-                        <img src="images/linkedin.svg" alt="LinkedIn icon">
+                        <img src="images/linkedin.svg" aria-label="linkegin profile" alt="LinkedIn icon">
                     </a>
                     <a href="https://wa.me/2348123456789" target="_blank">
-                        <img src="images/whatsapp.svg" alt="WhatsApp icon">
+                        <img src="images/whatsapp.svg" aria-label="whatsapp profile" alt="WhatsApp icon">
                     </a>
                 </div>
             </div>
@@ -160,8 +160,8 @@
                     </svg>
                     <span>122A Street Name, City, State 56789</span>
                 </div>
-                <div class="contact-item">&#128222; (01) 4656-1990</div>
-                <div class="contact-item">&#128233; info@email.com</div>
+                <a class="contact-item" href="tel:+2340146561990">&#128222; (01) 4656-1990</a>
+                <a class="contact-item" href="mailto:info@email.com">&#128233; info@email.com</a>
             </div>
 
         </div>

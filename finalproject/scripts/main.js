@@ -1,7 +1,7 @@
 // scripts/main.js
 
 import { displayFeaturedFood } from './foodData.js';
-import { createCartModal, renderCartModal, updateCartBadge } from './cartModal.js';
+import { createCartModal, renderCartModal} from './cartModal.js';
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,9 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Setup cart update listener
         setupCartUpdateListener();
-        
-        // Initial badge update
-        updateCartBadge();
         
         console.log('App initialized successfully');
     } catch (error) {

@@ -30,26 +30,32 @@ let cartButton = null;
 let cartBadge = null;
 let modalContainer = null;
 
+
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         initializeDOMElements();
-        if (!grid) return; // Exit if grid not found
-        
+        if (!grid) return;
+
         await initializeModal();
         await loadFood();
         setupEventListeners();
         updateBadge();
-        
-        // Listen for cart updates
+
+        // ADD THIS
+        if (favCountSpan) {
+            favCountSpan.textContent = favorites.length;
+        }
+
         document.addEventListener('cartUpdated', updateBadge);
-        
+
         console.log('Menu initialized successfully');
     } catch (error) {
         console.error('Error initializing menu:', error);
         showErrorMessage('Failed to initialize menu. Please refresh the page.');
     }
 });
+
 
 function initializeDOMElements() {
     grid = document.querySelector('#menuItemsGrid');

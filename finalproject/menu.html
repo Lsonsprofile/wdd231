@@ -6,7 +6,7 @@
     <title>ElsonsKitchen | Authentic Nigerian Cuisine & Local Favorites</title>
     <meta name="description" content="Browse the full ElsonsKitchen menu featuring authentic Nigerian soups, seafood, grilled meats, jollof rice, snacks, desserts, and refreshing drinks. Freshly prepared and ready to order.">
     <meta name="author" content="Emmanuel Ndogo">
-    
+
     <meta property="og:title" content="ElsonsKitchen, A Mesmerizing Taste of Nigerian Dishes">
     <meta property="og:description" content="Discover traditional Nigerian soups, seafood, grilled meats, grains, snacks, desserts, and drinks. View categories, filter your favorites, and order fresh meals today.">
     <meta property="og:image" content="https://lsonsprofile.github.io/wdd231/finalproject/images/elonskitchen-og.webp">
@@ -27,37 +27,36 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-    
 </head>
 <body>
     <header>
         <div class="nav-overlay"></div>
         <div class="logo">
-            <img src="images/elonlogo.png" alt="elon hot spicy red food and ingridients logo">
+            <img src="images/elonlogo.png" alt="ElsonsKitchen logo – red hot food illustration">
         </div>
-        <nav class="navigation-bar">
-            <button aria-label="close button" id="menuToggle" class="close-btn">&times;</button>
+        <nav class="navigation-bar" aria-label="Main Navigation">
+            <button aria-label="Close navigation menu" id="menuToggle" class="close-btn">&times;</button>
             <ul class="nav-link">
                 <li><a href="index.html">Home</a></li>
                 <li class="active"><a href="menu.html">Menu</a></li>
                 <li><a href="order.html">Place Order</a></li>
             </ul>
-            <button id="shopcart" class="shopingcart" aria-label="Shopping cart" title="View added items in shoping cart">
+            <button id="shopcart" class="shopingcart" aria-label="Shopping cart" title="View added items in shopping cart">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1" />
                 </svg>
-                <span id="cart-counter-bubble" class="cart-count">0</span>
+                <span id="cart-counter-bubble" class="cart-count" aria-live="polite">0</span>
                 <strong>Cart</strong>
             </button>
         </nav>
-        <button id="menu-openbtn" class="hamburger-menu" aria-label="Open menu">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi-list" viewBox="0 0 16 16" role="img" aria-labelledby="menuTitle"> 
-                <title id="menuTitle">menu</title> 
-                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/> 
+        <button id="menu-openbtn" class="hamburger-menu" aria-label="Open navigation menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi-list" viewBox="0 0 16 16"  aria-labelledby="menuTitle">
+                <title id="menuTitle">menu</title>
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
             </svg>
         </button>
     </header>
-    
+
     <main>
         <section class="hero-banner">
             <div class="hero-section">
@@ -66,60 +65,61 @@
             </div>
         </section>
 
-
-        <nav class="category-filter-wrapper" id="categoryFilterBar">
-            <button class="filter-pill active-filter" data-group="All">All</button>
-            <button class="filter-pill" data-group="Soup">Soups</button>
-            <button class="filter-pill" data-group="Seafood">Seafood</button>
-            <button class="filter-pill" data-group="Meat">Meat</button>
-            <button class="filter-pill" data-group="Grain & Starch">Grains & Starches</button>
-            <button class="filter-pill" data-group="Extra">Extras</button>
-            <button class="filter-pill" data-group="Snack & Small Bite">Snacks & Small Bites</button>
-            <button class="filter-pill" data-group="Dessert & Sweet">Desserts & Sweets</button>
-            <button class="filter-pill" data-group="Fusion / Contemporary">Fusion / Contemporary</button>
-            <button class="filter-pill" data-group="Drink">Drinks</button>
+        <nav class="category-filter-wrapper" id="categoryFilterBar" aria-label="Filter menu by category">
+            <button class="filter-pill active-filter" data-group="All" aria-pressed="true">All</button>
+            <button class="filter-pill" data-group="Soup" aria-pressed="false">Soups</button>
+            <button class="filter-pill" data-group="Seafood" aria-pressed="false">Seafood</button>
+            <button class="filter-pill" data-group="Meat" aria-pressed="false">Meat</button>
+            <button class="filter-pill" data-group="Grain & Starch" aria-pressed="false">Grains & Starches</button>
+            <button class="filter-pill" data-group="Extra" aria-pressed="false">Extras</button>
+            <button class="filter-pill" data-group="Snack & Small Bite" aria-pressed="false">Snacks & Small Bites</button>
+            <button class="filter-pill" data-group="Dessert & Sweet" aria-pressed="false">Desserts & Sweets</button>
+            <button class="filter-pill" data-group="Fusion / Contemporary" aria-pressed="false">Fusion / Contemporary</button>
+            <button class="filter-pill" data-group="Drink" aria-pressed="false">Drinks</button>
         </nav>
 
-        <div id="menuItemsGrid" class="grid-flex">
+        <div id="menuItemsGrid" class="grid-flex" aria-live="polite">
             <p>Loading menu…</p>
         </div>
 
         <div class="load-more-wrapper" id="loadMoreContainer" style="text-align:center; padding: 2rem;">
-            <button class="load-more-button" id="loadMoreBtn">View More</button>
+            <button class="load-more-button" id="loadMoreBtn" aria-label="Load more menu items">View More</button>
         </div>
 
-        <div id="shoppingCartModal"></div>
+        <div id="shoppingCartModal" role="dialog" aria-modal="true" aria-labelledby="cartTitle" hidden>
+            <h2 id="cartTitle">Shopping Cart</h2>
+        </div>
 
         <div class="favorites-container">
-            <div id="favoritesDropdown" class="favorites-dropdown">
+            <div id="favoritesDropdown" class="favorites-dropdown" role="menu" aria-label="Favorites list">
                 <div id="favoritesList"></div>
             </div>
-            <button id="favoritesToggleBtn" class="favorites-button" aria-label="View Favorites">
+            <button id="favoritesToggleBtn" class="favorites-button" aria-label="View favorites" aria-expanded="false">
                 <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01z"/>
                 </svg>
-                <span id="favoritesCount" class="favorites-badge">0</span>
+                <span id="favoritesCount" class="favorites-badge" aria-live="polite">0</span>
             </button>
         </div>
     </main>
-    
+
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-column footer-brand">
                 <p><strong>WDD231 Class Project</strong></p>
                 <p>Emmanuel Ndogo</p>
                 <p>&copy; <span id="year"></span> Emmanuel Chamber of Commerce.</p>
-                <p>Last modified: <span id="lastModified"></span></p>
+                <p>Last modified: <span id="lastModified" aria-live="polite"></span></p>
 
                 <div class="social-links">
-                    <a href="https://github.com/brightcoder21" target="_blank">
-                        <img src="images/github.svg" alt="GitHub icon">
+                    <a href="https://github.com/brightcoder21" target="_blank" aria-label="GitHub Profile">
+                        <img src="images/github.svg" alt="">
                     </a>
-                    <a href="https://www.linkedin.com/in/creative-dev-2026" target="_blank">
-                        <img src="images/linkedin.svg" alt="LinkedIn icon">
+                    <a href="https://www.linkedin.com/in/creative-dev-2026" target="_blank" aria-label="LinkedIn Profile">
+                        <img src="images/linkedin.svg" alt="">
                     </a>
-                    <a href="https://wa.me/2348123456789" target="_blank">
-                        <img src="images/whatsapp.svg" alt="WhatsApp icon">
+                    <a href="https://wa.me/2348123456789" target="_blank" aria-label="WhatsApp Chat">
+                        <img src="images/whatsapp.svg" alt="">
                     </a>
                 </div>
             </div>
@@ -127,9 +127,9 @@
             <div class="footer-column">
                 <h2>Information</h2>
                 <ul>
-                    <li><a href="reference.html">Reference page</a></li>
-                    <li><a href="https://www.loom.com/share/5ae83a0b776d41f99d8ad57758d78435" target="_blank">video 1</a></li>
-                    <li><a href="https://www.loom.com/share/a398270b6b6f463d997f497c210a4d5f" target="_blank">video 2</a></li>
+                    <li><a href="reference.html">View reference page for recipes</a></li>
+                    <li><a href="https://www.loom.com/share/5ae83a0b776d41f99d8ad57758d78435" target="_blank">Video 1</a></li>
+                    <li><a href="https://www.loom.com/share/a398270b6b6f463d997f497c210a4d5f" target="_blank">Video 2</a></li>
                 </ul>
             </div>
 
@@ -155,4 +155,3 @@
         </div>
     </footer>
 </body>
-</html>

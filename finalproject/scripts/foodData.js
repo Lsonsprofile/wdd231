@@ -314,33 +314,35 @@ function getStars(rating) {
         const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
         let stars = '';
-        
-        // Add full stars
+
         for (let i = 0; i < fullStars; i++) {
-            stars += `<img src="${STAR_ASSETS.full}" alt="" class="star-icon" loading="lazy">`;
-        }
-        
-        // Add half star if needed
-        if (hasHalfStar) {
-            stars += `<img src="${STAR_ASSETS.half}" alt="" class="star-icon" loading="lazy">`;
-        }
-        
-        // Add empty stars
-        for (let i = 0; i < emptyStars; i++) {
-            stars += `<img src="${STAR_ASSETS.empty}" alt="" class="star-icon" loading="lazy">`;
+            stars += `<img src="${STAR_ASSETS.full}" 
+                          alt="Full star" 
+                          class="star-icon" 
+                          loading="lazy">`;
         }
 
-        // If no stars were generated (all images failed), use text fallback
-        if (!stars) {
-            stars = STAR_ASSETS.fallback.repeat(5);
+        if (hasHalfStar) {
+            stars += `<img src="${STAR_ASSETS.half}" 
+                          alt="Half star" 
+                          class="star-icon" 
+                          loading="lazy">`;
+        }
+
+        for (let i = 0; i < emptyStars; i++) {
+            stars += `<img src="${STAR_ASSETS.empty}" 
+                          alt="Empty star" 
+                          class="star-icon" 
+                          loading="lazy">`;
         }
 
         return stars;
     } catch (error) {
         console.error('Error generating stars:', error);
-        return STAR_ASSETS.fallback.repeat(5); // Text fallback
+        return STAR_ASSETS.fallback.repeat(5);
     }
 }
+
 
 /**
  * Show temporary feedback on Add to Cart button
