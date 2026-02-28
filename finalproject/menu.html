@@ -28,12 +28,16 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+    <link rel="canonical" href="https://lsonsprofile.github.io/wdd231/finalproject/menu.html">
 </head>
 <body>
     <header>
         <div class="nav-overlay"></div>
         <div class="logo">
-            <img src="images/elonlogo.png" alt="ElsonsKitchen logo – red hot food illustration">
+            <a href="index.html">
+                <img src="images/elonlogo.png" alt="ElsonsKitchen home" loading="lazy">
+            </a>
         </div>
         <nav class="navigation-bar" aria-label="Main Navigation">
             <button aria-label="Close navigation menu" id="menuToggle" class="close-btn">&times;</button>
@@ -42,9 +46,15 @@
                 <li class="active"><a href="menu.html">Menu</a></li>
                 <li><a href="order.html">Place Order</a></li>
             </ul>
-            <button id="shopcart" class="shopingcart" aria-label="Shopping cart" title="View added items in shopping cart">
+            <button 
+                id="shopcart"
+                class="shopingcart"
+                aria-label="Open shopping cart"
+                aria-haspopup="dialog"
+                aria-controls="shoppingCartModal"
+            >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1" />
+                    <path d="M.5 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8H2.89L2.485 1.379A.5.5 0 0 0 2 1z"/>
                 </svg>
                 <span id="cart-counter-bubble" class="cart-count" aria-live="polite">0</span>
                 <strong>Cart</strong>
@@ -87,7 +97,8 @@
             <button class="load-more-button" id="loadMoreBtn" aria-label="Load more menu items">View More</button>
         </div>
 
-        <dialog id="shoppingCartModal" class="cart-modal">
+        <dialog id="shoppingCartModal" class="cart-modal" aria-labelledby="cartTitle">
+            <h2 id="cartTitle">Shopping Cart</h2>
         </dialog>
 
         <div class="favorites-container">
