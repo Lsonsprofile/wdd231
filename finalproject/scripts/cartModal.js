@@ -333,7 +333,7 @@ function handleRemoveSelected(e) {
         })));
         
         if (selectedItems.length === 0) {
-            console.log('⚠️ No items selected to remove');
+            console.log(' No items selected to remove');
             // Show subtle tooltip instead of alert
             showRemoveTooltip(e.currentTarget, 'No items selected');
             return;
