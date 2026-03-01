@@ -542,10 +542,6 @@ header {
    color: var(--color-border);
 }
 
-a {
-   color: var(--color-bg);
-}
-
 .about-title {
    color: var(--color-bg);
    font-size: 2rem;
@@ -665,7 +661,7 @@ a {
 }
 
 .footer-column ul li a {
-   color: var(--color-text-muted);
+   color: var(--color-surface);
    text-decoration: none;
    transition: color 0.3s ease;
 }
