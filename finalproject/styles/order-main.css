@@ -136,6 +136,10 @@ textarea {
    margin-top: 10px;
 }
 
+.bank-details {
+   display: none;
+}
+
 .card-row {
    display: flex;
    gap: 10px;
@@ -202,6 +206,7 @@ textarea {
    box-shadow: var(--shadow-md);
    padding: 0.5rem 0.5rem 1rem 0.5rem;
    background-color: var(--color-accent);
+   color: var(--color-surface);
 }
 
 .testimonial-card {
