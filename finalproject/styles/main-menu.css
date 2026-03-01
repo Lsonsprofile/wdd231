@@ -215,7 +215,7 @@ body.menu-page .food-card:hover {
     width: 55px;
     height: 55px;
     border-radius: 50%;
-    background: var(--gradient-dark);
+    background-color: var(--dark-color);
     border: 2px solid var(--color-surface);
     color: var(--color-surface);
     cursor: pointer;
