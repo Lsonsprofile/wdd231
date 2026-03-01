@@ -1,35 +1,7 @@
-/* ===== MENU PAGE SPECIFIC STYLES ===== */
-:root {
-   --color-primary: #e85d04;
-   --color-primary-dark: #c2410c;
-   --color-secondary: #7c0c0c;
-   --color-accent: #024228;
-   --call-btn: #FFB703;
-   --color-accent-light: #4caf50;
-   --color-bg: #fffaf3;
-   --color-surface: #ffffff;
-   --color-muted: #f7efe6;
-   --color-text: #2b2118;
-   --dark-color: #000000;
-   --color-text-light: #6b5e54;
-   --color-border: #e5ded6;
-   --playfair-font: "Playfair Display", serif;
-   --source-san3-font: "Source Sans 3", sans-serif;
+/* ===== MENU PAGE ONLY - NO DUPLICATES FROM INDEX ===== */
+/* Only styles that are unique to menu.html go here */
 
-   --gradient-hero: linear-gradient(135deg, #e85d04 50%, #7c0c0c 100%);
-   --gradient-dark: linear-gradient(180deg, #2b2118 0%, #1a140f 100%);
-
-   --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
-   --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.12);
-   --shadow-lg: 0 14px 30px rgba(0, 0, 0, 0.18);
-   --shadow-glow: 0 0 0 3px rgba(232, 93, 4, 0.25);
-   --overlay: rgba(0, 0, 0, 0.5);
-
-   --font-heading: "Poppins", "Segoe UI", sans-serif;
-   --font-body: "Inter", system-ui, sans-serif;
-}
-
-/* Category Filter Bar */
+/* Category Filter Bar - ONLY in menu.html */
 .category-filter-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -73,7 +45,7 @@
     box-shadow: var(--shadow-glow);
 }
 
-/* Menu Grid Layout */
+/* Menu Grid Layout - different from index food-flex */
 .grid-flex {
     display: grid;
     grid-template-columns: 1fr;
@@ -84,7 +56,7 @@
     background-color: var(--color-bg);
 }
 
-/* Food Cards - Consolidated */
+/* Food Cards - Menu page specific style (different from index) */
 .food-card {
     display: grid;
     grid-template-columns: 70px 1fr 50px;
@@ -171,7 +143,7 @@
     align-items: center;
 }
 
-/* Icon Button - Consolidated */
+/* Icon Button - Menu page specific */
 .icon-btn {
     background: var(--color-muted);
     border: none;
@@ -216,7 +188,7 @@
     background: var(--gradient-dark);
 }
 
-/* Load More Button - Fixed contrast */
+/* Load More Button - Only in menu.html */
 .load-more-wrapper {
     padding: 2rem 1rem 4rem;
     background-color: var(--color-bg);
@@ -243,7 +215,7 @@
     box-shadow: var(--shadow-lg);
 }
 
-/* Favorites Container */
+/* Favorites Container - Only in menu.html */
 .favorites-container {
     position: fixed;
     bottom: 1rem;
@@ -303,7 +275,7 @@
     100% { box-shadow: 0 0 0 0 rgba(45, 107, 45, 0); }
 }
 
-/* Favorites Dropdown */
+/* Favorites Dropdown - Only in menu.html */
 .favorites-dropdown {
     position: absolute;
     bottom: 75px;
@@ -441,7 +413,7 @@
     font-size: 0.95rem;
 }
 
-/* Loading States */
+/* Loading States - Menu page specific */
 .loading, .error, .empty {
     text-align: center;
     padding: 3rem 1rem;
@@ -474,65 +446,7 @@
     border: 1px solid var(--color-secondary);
 }
 
-/* Cart Modal - Consolidated */
-.cart-modal {
-    border: none;
-    border-radius: 20px;
-    padding: 0;
-    max-width: 500px;
-    width: 90%;
-    background: var(--color-surface);
-    box-shadow: var(--shadow-lg);
-}
-
-.cart-modal::backdrop {
-    background-color: var(--overlay);
-    backdrop-filter: blur(4px);
-}
-
-.modal-content {
-    background-color: var(--color-surface);
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.modal-header {
-    background: var(--gradient-hero);
-    padding: 1.25rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.modal-header h2 {
-    font-family: var(--playfair-font);
-    margin: 0;
-    font-size: 1.3rem;
-    color: var(--color-surface);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.close-modal {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    color: var(--color-surface);
-    font-size: 1.5rem;
-    cursor: pointer;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.close-modal:hover {
-    background: var(--color-text-light);
-    transform: rotate(90deg);
-}
-
-/* Menu Page Hero Banner - Fixed contrast */
+/* Menu Page Hero Banner - Unique to menu.html */
 .hero-banner {
     position: relative;
     min-height: 350px;
