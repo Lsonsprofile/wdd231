@@ -41,7 +41,7 @@
         display: none;
     }
     .hero-container {
-        grid-template-columns: minmax(150px, 500px) 1fr;
+        grid-template-columns: minmax(45%, 200px) 1fr;
         width: 100%;
         max-height: 60vh;
     }
