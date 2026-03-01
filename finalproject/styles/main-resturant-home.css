@@ -293,7 +293,7 @@ header {
 }
 
 .hero-content {
-   background: var(--gradient-dark);
+   background-color: var(--color-text);
    display: flex;
    flex-direction: column;
    position: relative;
