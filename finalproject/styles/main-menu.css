@@ -10,9 +10,6 @@
     padding: 2rem 1rem;
     background-color: var(--color-surface);
     border-bottom: 2px solid var(--color-border);
-    position: sticky;
-    top: 130px;
-    z-index: 90;
     box-shadow: var(--shadow-sm);
 }
 
@@ -57,7 +54,7 @@
 }
 
 /* Food Cards - Menu page specific style (different from index) */
-.food-card {
+body.menu-page .food-card {
     display: grid;
     grid-template-columns: 70px 1fr 50px;
     align-items: center;
@@ -72,7 +69,7 @@
     transition: all 0.3s ease;
 }
 
-.food-card:hover {
+body.menu-page .food-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
     border-color: var(--color-primary);
