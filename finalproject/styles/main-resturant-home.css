@@ -242,7 +242,7 @@ header {
 
 .bi-list {
    font-weight: 800;
-   color: black;
+   color: var(--dark-color);
    width: 40px;
    height: 40px;
    background-color: var(--color-bg);
@@ -355,7 +355,7 @@ header {
    font-size: 1.1rem;
    display: inline-block;
    transition: all 0.3s ease;
-   box-shadow: 0 8px 15px rgba(232, 93, 4, 0.3);
+   box-shadow: var(--shadow-glow);
    width: fit-content;
    margin: 0.5rem auto;
 }

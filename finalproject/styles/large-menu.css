@@ -1,4 +1,3 @@
-/* ===== MEDIA QUERIES - Menu page only ===== */
 @media screen and (min-width: 50rem) {
     .grid-flex {
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -133,10 +132,7 @@
         padding: 4rem 2rem;
         font-size: 1.2rem;
     }
-
-    /* Cart modal styles should be in index.css only */
-    /* Remove cart-modal, modal-content, modal-header from menu.css */
-    
+     
     .hero-banner {
         min-height: 450px;
         padding: 4rem 1.5rem;
