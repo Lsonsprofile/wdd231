@@ -301,14 +301,6 @@ header {
    color: var(--color-surface);
 }
 
-.hero-content a {
-   color: var(--color-surface); /* fixes black link issue */
-}
-
-.hero-content p {
-   color: var(--color-surface); /* ensure paragraph text is white */
-}
-
 .badge {
    color: var(--color-surface);
    margin: 0.5rem auto 0 auto;
@@ -543,10 +535,15 @@ header {
    overflow: hidden;
    padding: 0.5rem 1rem;
    background-color: var(--color-accent);
+   color: var(--color-bg);
 }
 
 .about-us-section p {
    color: var(--color-border);
+}
+
+a {
+   color: var(--color-bg);
 }
 
 .about-title {
