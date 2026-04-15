@@ -3,603 +3,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discover Lagos - Chamber of Commerce</title>
+    <title>Emmanuel Ndogo - Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* RESET AND BASE STYLES */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
 
         :root {
-            --primary-color: #c1b96a;
-            --secondary-color: #5d3508;
-            --tertiary-color: #ffe1a1;
-            --quaternary-color: #000000;
-            --text-color: #0c110a4f;
-            --background-color: #fffceb;
-            --body-color: #ffffff;
-            --transparent-color: #e5e0d1e2;
-            --box-shadow: 0 0 10px rgb(29, 15, 0, 0.5);
-            --text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            --linear-gradient: linear-gradient(rgba(6, 3, 0, 0.7), rgba(63, 36, 5, 0.7));
+            --primary-dark: #2c313c;
+            --accent-teal: #36a4a7;
+            --bg-light: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: var(--background-color);
-            color: var(--quaternary-color);
-            line-height: 1.6;
-        }
-
-        /* SIMPLE HEADER, NAV, FOOTER FOR DEMO */
-        header {
-            background-color: var(--primary-color);
-            padding: 1rem;
-            text-align: center;
-        }
-
-        nav {
-            background-color: var(--secondary-color);
-            padding: 0.5rem;
-        }
-
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: var(--tertiary-color);
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-        }
-
-        nav a:hover {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            border-radius: 4px;
-        }
-
-        footer {
-            background-color: var(--secondary-color);
-            color: var(--tertiary-color);
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
-        }
-
-        /* DISCOVER PAGE STYLES */
-        .discover-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem;
-            min-height: 80vh;
-        }
-
-        .welcome-message {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding: 1rem;
-            background-color: var(--transparent-color);
-            border-radius: 8px;
-            box-shadow: var(--box-shadow);
-        }
-
-        .welcome-message h1 {
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        #visit-message {
-            color: var(--text-color);
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
-
-        /* GRID CONTAINER */
-        .grid-container {
-            display: grid;
-            gap: 1.5rem;
-            padding: 1rem;
-        }
-
-        /* CARD STYLES */
-        .card {
-            background-color: var(--body-color);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h2 {
-            color: var(--secondary-color);
-            padding: 1rem 1rem 0.5rem;
-            margin: 0;
-            font-size: 1.3rem;
-        }
-
-        .card figure {
+            font-family: 'Inter', sans-serif;
+            background-color: #e2e8f0;
+            color: #333;
             margin: 0;
             padding: 0;
+        }
+
+        .resume-container {
+            width: 210mm;
+            height: 297mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 260px 1fr;
             overflow: hidden;
-            height: 200px;
         }
 
-        .card img {
+        .sidebar {
+            background-color: var(--primary-dark);
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-img-container {
             width: 100%;
-            height: 100%;
+            padding: 25px;
+            background: var(--primary-dark);
+        }
+
+        .profile-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: #4a5568;
+            border: 3px solid #fff;
             object-fit: cover;
-            transition: transform 0.5s ease;
         }
 
-        .card address {
-            color: var(--text-color);
-            font-style: normal;
-            padding: 0 1rem;
-            font-size: 0.9rem;
-            margin: 0.5rem 0;
+        .sidebar-content {
+            padding: 25px;
+            flex-grow: 1;
         }
 
-        .card p {
-            color: var(--text-color);
-            padding: 0 1rem;
-            margin: 0.5rem 0 1rem;
-            line-height: 1.4;
-            font-size: 0.95rem;
+        .sidebar-section {
+            margin-bottom: 30px;
         }
 
-        .card button {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            border: none;
-            padding: 0.7rem 1.5rem;
-            margin: 0 1rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
+        .sidebar-title {
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent-teal);
+            display: inline-block;
+            padding-bottom: 3px;
         }
 
-        .card button:hover {
-            background-color: var(--tertiary-color);
+        .main-content {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* IMAGE HOVER EFFECT (Desktop only) */
-        @media (min-width: 47rem) {
-            .card img:hover {
-                transform: scale(1.05);
-            }
-        }
-
-        /* SMALL SCREEN LAYOUT (320px - 640px) */
-        @media (max-width: 40rem) {
-            .grid-container {
-                grid-template-areas:
-                    "card1"
-                    "card2"
-                    "card3"
-                    "card4"
-                    "card5"
-                    "card6"
-                    "card7"
-                    "card8";
-                grid-template-columns: 1fr;
-            }
-            
-            .card:nth-child(1) { grid-area: card1; }
-            .card:nth-child(2) { grid-area: card2; }
-            .card:nth-child(3) { grid-area: card3; }
-            .card:nth-child(4) { grid-area: card4; }
-            .card:nth-child(5) { grid-area: card5; }
-            .card:nth-child(6) { grid-area: card6; }
-            .card:nth-child(7) { grid-area: card7; }
-            .card:nth-child(8) { grid-area: card8; }
-        }
-
-        /* MEDIUM SCREEN LAYOUT (641px - 1024px) */
-        @media (min-width: 40.063rem) and (max-width: 64rem) {
-            .grid-container {
-                grid-template-areas:
-                    "card1 card2"
-                    "card3 card4"
-                    "card5 card6"
-                    "card7 card8";
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .card:nth-child(1) { grid-area: card1; }
-            .card:nth-child(2) { grid-area: card2; }
-            .card:nth-child(3) { grid-area: card3; }
-            .card:nth-child(4) { grid-area: card4; }
-            .card:nth-child(5) { grid-area: card5; }
-            .card:nth-child(6) { grid-area: card6; }
-            .card:nth-child(7) { grid-area: card7; }
-            .card:nth-child(8) { grid-area: card8; }
-        }
-
-        /* LARGE SCREEN LAYOUT (1025px and above) */
-        @media (min-width: 64.063rem) {
-            .grid-container {
-                grid-template-areas:
-                    "card1 card2 card3"
-                    "card4 card5 card6"
-                    "card7 card8 .";
-                grid-template-columns: 1fr 1fr 1fr;
-            }
-            
-            .card:nth-child(1) { grid-area: card1; }
-            .card:nth-child(2) { grid-area: card2; }
-            .card:nth-child(3) { grid-area: card3; }
-            .card:nth-child(4) { grid-area: card4; }
-            .card:nth-child(5) { grid-area: card5; }
-            .card:nth-child(6) { grid-area: card6; }
-            .card:nth-child(7) { grid-area: card7; }
-            .card:nth-child(8) { grid-area: card8; }
-        }
-
-        /* MODAL/OVERLAY STYLES */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
+        .header-stripe {
+            background-color: var(--accent-teal);
+            height: 80px;
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
+            margin-top: 40px;
+            display: flex;
             align-items: center;
-            padding: 1rem;
+            padding-left: 30px;
+            position: relative;
         }
 
-        .modal-content {
-            background-color: var(--body-color);
-            border-radius: 10px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-            animation: modalFadeIn 0.3s ease;
+        .header-stripe::after {
+            content: "";
+            position: absolute;
+            right: 15px;
+            width: 70px;
+            height: 50px;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.2) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.2) 1px, transparent 1px);
+            background-size: 8px 8px;
         }
 
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .name-container {
+            padding: 0 30px;
+            margin-bottom: 15px;
+            margin-top: 10px;
         }
 
-        .modal-header {
-            background-color: var(--primary-color);
-            padding: 1.5rem;
-            border-radius: 10px 10px 0 0;
+        .name-container h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .name-container p {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            color: var(--accent-teal);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .body-padding {
+            padding: 20px 30px;
+        }
+
+        .section-header {
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary-dark);
+            border-bottom: 1.5px solid #eee;
+            margin-bottom: 15px;
+            padding-bottom: 4px;
+        }
+
+        .info-row {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            font-size: 0.8rem;
+            color: #444;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .modal-header h2 {
-            color: var(--secondary-color);
-            margin: 0;
+        .experience-item {
+            margin-bottom: 25px;
         }
 
-        .modal-close {
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: var(--secondary-color);
-            cursor: pointer;
-            padding: 0;
-            width: 30px;
-            height: 30px;
+        .job-header {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background-color 0.3s ease;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
         }
 
-        .modal-close:hover {
-            background-color: var(--tertiary-color);
+        .job-title {
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
         }
 
-        .modal-body {
-            padding: 1.5rem;
+        .date-text {
+            color: var(--accent-teal);
+            font-size: 0.75rem;
+            font-weight: 600;
         }
 
-        .modal-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 1rem;
+        .company-name {
+            color: #555;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
         }
 
-        .modal-address {
-            color: var(--text-color);
-            font-style: normal;
-            padding: 0.5rem 0;
-            border-top: 1px solid var(--transparent-color);
-            border-bottom: 1px solid var(--transparent-color);
-            margin: 1rem 0;
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 5px;
         }
 
-        .modal-description {
-            color: var(--text-color);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+        .bullet-list li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 6px;
+            font-size: 0.82rem;
+            color: #555;
+            line-height: 1.4;
         }
 
-        .modal-details {
-            background-color: var(--transparent-color);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
+        .bullet-list li::before {
+            content: "■";
+            position: absolute;
+            left: 0;
+            color: var(--accent-teal);
+            font-size: 0.6rem;
+            top: 4px;
         }
 
-        .modal-details h3 {
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Accessibility: focus styles */
-        button:focus,
-        .modal-close:focus {
-            outline: 2px solid var(--secondary-color);
-            outline-offset: 2px;
-        }
-
-        /* Modal open state */
-        body.modal-open {
-            overflow: hidden;
+        @media print {
+            body { background: white; margin: 0; }
+            .resume-container { 
+                margin: 0; 
+                box-shadow: none;
+                width: 210mm;
+                height: 297mm;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- SIMPLE HEADER FOR DEMO -->
-    <header>
-        <h1>Lagos Chamber of Commerce</h1>
-    </header>
 
-    <!-- SIMPLE NAVIGATION FOR DEMO -->
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Discover</a></li>
-            <li><a href="#">Directory</a></li>
-            <li><a href="#">Join</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- MAIN CONTENT - DISCOVER PAGE -->
-    <main class="discover-container">
-        <section class="welcome-message">
-            <h1>Discover Lagos</h1>
-            <p id="visit-message">Welcome! Let us know if you have any questions.</p>
-        </section>
-        
-        <section class="grid-container" id="discover-grid">
-            <!-- Cards will be dynamically inserted here by JavaScript -->
-        </section>
-    </main>
-
-    <!-- MODAL/OVERLAY FOR LEARN MORE -->
-    <div class="modal-overlay" id="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modal-title">Attraction Details</h2>
-                <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+    <div class="resume-container">
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+            <div class="profile-img-container">
+                <img src="https://www.image2url.com/r2/default/images/1776287497379-754055ef-f8b9-44b5-9559-66496b7081e7.png" 
+                     alt="Emmanuel Ndogo" 
+                     class="profile-img"
+                     onerror="this.src='https://via.placeholder.com/300x300?text=EN'">
             </div>
-            <div class="modal-body">
-                <img id="modal-image" src="" alt="" class="modal-image">
-                <address id="modal-address" class="modal-address"></address>
-                <p id="modal-description" class="modal-description"></p>
-                <div class="modal-details">
-                    <h3>Visitor Information</h3>
-                    <p>Best time to visit: Morning hours</p>
-                    <p>Entry fee: Varies by attraction</p>
-                    <p>Recommended duration: 2-3 hours</p>
+
+            <div class="sidebar-content">
+                <section class="sidebar-section">
+                    <h2 class="sidebar-title">Education</h2>
+                    <div class="edu-item">
+                        <p class="font-bold text-sm">University</p>
+                        <p class="text-[10px] text-teal-400 font-bold">Present</p>
+                        <p class="text-xs opacity-80">BYU (Brigham Young University) Idaho</p>
+                    </div>
+                </section>
+
+                <section class="sidebar-section">
+                    <h2 class="sidebar-title">Skills</h2>
+                    <ul class="list-none space-y-2 text-xs opacity-90">
+                        <li>• Patience and perseverance</li>
+                        <li>• Audio processing</li>
+                        <li>• Drawing</li>
+                        <li>• Microsoft Office</li>
+                        <li>• Computer Literate</li>
+                    </ul>
+                </section>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <div class="header-stripe"></div>
+            
+            <div class="name-container">
+                <h1>Emmanuel<br>Ndogo</h1>
+                <p>Transcriber and web Front-end developer</p>
+            </div>
+
+            <div class="body-padding">
+                <!-- INFO BAR -->
+                <div class="info-row">
+                    <span><strong>Phone:</strong> 0913 347 2692</span>
+                    <span><strong>Email:</strong> ndogoemanuel52@gmail.com</span>
+                    <span><strong>Location:</strong> Lagos, Nigeria</span>
+                    <span><strong>DOB:</strong> 21/12/1997</span>
                 </div>
+
+                <!-- PROFILE -->
+                <section class="mb-8">
+                    <h2 class="section-header">Profile</h2>
+                    <p class="text-[0.85rem] text-gray-600 leading-relaxed">
+                        I am a computer-literate professional who knows how to choose and use the right tools effectively. 
+                        I adapt quickly to new challenges and believe in continuous growth and teamwork. 
+                        As the saying goes, 'No man is an island of knowledge,' so I am committed to contributing my share 
+                        to any company, even as I work to develop skills I'm still learning.
+                    </p>
+                </section>
+
+                <!-- WORK EXPERIENCE -->
+                <section>
+                    <h2 class="section-header">Work Experience</h2>
+
+                    <!-- Job 1 -->
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="job-title">Transcriber</div>
+                            <div class="date-text">February 2022 - Present</div>
+                        </div>
+                        <div class="company-name">Self employed at LSONSWRITE</div>
+                        <ul class="bullet-list">
+                            <li>Accommodated different accent types by adjusting playback speed of recordings accordingly.</li>
+                            <li>Employed advanced grammar knowledge to ensure transcriptions were correctly punctuated and formatted.</li>
+                            <li>Leveraged multitasking abilities to effectively manage competing priorities in a timely manner.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Job 2 -->
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="job-title">Front End Web Developer</div>
+                            <div class="date-text">February 2023 - Present</div>
+                        </div>
+                        <div class="company-name">STUDENT OF BYU IDAHO</div>
+                        <ul class="bullet-list">
+                            <li>Designing web sites.</li>
+                            <li>Recreating a web design to match client taste.</li>
+                            <li>Good use of HTML, CSS, and JavaScript for UI (user interaction).</li>
+                        </ul>
+                    </div>
+                </section>
             </div>
-        </div>
+        </main>
     </div>
 
-    <!-- SIMPLE FOOTER FOR DEMO -->
-    <footer>
-        <p>&copy; 2023 Lagos Chamber of Commerce. All rights reserved.</p>
-        <p>Contact: info@lagoschamber.org | Phone: +234 123 456 7890</p>
-    </footer>
-
-    <script type="module">
-        // JavaScript Module - attractions data and functionality
-        const attractions = [
-            {
-                "id": 1,
-                "name": "Lekki Conservation Centre",
-                "address": "KM 19, Lekki - Epe Expressway, Lagos",
-                "description": "A 78-hectare nature reserve protecting the wetlands and wildlife of the Lekki Peninsula. Features the longest canopy walkway in Africa (401 meters long). The center is home to various species of monkeys, crocodiles, and over 100 bird species. Visitors can enjoy guided tours, picnic areas, and the treehouse which offers panoramic views of the reserve.",
-                "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop&auto=format"
-            },
-            {
-                "id": 2,
-                "name": "National Museum Lagos",
-                "address": "Onikan, Lagos Island, Lagos",
-                "description": "Established in 1957, this museum houses artifacts from Nigeria's rich cultural heritage and historical exhibitions. The collection includes archaeological and ethnographic artifacts, traditional Nigerian art, Benin bronzes, and historical documents. The museum also features a gallery dedicated to traditional Nigerian textiles and crafts, providing insight into the country's diverse cultural history.",
-                "image": "https://images.unsplash.com/photo-1584467735871-8db9ac8b05f8?w=600&h=400&fit=crop&auto=format"
-            },
-            {
-                "id": 3,
-                "name": "Nike Art Gallery",
-                "address": "2, Elegushi Rd, Lekki Phase I, Lagos",
-                "description": "A four-story building housing over 8,000 artworks including paintings, sculptures, and traditional Nigerian textiles. Founded by Nike Davies-Okundaye, the gallery showcases contemporary Nigerian art alongside traditional crafts like Adire (indigo-dyed cloth) and batik. Visitors can watch artists at work, participate in art workshops, and purchase unique Nigerian artwork directly from the artists.",
-                "image": "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=600&h=400&fit=crop&auto=format"
-            },
-            {
-                "id": 4,
-                "name": "Tarkwa Bay Beach",
-                "address": "Off the coast of Lagos Harbor, Lagos",
-                "description": "A sheltered beach island accessible by boat, popular for swimming, surfing, and relaxing with stunning ocean views. The beach is known for its calm waters, making it ideal for families and beginner surfers. The island community offers local food stalls, beach chairs for rent, and a peaceful escape from the city's hustle. Best visited on weekdays to avoid crowds.",
-                "image": "https://images.unsplash.com/photo-1559496417-e7f25cb24763?w=600&h=400&fit=crop&auto=format"
-            },
-            {
-                "id": 5,
-                "name": "Freedom Park Lagos",
-                "address": "1 Hospital Road, Lagos Island, Lagos",
-                "description": "Built on the site of a former colonial prison, now a memorial and leisure park hosting cultural events and festivals. The park features art installations, historical markers, performance spaces, and lush gardens. It regularly hosts music concerts, art exhibitions, theater performances, and the popular Lagos International Jazz Festival. A perfect blend of history, culture, and recreation.",
-                "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop&auto=format"
-            },
-            {
-                "id": 6,
-                "name": "New Afrika Shrine",
-                "address": "1 NERDC Rd, Agidingbi, Ikeja, Lagos",
-                "description": "A music venue and cultural hub established by Femi Kuti to continue the legacy of his father Fela Kuti's original Shrine. The venue hosts live Afrobeat performances every Thursday and Sunday, featuring Femi Kuti and other musicians. Beyond music, it serves as a community center promoting African culture, arts, and activism. The atmosphere is vibrant, energetic, and deeply cultural.",
-                "image": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&h=400&fit=crop&auto=format"
-            },
-            {
-                "id": 7,
-                "name": "Eko Atlantic City",
-                "address": "Victoria Island, Lagos",
-                "description": "A planned city being constructed on land reclaimed from the Atlantic Ocean, featuring modern architecture and infrastructure. Dubbed 'The Gateway to Africa', this ambitious project includes residential areas, business districts, parks, and a marina. While still under development, visitors can tour the construction sites, visit the observation deck, and learn about this engineering marvel combating coastal erosion.",
-                "image": "https://images.unsplash.com/photo-1548013146-72479768bada?w=600&h=400&fit=crop&auto=format"
-            },
-            {
-                "id": 8,
-                "name": "Jankara Market",
-                "address": "Lagos Island, Lagos",
-                "description": "One of the oldest markets in Lagos, famous for traditional fabrics, crafts, and authentic Nigerian cultural items. Established in the 19th century, the market offers everything from traditional Yoruba attire (Aso Oke) to herbal medicines, spiritual items, and local crafts. It's a bustling, vibrant experience offering a glimpse into traditional Nigerian commerce and culture. Bargaining is expected and part of the experience.",
-                "image": "https://images.unsplash.com/photo-1556740732-9c8b788d6c2c?w=600&h=400&fit=crop&auto=format"
-            }
-        ];
-
-        // DOM elements
-        const discoverGrid = document.getElementById('discover-grid');
-        const visitMessage = document.getElementById('visit-message');
-        const modalOverlay = document.getElementById('modal-overlay');
-        const modalClose = document.getElementById('modal-close');
-        const modalTitle = document.getElementById('modal-title');
-        const modalImage = document.getElementById('modal-image');
-        const modalAddress = document.getElementById('modal-address');
-        const modalDescription = document.getElementById('modal-description');
-
-        // Function to create card HTML
-        function createCard(attraction) {
-            return `
-                <div class="card">
-                    <h2>${attraction.name}</h2>
-                    <figure>
-                        <img src="${attraction.image}" alt="${attraction.name}" loading="lazy">
-                    </figure>
-                    <address>${attraction.address}</address>
-                    <p>${attraction.description.substring(0, 100)}...</p>
-                    <button class="learn-more-btn" data-id="${attraction.id}" aria-label="Learn more about ${attraction.name}">
-                        Learn More
-                    </button>
-                </div>
-            `;
-        }
-
-        // Function to open modal with attraction details
-        function openModal(attraction) {
-            modalTitle.textContent = attraction.name;
-            modalImage.src = attraction.image;
-            modalImage.alt = attraction.name;
-            modalAddress.textContent = attraction.address;
-            modalDescription.textContent = attraction.description;
-            
-            modalOverlay.style.display = 'flex';
-            document.body.classList.add('modal-open');
-            
-            // Set focus to close button for accessibility
-            setTimeout(() => modalClose.focus(), 100);
-        }
-
-        // Function to close modal
-        function closeModal() {
-            modalOverlay.style.display = 'none';
-            document.body.classList.remove('modal-open');
-        }
-
-        // Function to display attractions
-        function displayAttractions() {
-            discoverGrid.innerHTML = '';
-            attractions.forEach(attraction => {
-                const cardHTML = createCard(attraction);
-                discoverGrid.innerHTML += cardHTML;
-            });
-            
-            // Add event listeners to Learn More buttons
-            document.querySelectorAll('.learn-more-btn').forEach((button) => {
-                button.addEventListener('click', (e) => {
-                    const attractionId = parseInt(e.target.getAttribute('data-id'));
-                    const attraction = attractions.find(a => a.id === attractionId);
-                    if (attraction) {
-                        openModal(attraction);
-                    }
-                });
-            });
-        }
-
-        // Function to handle visit tracking
-        function trackVisits() {
-            const now = Date.now();
-            const lastVisit = localStorage.getItem('lastVisit');
-            
-            if (!lastVisit) {
-                // First visit
-                visitMessage.textContent = "Welcome! Let us know if you have any questions.";
-            } else {
-                const lastVisitTime = parseInt(lastVisit);
-                const timeDifference = now - lastVisitTime;
-                const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-                
-                if (daysDifference === 0) {
-                    visitMessage.textContent = "Back so soon! Awesome!";
-                } else if (daysDifference === 1) {
-                    visitMessage.textContent = `You last visited 1 day ago.`;
-                } else {
-                    visitMessage.textContent = `You last visited ${daysDifference} days ago.`;
-                }
-            }
-            
-            // Store current visit
-            localStorage.setItem('lastVisit', now.toString());
-        }
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', () => {
-            displayAttractions();
-            trackVisits();
-            
-            // Modal event listeners
-            modalClose.addEventListener('click', closeModal);
-            modalOverlay.addEventListener('click', (e) => {
-                if (e.target === modalOverlay) {
-                    closeModal();
-                }
-            });
-            
-            // Close modal with Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modalOverlay.style.display === 'flex') {
-                    closeModal();
-                }
-            });
-        });
-    </script>
 </body>
 </html>
