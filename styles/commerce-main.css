@@ -90,8 +90,8 @@ header span {
 }
 
 .navigation a:hover {
-    background-color: var(--hover-color);
-    color: var(--tertiary-color);
+    background-color: var(--light-blue);
+    color: var(--secondary-color);
 }
 
 header, .navigation, main, footer {
