@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Smart Task Tracker - Mobile Friendly</title>
+    <title>Task Tracker Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
@@ -13,11 +13,11 @@
         
         * { font-family: 'Inter', sans-serif; }
         
-        body { margin: 0; padding: 0; background: #E9F1F9; }
+        body { margin: 0; padding: 0; background: #f5f0e8; }
         
         ::-webkit-scrollbar { width: 4px; height: 4px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb { background: #2B5BA9; border-radius: 10px; }
+        ::-webkit-scrollbar-track { background: #e8e0d5; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #c4a77d; border-radius: 10px; }
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -40,27 +40,59 @@
         
         .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         
-        /* Mobile optimizations */
         @media (max-width: 768px) {
             .stat-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
             .stat-card { padding: 16px !important; }
             .stat-card p { font-size: 18px !important; }
-            .quick-entry { flex-direction: column !important; }
-            .quick-entry select, .quick-entry button { width: 100% !important; }
             .trend-bars { gap: 6px !important; }
         }
         
-        /* Prevent body scroll when menu is open */
         body.menu-open { overflow: hidden; }
+        
+        .avatar-upload {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .avatar-upload:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+        
+        .empty-bar {
+            background: repeating-linear-gradient(
+                45deg,
+                #e8e0d5,
+                #e8e0d5 10px,
+                #d5ccbf 10px,
+                #d5ccbf 20px
+            );
+        }
+        
+        .stat-value-large {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+        
+        @media (min-width: 768px) {
+            .stat-value-large {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Bar animation */
+        .bar-fill {
+            transition: height 0.5s ease-out;
+        }
     </style>
 </head>
 <body>
     <div id="root"></div>
     
     <script type="text/babel">
-        const { useState, useMemo, useEffect } = React;
+        const { useState, useMemo, useEffect, useRef } = React;
 
-        // Icons
+        // Icons (same as before, shortened for space)
         const Menu = ({ size = 24 }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>;
         const X = ({ size = 24 }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>;
         const LayoutDashboard = ({ size = 24 }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>;
@@ -79,8 +111,9 @@
         const Database = ({ size = 24 }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>;
         const Bell = ({ size = 24 }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>;
         const Search = ({ size = 24 }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>;
+        const Camera = ({ size = 24 }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>;
 
-        // Utility functions - defined ONCE at the top level
+        // Utility functions
         const formatDate = (timestamp) => {
             if (!timestamp) return '--';
             return new Date(timestamp).toLocaleDateString('en-US', {
@@ -100,47 +133,43 @@
             });
         };
 
-        // Fixed: Proper pluralization including zero
         const formatDays = (num) => {
-            // Handle null/undefined
             if (num === null || num === undefined) return '--';
-            
-            // Parse and round the number
             const parsedNum = parseFloat(num);
             if (isNaN(parsedNum)) return '--';
-            
             const roundedNum = Math.round(parsedNum);
-            
-            // Handle zero - returns "0 days"
-            if (roundedNum === 0) return '----';
-            
-            // Handle singular/plural
+            if (roundedNum === 0) return '0 days';
             return `${roundedNum} ${roundedNum === 1 ? 'day' : 'days'}`;
         };
 
         const CATEGORIES = [
-            { name: 'Car Maintenance', color: 'bg-blue-500', text: 'text-blue-500' },
-            { name: 'House Chores', color: 'bg-orange-500', text: 'text-orange-500' },
-            { name: 'Pet Care', color: 'bg-green-500', text: 'text-green-500' },
-            { name: 'Personal', color: 'bg-purple-500', text: 'text-purple-500' },
+            { name: 'Car Maintenance', color: '#c4a77d', bg: 'bg-[#c4a77d]' },
+            { name: 'House Chores', color: '#a0845c', bg: 'bg-[#a0845c]' },
+            { name: 'Pet Care', color: '#8b7355', bg: 'bg-[#8b7355]' },
+            { name: 'Personal', color: '#d4b896', bg: 'bg-[#d4b896]' },
         ];
 
-        const CharacterAvatar = ({ className }) => (
-            <svg viewBox="0 0 100 100" className={className}>
-                <circle cx="50" cy="45" r="30" fill="#A17452" />
-                <path d="M20 45 C 20 15, 80 15, 80 45" fill="black" />
-                <circle cx="40" cy="45" r="4" fill="white" />
-                <circle cx="40" cy="45" r="2" fill="black" />
-                <circle cx="60" cy="45" r="4" fill="white" />
-                <circle cx="60" cy="45" r="2" fill="black" />
-                <path d="M42 60 Q 50 65 58 60" fill="none" stroke="#633F25" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-        );
+        const CharacterAvatar = ({ className, imageData }) => {
+            if (imageData) {
+                return <img src={imageData} alt="Avatar" className={`rounded-full object-cover ${className}`} />;
+            }
+            return (
+                <svg viewBox="0 0 100 100" className={className} fill="#c4a77d">
+                    <circle cx="50" cy="50" r="45" fill="#e8dcc8" />
+                    <circle cx="50" cy="40" r="20" fill="#d4b896" />
+                    <circle cx="38" cy="38" r="3" fill="#5c3a1e" />
+                    <circle cx="62" cy="38" r="3" fill="#5c3a1e" />
+                    <path d="M42 55 Q 50 62 58 55" fill="none" stroke="#8b7355" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M35 48 Q 30 45 25 48" fill="none" stroke="#8b7355" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M65 48 Q 70 45 75 48" fill="none" stroke="#8b7355" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+            );
+        };
 
         const StatCard = ({ label, value, highlight, warning }) => (
-            <div className={`stat-card p-4 md:p-6 rounded-2xl border-2 shadow-sm transition-all ${highlight ? 'bg-[#2B5BA9] border-[#2B5BA9] text-white' : warning ? 'bg-red-50 border-red-200' : 'bg-white border-slate-100'}`}>
-                <h4 className={`text-[10px] font-black uppercase tracking-widest mb-2 ${highlight ? 'text-white/50' : warning ? 'text-red-600' : 'text-slate-400'}`}>{label}</h4>
-                <p className={`text-lg md:text-xl font-black ${!highlight && !warning ? 'text-[#1E3A8A]' : warning ? 'text-red-600' : ''}`}>{value || '--'}</p>
+            <div className={`p-4 md:p-5 rounded-xl border shadow-sm transition-all ${highlight ? 'bg-[#2c4a2e] border-[#3d5c3f] text-white' : warning ? 'bg-red-50 border-red-200' : 'bg-white border-[#e8e0d5]'}`}>
+                <h4 className={`text-[11px] font-black uppercase tracking-wider mb-1 ${highlight ? 'text-white/60' : warning ? 'text-red-600' : 'text-[#8b7355]'}`}>{label}</h4>
+                <p className={`text-xl md:text-2xl font-black tracking-tight ${!highlight && !warning ? 'text-[#2c3e2f]' : warning ? 'text-red-600' : ''}`}>{value || '--'}</p>
             </div>
         );
 
@@ -152,6 +181,10 @@
             const [logs, setLogs] = useState(() => {
                 const saved = localStorage.getItem('taskTracker_logs');
                 return saved ? JSON.parse(saved) : [];
+            });
+            const [avatarImage, setAvatarImage] = useState(() => {
+                const saved = localStorage.getItem('taskTracker_avatar');
+                return saved || null;
             });
             const [activeTab, setActiveTab] = useState('dashboard');
             const [selectedTaskForLog, setSelectedTaskForLog] = useState('');
@@ -179,8 +212,17 @@
             const [notifications, setNotifications] = useState([]);
             const [showNotifications, setShowNotifications] = useState(false);
             const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+            const [forceUpdate, setForceUpdate] = useState(0);
+            const fileInputRef = useRef(null);
 
-            // Close mobile menu when screen size changes to desktop
+            // Auto-update days elapsed every minute
+            useEffect(() => {
+                const interval = setInterval(() => {
+                    setForceUpdate(prev => prev + 1);
+                }, 60000);
+                return () => clearInterval(interval);
+            }, []);
+
             useEffect(() => {
                 const handleResize = () => {
                     if (window.innerWidth >= 768 && isMobileMenuOpen) {
@@ -192,7 +234,6 @@
                 return () => window.removeEventListener('resize', handleResize);
             }, [isMobileMenuOpen]);
 
-            // Prevent body scroll when mobile menu is open
             useEffect(() => {
                 if (isMobileMenuOpen) {
                     document.body.classList.add('menu-open');
@@ -201,8 +242,9 @@
                 }
             }, [isMobileMenuOpen]);
 
-            // Check for overdue tasks
+            // Calculate stats with real-time days since
             const stats = useMemo(() => {
+                const now = new Date().getTime();
                 return tasks.map(task => {
                     const taskLogs = logs
                         .filter(l => l.task_id === task.id)
@@ -225,10 +267,10 @@
                         : null;
 
                     const daysSince = lastDone 
-                        ? Math.floor((new Date().getTime() - lastDone) / (1000 * 60 * 60 * 24))
+                        ? Math.floor((now - lastDone) / (1000 * 60 * 60 * 24))
                         : 0;
                         
-                    const isOverdue = predictedNext && new Date().getTime() > predictedNext;
+                    const isOverdue = predictedNext && now > predictedNext;
 
                     return { 
                         ...task, 
@@ -241,7 +283,7 @@
                         intervals
                     };
                 });
-            }, [tasks, logs]);
+            }, [tasks, logs, forceUpdate]);
 
             useEffect(() => {
                 const checkOverdueTasks = () => {
@@ -273,18 +315,40 @@
                 localStorage.setItem('taskTracker_logs', JSON.stringify(logs));
                 localStorage.setItem('taskTracker_tutorial', JSON.stringify(tutorialStep));
                 localStorage.setItem('taskTracker_showTutorial', JSON.stringify(showTutorial));
-            }, [tasks, logs, tutorialStep, showTutorial]);
+                if (avatarImage) {
+                    localStorage.setItem('taskTracker_avatar', avatarImage);
+                }
+            }, [tasks, logs, tutorialStep, showTutorial, avatarImage]);
 
             const currentStats = stats.find(s => s.id === parseInt(selectedTaskForLog)) || null;
 
-            const getRealTrendData = () => {
+            // Get chart data - shows intervals between completions
+            const getChartData = () => {
                 if (!selectedTaskForLog) return [];
                 const taskStats = stats.find(s => s.id === parseInt(selectedTaskForLog));
                 if (!taskStats || taskStats.intervals.length === 0) return [];
-                const maxInterval = Math.max(...taskStats.intervals, 1);
-                return taskStats.intervals.slice(0, 7).map(interval => ({
-                    height: (interval / maxInterval) * 70
+                
+                // Get the intervals (days between completions)
+                const intervals = taskStats.intervals;
+                const maxInterval = Math.max(...intervals, 1);
+                
+                // Create bars for each interval
+                return intervals.map((interval, index) => ({
+                    days: interval,
+                    height: (interval / maxInterval) * 70,
+                    label: `Completion ${index + 1} to ${index + 2}`
                 }));
+            };
+
+            const handleAvatarUpload = (e) => {
+                const file = e.target.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        setAvatarImage(event.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
             };
 
             const handleCreateTask = (e) => {
@@ -344,7 +408,7 @@
             };
 
             const exportData = () => {
-                const data = { tasks, logs, exportDate: new Date().toISOString() };
+                const data = { tasks, logs, avatarImage, exportDate: new Date().toISOString() };
                 const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -361,7 +425,12 @@
                 reader.onload = (e) => {
                     try {
                         const data = JSON.parse(e.target.result);
-                        if (data.tasks && data.logs) { setTasks(data.tasks); setLogs(data.logs); alert('Imported successfully!'); }
+                        if (data.tasks && data.logs) { 
+                            setTasks(data.tasks); 
+                            setLogs(data.logs);
+                            if (data.avatarImage) setAvatarImage(data.avatarImage);
+                            alert('Imported successfully!'); 
+                        }
                         else alert('Invalid file format');
                     } catch (error) { alert('Error parsing file'); }
                 };
@@ -371,7 +440,11 @@
 
             const resetAllData = () => {
                 if (window.confirm('WARNING: This will delete ALL data. Cannot be undone.')) {
-                    setTasks([]); setLogs([]); setSelectedTaskForLog(''); setShowResetConfirm(false);
+                    setTasks([]); 
+                    setLogs([]); 
+                    setAvatarImage(null);
+                    setSelectedTaskForLog(''); 
+                    setShowResetConfirm(false);
                     alert('All data reset');
                 }
             };
@@ -388,157 +461,240 @@
                 return stats.filter(t => t.name.toLowerCase().includes(searchTerm.toLowerCase()) || t.category.toLowerCase().includes(searchTerm.toLowerCase()));
             }, [stats, searchTerm]);
 
-            // Navigation items
             const navItems = [
                 { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard size={20} /> },
-                { id: 'templates', label: 'My Templates', icon: <ClipboardList size={20} /> },
+                { id: 'templates', label: 'Task Log', icon: <ClipboardList size={20} /> },
                 { id: 'history', label: 'History', icon: <History size={20} /> },
                 { id: 'settings', label: 'Settings', icon: <Settings size={20} /> }
             ];
 
-            const DashboardView = () => (
-                <>
-                    {/* Notification Bell */}
-                    <div className="fixed top-4 right-16 md:right-4 z-40">
-                        <button onClick={() => setShowNotifications(!showNotifications)} className="relative bg-white p-2 md:p-3 rounded-full shadow-lg">
-                            <Bell size={20} className="text-[#2B5BA9]" />
-                            {notifications.length > 0 && <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">{notifications.length}</span>}
-                        </button>
-                        {showNotifications && notifications.length > 0 && (
-                            <div className="absolute right-0 mt-2 w-72 bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden z-50">
-                                <div className="p-3 bg-red-50 border-b border-red-100"><h4 className="font-black text-red-600 text-sm">Overdue Tasks</h4></div>
-                                <div className="max-h-80 overflow-y-auto">
-                                    {notifications.map(notif => {
-                                        const task = stats.find(s => s.id === notif.id);
-                                        return (
-                                            <div key={notif.id} className="p-3 border-b border-slate-100">
-                                                <p className="font-bold text-sm">{notif.taskName}</p>
-                                                <p className="text-xs text-red-600">{notif.daysOverdue} days overdue</p>
-                                                <p className="text-xs text-slate-400">Expected: {formatDate(task?.predictedNext)}</p>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </div>
-                        )}
-                    </div>
-
-                    {/* Quick Entry */}
-                    <section className={`bg-white rounded-2xl md:rounded-3xl shadow-sm border-2 ${tutorialStep === 2 ? 'border-orange-400' : 'border-slate-100'} p-4 md:p-8 mb-6 md:mb-10`}>
-                        <h3 className="text-xs font-black text-[#1E3A8A] mb-4 uppercase tracking-[0.2em] flex items-center gap-2">
-                            <Activity size={14} className="text-orange-500" /> Quick Log Entry
-                        </h3>
-                        <div className="quick-entry flex flex-col md:flex-row gap-4">
-                            <div className="relative flex-1">
-                                <select value={selectedTaskForLog} onChange={(e) => setSelectedTaskForLog(e.target.value)} className="w-full appearance-none bg-slate-50 border-2 border-slate-100 rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 font-bold text-sm md:text-base outline-none focus:border-blue-500">
-                                    <option value="" disabled>Select a template...</option>
-                                    {tasks.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
-                                </select>
-                                <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={18} />
-                            </div>
-                            <div className="flex items-center gap-2 bg-slate-50 border-2 border-slate-100 rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 text-sm">
-                                <Calendar size={16} />
-                                <span>{new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
-                            </div>
-                            <button disabled={!selectedTaskForLog} onClick={handleAddEntry} className="bg-[#F97316] hover:bg-[#EA580C] disabled:opacity-30 text-white px-6 md:px-10 py-3 md:py-4 rounded-xl md:rounded-2xl font-bold transition-all flex items-center justify-center gap-2">
-                                Add Entry
+            const DashboardView = () => {
+                const chartData = getChartData();
+                const hasData = chartData.length > 0;
+                
+                return (
+                    <>
+                        <div className="fixed top-4 right-16 md:right-4 z-40">
+                            <button onClick={() => setShowNotifications(!showNotifications)} className="relative bg-white p-2 md:p-3 rounded-full shadow-lg">
+                                <Bell size={20} className="text-[#c4a77d]" />
+                                {notifications.length > 0 && <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">{notifications.length}</span>}
                             </button>
-                        </div>
-                    </section>
-
-                    {/* Stats - using formatDays correctly for 0 days */}
-                    <div className="stat-grid grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-6 mb-6 md:mb-10">
-                        <StatCard label="Last Action" value={formatDate(currentStats?.lastDone)} />
-                        <StatCard label="Days Elapsed" value={currentStats ? formatDays(currentStats.daysSince) : '--'} />
-                        <StatCard label="Avg Interval" value={currentStats ? formatDays(currentStats.avgInterval) : '--'} />
-                        <StatCard label="Next Expected" value={formatDate(currentStats?.predictedNext)} highlight />
-                        <StatCard label="Status" value={currentStats?.isOverdue ? 'OVERDUE!' : currentStats?.predictedNext ? 'On Track' : 'New'} warning={currentStats?.isOverdue} />
-                    </div>
-
-                    {/* Charts */}
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-10">
-                        <div className="lg:col-span-5 bg-white rounded-2xl md:rounded-[2.5rem] shadow-sm border border-slate-100 p-4 md:p-8">
-                            <h3 className="font-black text-[#1E3A8A] uppercase text-xs md:text-sm mb-4">Activity History</h3>
-                            {logs.filter(l => l.task_id === parseInt(selectedTaskForLog)).length === 0 ? (
-                                <div className="text-center py-8"><History size={40} className="text-slate-300 mx-auto mb-3" /><p className="text-sm text-slate-400">No logs yet</p></div>
-                            ) : (
-                                <div className="space-y-3">
-                                    {logs.filter(l => l.task_id === parseInt(selectedTaskForLog)).slice(0, 10).map((log) => (
-                                        <div key={log.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
-                                            <div><p className="font-bold text-sm">{formatDateTime(log.timestamp)}</p><p className="text-xs text-slate-400">Completed</p></div>
-                                            <div className="flex gap-2">
-                                                <button onClick={() => handleEditLog(log)} className="text-blue-400"><Edit size={14} /></button>
-                                                <button onClick={() => handleDeleteLog(log.id)} className="text-red-400"><Trash2 size={14} /></button>
-                                            </div>
-                                        </div>
-                                    ))}
+                            {showNotifications && notifications.length > 0 && (
+                                <div className="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-xl border border-[#e8e0d5] overflow-hidden z-50">
+                                    <div className="p-4 bg-red-50 border-b border-red-100"><h4 className="font-black text-red-600 text-sm">Overdue Tasks</h4></div>
+                                    <div className="max-h-96 overflow-y-auto">
+                                        {notifications.map(notif => {
+                                            const task = stats.find(s => s.id === notif.id);
+                                            return (
+                                                <div key={notif.id} className="p-4 border-b border-[#e8e0d5] hover:bg-[#f5f0e8] transition-colors">
+                                                    <p className="font-bold text-[#2c3e2f]">{notif.taskName}</p>
+                                                    <p className="text-sm text-red-600">{notif.daysOverdue} days overdue</p>
+                                                    <p className="text-xs text-[#a0845c]">Expected: {formatDate(task?.predictedNext)}</p>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
                                 </div>
                             )}
                         </div>
 
-                        <div className="lg:col-span-7 space-y-6">
-                            <div className="bg-white p-4 md:p-10 rounded-2xl md:rounded-[2.5rem] shadow-sm">
-                                <h3 className="font-black text-[#1E3A8A] uppercase text-xs md:text-sm mb-6">Predictive Trends</h3>
-                                {getRealTrendData().length === 0 ? (
-                                    <div className="h-32 md:h-40 bg-slate-50 rounded-2xl flex items-center justify-center text-center"><p className="text-xs text-slate-400">Need 2+ logs to show trends</p></div>
-                                ) : (
-                                    <div className="trend-bars h-32 md:h-40 flex items-end justify-between gap-2 md:gap-3">
-                                        {getRealTrendData().map((data, i) => (
-                                            <div key={i} className="flex-1 bg-blue-50 rounded-t-lg relative group">
-                                                <div className="absolute bottom-0 w-full bg-gradient-to-t from-blue-600 to-blue-400 rounded-t-lg transition-all" style={{ height: `${Math.max(5, data.height)}%` }}></div>
-                                                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                                                    {currentStats?.intervals[i]?.toFixed(1)} days
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                                <p className="text-center text-xs text-slate-400 mt-4">Each bar shows interval between completions</p>
-                            </div>
-
-                            <div className="grid grid-cols-2 gap-4 md:gap-8">
-                                <div className="bg-white p-4 md:p-8 rounded-2xl text-center">
-                                    <h4 className="text-[10px] font-black text-slate-400 uppercase mb-2">Prediction Confidence</h4>
-                                    <p className={`text-xl md:text-2xl font-black ${currentStats?.logCount > 5 ? 'text-emerald-500' : currentStats?.logCount > 2 ? 'text-amber-500' : 'text-slate-300'}`}>
-                                        {currentStats?.logCount > 5 ? 'High' : currentStats?.logCount > 2 ? 'Medium' : currentStats?.logCount > 0 ? 'Low' : 'N/A'}
-                                    </p>
+                        {/* Task Selection Section */}
+                        <div className="bg-white rounded-2xl shadow-sm border border-[#e8e0d5] p-6 md:p-8 mb-8">
+                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                                <div className="flex-1">
+                                    <label className="block text-[11px] font-black text-[#a0845c] uppercase tracking-wider mb-2">Select Task</label>
+                                    <select 
+                                        value={selectedTaskForLog} 
+                                        onChange={(e) => setSelectedTaskForLog(e.target.value)} 
+                                        className="w-full md:w-80 appearance-none bg-[#f5f0e8] border-2 border-[#e8e0d5] rounded-xl px-5 py-3.5 font-semibold text-[#2c3e2f] outline-none focus:border-[#c4a77d] transition-all cursor-pointer"
+                                    >
+                                        <option value="" disabled>Choose a task template...</option>
+                                        {tasks.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
+                                    </select>
                                 </div>
-                                <div className="bg-white p-4 md:p-8 rounded-2xl text-center">
-                                    <h4 className="text-[10px] font-black text-slate-400 uppercase mb-2">Consistency Score</h4>
-                                    <p className="text-xl md:text-2xl font-black text-[#1E3A8A]">
-                                        {currentStats?.intervals.length > 1 ? `${Math.round(100 - (currentStats.intervals.reduce((a,b) => a + Math.abs(b - currentStats.avgInterval), 0) / currentStats.avgInterval / currentStats.intervals.length * 100))}%` : '--'}
-                                    </p>
+                                <div className="flex items-center gap-3">
+                                    <div className="flex items-center gap-2 bg-[#f5f0e8] border border-[#e8e0d5] rounded-xl px-5 py-3.5">
+                                        <Calendar size={18} className="text-[#c4a77d]" />
+                                        <span className="text-sm font-medium text-[#5c3a1e]">{new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                                    </div>
+                                    <button 
+                                        onClick={handleAddEntry} 
+                                        disabled={!selectedTaskForLog}
+                                        className="bg-[#c4a77d] hover:bg-[#a0845c] disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-3.5 rounded-xl font-bold transition-all flex items-center gap-2"
+                                    >
+                                        <PlusCircle size={18} /> Add Entry
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </>
-            );
+
+                        {/* Main Stats Grid */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
+                            <StatCard label="Last Completed" value={formatDate(currentStats?.lastDone)} />
+                            <StatCard label="Days Since" value={currentStats ? formatDays(currentStats.daysSince) : '--'} />
+                            <StatCard label="Average Interval" value={currentStats ? formatDays(currentStats.avgInterval) : '--'} />
+                            <StatCard label="Next Expected" value={formatDate(currentStats?.predictedNext)} highlight />
+                        </div>
+
+                        {/* Trends & Predictions Section */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                            {/* Chart Section */}
+                            <div className="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-[#e8e0d5] p-6 md:p-8">
+                                <div className="flex items-center justify-between mb-6">
+                                    <h3 className="font-black text-[#2c3e2f] uppercase text-sm tracking-wider">TRENDS &amp; PREDICTIONS</h3>
+                                    <TrendingUp size={20} className="text-[#c4a77d]" />
+                                </div>
+                                
+                                {!hasData ? (
+                                    <div className="h-48 flex flex-col items-center justify-center bg-[#f5f0e8] rounded-xl border-2 border-dashed border-[#e8e0d5]">
+                                        <Activity size={32} className="text-[#c4a77d]/50 mb-3" />
+                                        <p className="text-[#a0845c] text-sm font-medium">No data available</p>
+                                        <p className="text-xs text-[#c4a77d] mt-1">Complete this task twice to see interval trends</p>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <div className="trend-bars h-48 flex items-end justify-between gap-3 md:gap-4">
+                                            {chartData.map((item, idx) => (
+                                                <div key={idx} className="flex-1 flex flex-col items-center gap-2 group">
+                                                    <div className="w-full bg-[#e8e0d5] rounded-t-lg relative" style={{ height: '100%', minHeight: '120px' }}>
+                                                        <div 
+                                                            className="absolute bottom-0 w-full bg-gradient-to-t from-[#c4a77d] to-[#d4b896] rounded-t-lg bar-fill transition-all duration-700"
+                                                            style={{ height: `${item.height}%` }}
+                                                        >
+                                                            <div className="absolute -top-7 left-1/2 transform -translate-x-1/2 bg-[#2c3e2f] text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg pointer-events-none">
+                                                                {item.days.toFixed(1)} days
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span className="text-[9px] font-bold text-[#a0845c] uppercase tracking-wider text-center">
+                                                        {item.label}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <div className="flex justify-between mt-6 px-2 text-[10px] font-black text-[#a0845c] uppercase tracking-wider">
+                                            <span>Interval 1</span>
+                                            <span>Interval 2</span>
+                                            <span>Interval 3</span>
+                                            <span>Interval 4</span>
+                                            <span>Interval 5</span>
+                                            <span>Interval 6</span>
+                                        </div>
+                                        <p className="text-center text-xs text-[#a0845c] mt-5">
+                                            Each bar shows the interval (in days) between consecutive completions
+                                        </p>
+                                    </>
+                                )}
+                            </div>
+
+                            {/* Insights Panel */}
+                            <div className="bg-gradient-to-br from-[#2c4a2e] to-[#1a2c1d] rounded-2xl shadow-sm p-6 md:p-8 text-white">
+                                <h3 className="font-black text-white/70 uppercase text-xs tracking-wider mb-4">Status Overview</h3>
+                                <div className="space-y-6">
+                                    <div>
+                                        <p className="text-3xl md:text-4xl font-black">{currentStats ? formatDays(currentStats.avgInterval) : '--'}</p>
+                                        <p className="text-xs text-white/50 mt-1 font-semibold">AVERAGE DURATION</p>
+                                    </div>
+                                    <div className="pt-4 border-t border-white/10">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <span className="text-sm font-semibold text-white/70">Status</span>
+                                            <span className={`text-sm font-black px-3 py-1 rounded-full ${currentStats?.isOverdue ? 'bg-red-500/20 text-red-300' : currentStats?.predictedNext ? 'bg-emerald-500/20 text-emerald-300' : 'bg-white/10 text-white/70'}`}>
+                                                {currentStats?.isOverdue ? 'OVERDUE' : currentStats?.predictedNext ? 'ON TRACK' : 'PENDING'}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p className="text-2xl font-black">
+                                            {currentStats?.logCount > 5 ? 'High' : currentStats?.logCount > 2 ? 'Moderate' : currentStats?.logCount > 0 ? 'Low' : 'N/A'}
+                                        </p>
+                                        <p className="text-xs text-white/50 mt-1 font-semibold">CONFIDENCE LEVEL</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-2xl font-black">{currentStats?.logCount || 0}</p>
+                                        <p className="text-xs text-white/50 mt-1 font-semibold">TOTAL COMPLETIONS</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Recent Activity Log */}
+                        <div className="bg-white rounded-2xl shadow-sm border border-[#e8e0d5] overflow-hidden">
+                            <div className="px-6 py-5 border-b border-[#e8e0d5]">
+                                <h3 className="font-black text-[#2c3e2f] uppercase text-sm tracking-wider">Recent Activity</h3>
+                            </div>
+                            <div className="divide-y divide-[#e8e0d5]">
+                                {logs.filter(l => l.task_id === parseInt(selectedTaskForLog)).slice(0, 5).length === 0 ? (
+                                    <div className="p-8 text-center">
+                                        <History size={40} className="text-[#d5ccbf] mx-auto mb-3" />
+                                        <p className="text-[#a0845c] text-sm">No activity recorded yet</p>
+                                        <p className="text-xs text-[#c4a77d] mt-1">Add an entry to start tracking</p>
+                                    </div>
+                                ) : (
+                                    logs.filter(l => l.task_id === parseInt(selectedTaskForLog)).slice(0, 5).map((log) => (
+                                        <div key={log.id} className="flex items-center justify-between px-6 py-4 hover:bg-[#f5f0e8] transition-colors">
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-8 h-8 rounded-full bg-[#e8e0d5] flex items-center justify-center">
+                                                    <Activity size={14} className="text-[#c4a77d]" />
+                                                </div>
+                                                <div>
+                                                    <p className="font-bold text-[#2c3e2f]">{formatDateTime(log.timestamp)}</p>
+                                                    <p className="text-xs text-[#a0845c]">Task completed</p>
+                                                </div>
+                                            </div>
+                                        
+                                        </div>
+                                    ))
+                                )}
+                            </div>
+                        </div>
+                    </>
+                );
+            };
 
             const TemplatesView = () => (
                 <div className="space-y-4 md:space-y-6">
                     <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
-                        <h2 className="text-xl md:text-2xl font-black text-[#1E3A8A]">My Templates</h2>
+                        <h2 className="text-xl md:text-2xl font-black text-[#2c3e2f]">Task Log</h2>
                         <div className="flex gap-3">
-                            <div className="relative flex-1 md:w-64"><Search size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" /><input type="text" placeholder="Search..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-9 pr-3 py-2 bg-slate-50 border-2 border-slate-100 rounded-xl text-sm outline-none focus:border-blue-500" /></div>
-                            <button onClick={() => setIsTaskModalOpen(true)} className="flex items-center gap-2 bg-[#2B5BA9] text-white px-4 py-2 rounded-xl font-bold text-sm"><PlusCircle size={16} />New</button>
+                            <div className="relative flex-1 md:w-64">
+                                <Search size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#a0845c]" />
+                                <input type="text" placeholder="Search templates..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-9 pr-3 py-2 bg-[#f5f0e8] border-2 border-[#e8e0d5] rounded-xl text-sm text-[#2c3e2f] outline-none focus:border-[#c4a77d]" />
+                            </div>
+                            <button onClick={() => setIsTaskModalOpen(true)} className="flex items-center gap-2 bg-[#c4a77d] text-white px-4 py-2 rounded-xl font-bold text-sm hover:bg-[#a0845c] transition-colors"><PlusCircle size={16} />New Task</button>
                         </div>
                     </div>
                     {filteredTemplates.length === 0 ? (
-                        <div className="bg-white rounded-2xl p-8 text-center"><ClipboardList size={40} className="text-slate-300 mx-auto mb-3" /><p className="text-slate-400 text-sm">No templates found</p></div>
+                        <div className="bg-white rounded-2xl p-12 text-center border border-[#e8e0d5]">
+                            <ClipboardList size={48} className="text-[#d5ccbf] mx-auto mb-4" />
+                            <p className="text-[#a0845c] font-medium">No templates found</p>
+                            <p className="text-sm text-[#c4a77d] mt-1">Create your first task template to get started</p>
+                        </div>
                     ) : (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             {filteredTemplates.map(task => (
-                                <div key={task.id} className={`bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-sm border-2 ${task.isOverdue ? 'border-red-200' : 'border-slate-100'}`}>
+                                <div key={task.id} className={`bg-white rounded-xl p-5 shadow-sm border ${task.isOverdue ? 'border-red-200 bg-red-50/30' : 'border-[#e8e0d5]'} hover:shadow-md transition-all`}>
                                     <div className="flex justify-between items-start mb-3">
-                                        <div><h3 className="text-base md:text-xl font-black text-[#1E3A8A]">{task.name}</h3><p className="text-xs text-slate-500">{task.category}</p>{task.isOverdue && <p className="text-xs text-red-600 font-bold mt-1">⚠️ Overdue</p>}</div>
-                                        <div className="flex gap-1"><button onClick={() => { setEditingTask(task); setNewTaskName(task.name); setNewTaskCategory(task.category); setIsEditModalOpen(true); }} className="p-1 text-blue-500"><Edit size={14} /></button><button onClick={() => handleDeleteTask(task.id)} className="p-1 text-red-500"><Trash2 size={14} /></button></div>
+                                        <div>
+                                            <h3 className="text-lg font-black text-[#2c3e2f]">{task.name}</h3>
+                                            <p className="text-xs text-[#a0845c] mt-0.5">{task.category}</p>
+                                            {task.isOverdue && <p className="text-xs text-red-600 font-bold mt-2">⚠️ Overdue by {Math.floor((new Date().getTime() - task.predictedNext) / (1000 * 60 * 60 * 24))} days</p>}
+                                        </div>
+                                        <div className="flex gap-1">
+                                            <button onClick={() => { setEditingTask(task); setNewTaskName(task.name); setNewTaskCategory(task.category); setIsEditModalOpen(true); }} className="p-2 text-[#c4a77d] hover:bg-[#f5f0e8] rounded-lg transition-colors"><Edit size={16} /></button>
+                                            <button onClick={() => handleDeleteTask(task.id)} className="p-2 text-red-300 hover:bg-red-50 rounded-lg transition-colors"><Trash2 size={16} /></button>
+                                        </div>
                                     </div>
-                                    <div className="grid grid-cols-3 gap-2 pt-3 border-t border-slate-100">
-                                        <div><p className="text-[10px] text-slate-400">Logs</p><p className="font-bold">{task.logCount}</p></div>
-                                        <div><p className="text-[10px] text-slate-400">Avg Int</p><p className="font-bold">{formatDays(task.avgInterval)}</p></div>
-                                        <div><p className="text-[10px] text-slate-400">Last</p><p className="font-bold text-xs">{formatDate(task.lastDone)}</p></div>
+                                    <div className="grid grid-cols-3 gap-3 pt-3 border-t border-[#e8e0d5] mt-2">
+                                        <div><p className="text-[10px] text-[#a0845c] font-bold uppercase">Logs</p><p className="font-bold text-[#2c3e2f] text-lg">{task.logCount}</p></div>
+                                        <div><p className="text-[10px] text-[#a0845c] font-bold uppercase">Avg Int</p><p className="font-bold text-[#2c3e2f] text-lg">{formatDays(task.avgInterval)}</p></div>
+                                        <div><p className="text-[10px] text-[#a0845c] font-bold uppercase">Last</p><p className="font-bold text-[#2c3e2f] text-sm">{formatDate(task.lastDone)}</p></div>
                                     </div>
+                                    <button 
+                                        onClick={() => { setSelectedTaskForLog(task.id); setActiveTab('dashboard'); }} 
+                                        className="w-full mt-4 bg-[#c4a77d] hover:bg-[#a0845c] text-white py-2.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2"
+                                    >
+                                        <Activity size={14} /> View Dashboard
+                                    </button>
                                 </div>
                             ))}
                         </div>
@@ -549,51 +705,44 @@
             const HistoryView = () => (
                 <div className="space-y-4 md:space-y-6">
                     <div className="flex flex-col md:flex-row justify-between gap-3 mb-4">
-                        <h2 className="text-xl md:text-2xl font-black text-[#1E3A8A]">All History</h2>
+                        <h2 className="text-xl md:text-2xl font-black text-[#2c3e2f]">Activity History</h2>
                         <div className="flex gap-3">
-                            <select value={historyFilter} onChange={(e) => setHistoryFilter(e.target.value)} className="px-3 py-2 bg-slate-50 border-2 border-slate-100 rounded-xl text-sm">
+                            <select value={historyFilter} onChange={(e) => setHistoryFilter(e.target.value)} className="px-4 py-2 bg-[#f5f0e8] border-2 border-[#e8e0d5] rounded-xl text-sm text-[#2c3e2f] outline-none focus:border-[#c4a77d]">
                                 <option value="all">All Tasks</option>
                                 {tasks.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
                             </select>
-                            <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)} className="px-3 py-2 bg-slate-50 border-2 border-slate-100 rounded-xl text-sm">
+                            <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)} className="px-4 py-2 bg-[#f5f0e8] border-2 border-[#e8e0d5] rounded-xl text-sm text-[#2c3e2f] outline-none focus:border-[#c4a77d]">
                                 <option value="newest">Newest First</option>
                                 <option value="oldest">Oldest First</option>
                             </select>
                         </div>
                     </div>
                     {filteredHistory.length === 0 ? (
-                        <div className="bg-white rounded-2xl p-8 text-center">
-                            <History size={40} className="text-slate-300 mx-auto mb-3" />
-                            <p className="text-slate-400 text-sm">No logs yet</p>
+                        <div className="bg-white rounded-2xl p-12 text-center border border-[#e8e0d5]">
+                            <History size={48} className="text-[#d5ccbf] mx-auto mb-4" />
+                            <p className="text-[#a0845c] font-medium">No activity recorded yet</p>
                         </div>
                     ) : (
-                        <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
+                        <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#e8e0d5]">
                             <div className="overflow-x-auto">
                                 <table className="w-full text-sm">
-                                    <thead className="bg-slate-50">
+                                    <thead className="bg-[#f5f0e8] border-b border-[#e8e0d5]">
                                         <tr>
-                                            <th className="text-left p-3 font-black text-slate-600">Date</th>
-                                            <th className="text-left p-3 font-black text-slate-600">Task</th>
-                                            <th className="text-left p-3 font-black text-slate-600 hidden md:table-cell">Category</th>
-                                            <th className="text-left p-3 font-black text-slate-600">Actions</th>
+                                            <th className="text-left p-4 font-black text-[#2c3e2f]">Date &amp; Time</th>
+                                            <th className="text-left p-4 font-black text-[#2c3e2f]">Task</th>
+                                            <th className="text-left p-4 font-black text-[#2c3e2f] hidden md:table-cell">Category</th>
+                                            <th className="text-left p-4 font-black text-[#2c3e2f]">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {filteredHistory.map(log => { 
                                             const task = tasks.find(t => t.id === log.task_id); 
                                             return (
-                                                <tr key={log.id} className="border-b hover:bg-slate-50">
-                                                    <td className="p-3 text-xs md:text-sm">{formatDateTime(log.timestamp)}</td>
-                                                    <td className="p-3 text-xs md:text-sm">{task?.name || 'Deleted'}</td>
-                                                    <td className="p-3 hidden md:table-cell">
-                                                        <span className="text-xs px-2 py-1 bg-slate-100 rounded-full">{task?.category || '--'}</span>
-                                                    </td>
-                                                    <td className="p-3">
-                                                        <div className="flex gap-2">
-                                                            <button onClick={() => handleEditLog(log)} className="text-blue-400"><Edit size={14} /></button>
-                                                            <button onClick={() => handleDeleteLog(log.id)} className="text-red-400"><Trash2 size={14} /></button>
-                                                        </div>
-                                                    </td>
+                                                <tr key={log.id} className="border-b border-[#e8e0d5] hover:bg-[#f5f0e8] transition-colors">
+                                                    <td className="p-4 text-[#2c3e2f]">{formatDateTime(log.timestamp)}</td>
+                                                    <td className="p-4 font-semibold text-[#2c3e2f]">{task?.name || 'Deleted'}</td>
+                                                    <td className="p-4 hidden md:table-cell"><span className="text-xs px-3 py-1 bg-[#e8e0d5] rounded-full text-[#a0845c]">{task?.category || '--'}</span></td>
+                                                    <td className="p-4"><div className="flex gap-2"><button onClick={() => handleEditLog(log)} className="text-[#c4a77d] hover:text-[#a0845c] p-1"><Edit size={16} /></button><button onClick={() => handleDeleteLog(log.id)} className="text-red-300 hover:text-red-500 p-1"><Trash2 size={16} /></button></div></td>
                                                 </tr>
                                             );
                                         })}
@@ -607,100 +756,100 @@
 
             const SettingsView = () => (
                 <div className="space-y-4 md:space-y-6">
-                    <h2 className="text-xl md:text-2xl font-black text-[#1E3A8A] mb-4">Settings</h2>
-                    <div className="bg-white rounded-2xl p-4 md:p-8 shadow-sm">
-                        <h3 className="font-black text-[#1E3A8A] mb-4 flex items-center gap-2 text-base md:text-lg"><Database size={18} />Data Management</h3>
+                    <h2 className="text-xl md:text-2xl font-black text-[#2c3e2f] mb-4">Settings</h2>
+                    <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-[#e8e0d5]">
+                        <h3 className="font-black text-[#2c3e2f] mb-5 text-base md:text-lg">Profile Picture</h3>
+                        <div className="flex items-center gap-6 flex-wrap">
+                            <div className="relative">
+                                <div className="w-24 h-24 rounded-full overflow-hidden bg-[#f5f0e8] border-4 border-[#c4a77d] shadow-lg">
+                                    <CharacterAvatar className="w-full h-full" imageData={avatarImage} />
+                                </div>
+                                <button onClick={() => fileInputRef.current?.click()} className="absolute bottom-0 right-0 bg-[#c4a77d] p-2 rounded-full shadow-lg hover:bg-[#a0845c] transition-colors avatar-upload"><Camera size={16} className="text-white" /></button>
+                                <input ref={fileInputRef} type="file" accept="image/*" onChange={handleAvatarUpload} className="hidden" />
+                            </div>
+                            <div>
+                                <p className="text-sm text-[#2c3e2f]">Click the camera icon to upload a profile picture</p>
+                                <p className="text-xs text-[#a0845c] mt-1">Supports JPG, PNG, GIF</p>
+                                {avatarImage && (
+                                    <button onClick={() => setAvatarImage(null)} className="mt-2 text-xs text-red-500 hover:text-red-600 font-bold">Remove Picture</button>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-[#e8e0d5]">
+                        <h3 className="font-black text-[#2c3e2f] mb-5 flex items-center gap-2 text-base md:text-lg"><Database size={18} />Data Management</h3>
                         <div className="space-y-4">
-                            <div><button onClick={exportData} className="flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-xl font-bold text-sm"><Download size={14} />Export</button></div>
-                            <div><label className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-xl font-bold text-sm cursor-pointer inline-block"><Upload size={14} />Import<input type="file" accept=".json" onChange={importData} className="hidden" /></label></div>
-                            <div className="pt-4 border-t"><button onClick={() => setShowResetConfirm(true)} className="flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-xl font-bold text-sm"><Trash2 size={14} />Reset All Data</button></div>
+                            <div><button onClick={exportData} className="flex items-center gap-2 bg-[#6b8e23] text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-[#556b1a] transition-colors"><Download size={14} />Export Backup</button></div>
+                            <div><label className="flex items-center gap-2 bg-[#c4a77d] text-white px-5 py-2.5 rounded-xl font-bold text-sm cursor-pointer inline-block hover:bg-[#a0845c] transition-colors"><Upload size={14} />Import Backup<input type="file" accept=".json" onChange={importData} className="hidden" /></label></div>
+                            <div className="pt-4 border-t border-[#e8e0d5]"><button onClick={() => setShowResetConfirm(true)} className="flex items-center gap-2 bg-red-600 text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-red-700 transition-colors"><Trash2 size={14} />Reset All Data</button></div>
                         </div>
                     </div>
-                    <div className="bg-white rounded-2xl p-4 md:p-8 shadow-sm">
-                        <h3 className="font-black text-[#1E3A8A] mb-4 text-base md:text-lg">Statistics</h3>
-                        <div className="grid grid-cols-2 gap-3">
-                            <div className="text-center p-3 bg-slate-50 rounded-xl"><p className="text-xl font-black text-[#1E3A8A]">{tasks.length}</p><p className="text-xs text-slate-500">Templates</p></div>
-                            <div className="text-center p-3 bg-slate-50 rounded-xl"><p className="text-xl font-black text-[#1E3A8A]">{logs.length}</p><p className="text-xs text-slate-500">Total Logs</p></div>
-                            <div className="text-center p-3 bg-slate-50 rounded-xl"><p className="text-xl font-black text-[#1E3A8A]">{stats.filter(s => s.isOverdue).length}</p><p className="text-xs text-slate-500">Overdue</p></div>
-                            <div className="text-center p-3 bg-slate-50 rounded-xl"><p className="text-xl font-black text-[#1E3A8A]">{stats.reduce((sum, s) => sum + s.logCount, 0)}</p><p className="text-xs text-slate-500">Completions</p></div>
+                    <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-[#e8e0d5]">
+                        <h3 className="font-black text-[#2c3e2f] mb-5 text-base md:text-lg">Statistics</h3>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="text-center p-4 bg-[#f5f0e8] rounded-xl"><p className="text-2xl font-black text-[#c4a77d]">{tasks.length}</p><p className="text-xs text-[#a0845c] font-semibold">Templates</p></div>
+                            <div className="text-center p-4 bg-[#f5f0e8] rounded-xl"><p className="text-2xl font-black text-[#c4a77d]">{logs.length}</p><p className="text-xs text-[#a0845c] font-semibold">Total Logs</p></div>
+                            <div className="text-center p-4 bg-[#f5f0e8] rounded-xl"><p className="text-2xl font-black text-[#c4a77d]">{stats.filter(s => s.isOverdue).length}</p><p className="text-xs text-[#a0845c] font-semibold">Overdue</p></div>
+                            <div className="text-center p-4 bg-[#f5f0e8] rounded-xl"><p className="text-2xl font-black text-[#c4a77d]">{stats.reduce((sum, s) => sum + s.logCount, 0)}</p><p className="text-xs text-[#a0845c] font-semibold">Completions</p></div>
                         </div>
                     </div>
-                    <div className="bg-white rounded-2xl p-4 md:p-8 shadow-sm">
-                        <h3 className="font-black text-[#1E3A8A] mb-4 text-base md:text-lg">About</h3>
-                        <p className="text-sm font-bold">Smart Task Tracker v2.0</p>
-                        <p className="text-xs text-slate-500 mt-2">All data stored locally in your browser.</p>
+                    <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-[#e8e0d5]">
+                        <h3 className="font-black text-[#2c3e2f] mb-3 text-base md:text-lg">About</h3>
+                        <p className="text-sm font-bold text-[#2c3e2f]">Task Tracker v2.0</p>
+                        <p className="text-xs text-[#a0845c] mt-2">All data is stored locally in your browser.</p>
                     </div>
                 </div>
             );
 
-            // Hamburger Menu Button
             const HamburgerButton = () => (
-                <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden fixed top-4 left-4 z-50 bg-[#2B5BA9] text-white p-2 rounded-xl shadow-lg">
-                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden fixed top-4 left-4 z-50 bg-[#c4a77d] text-white p-2.5 rounded-xl shadow-lg">
+                    {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
                 </button>
             );
 
-            // Mobile Sidebar
             const MobileSidebar = () => (
                 <div className={`fixed inset-0 z-40 md:hidden ${isMobileMenuOpen ? 'visible' : 'invisible'}`}>
                     <div className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0'}`} onClick={() => setIsMobileMenuOpen(false)}></div>
-                    <div className={`absolute left-0 top-0 bottom-0 w-64 bg-[#2B5BA9] shadow-2xl transition-transform duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-                        <div className="p-6 flex justify-center pt-16">
-                            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center p-1"><CharacterAvatar className="w-full h-full" /></div>
-                        </div>
-                        <nav className="px-3 space-y-1">
-                            {navItems.map(item => (
-                                <button key={item.id} onClick={() => { setActiveTab(item.id); setIsMobileMenuOpen(false); }} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-black text-xs uppercase ${activeTab === item.id ? 'bg-white text-[#2B5BA9] shadow-lg' : 'text-white/60 hover:bg-white/10'}`}>
-                                    {item.icon}<span>{item.label}</span>
-                                </button>
-                            ))}
-                        </nav>
-                        <div className="absolute bottom-6 left-6 right-6"><div className="bg-white/10 p-3 rounded-xl"><p className="text-[9px] text-white/50 font-black uppercase">Status</p><p className="text-xs text-white font-bold flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>{tasks.length} Active</p></div></div>
+                    <div className={`absolute left-0 top-0 bottom-0 w-64 bg-[#c4a77d] shadow-2xl transition-transform duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+                        <div className="p-6 flex justify-center pt-16"><div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center p-1 overflow-hidden"><CharacterAvatar className="w-full h-full" imageData={avatarImage} /></div></div>
+                        <nav className="px-3 space-y-1">{navItems.map(item => (<button key={item.id} onClick={() => { setActiveTab(item.id); setIsMobileMenuOpen(false); }} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-black text-xs uppercase ${activeTab === item.id ? 'bg-white text-[#c4a77d] shadow-lg' : 'text-white/70 hover:bg-white/10'}`}>{item.icon}<span>{item.label}</span></button>))}</nav>
+                        <div className="absolute bottom-6 left-6 right-6"><div className="bg-white/10 p-4 rounded-xl"><p className="text-[9px] text-white/50 font-black uppercase tracking-wider">Status</p><p className="text-sm text-white font-bold flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>{tasks.length} Active Templates</p></div></div>
                     </div>
                 </div>
             );
 
-            // Desktop Sidebar
             const DesktopSidebar = () => (
-                <aside className="hidden md:flex w-60 bg-[#2B5BA9] flex-col shadow-xl flex-shrink-0">
-                    <div className="p-8 flex justify-center"><div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center p-1"><CharacterAvatar className="w-full h-full" /></div></div>
-                    <nav className="flex-1 px-3 space-y-1">
+                <aside className="hidden md:flex w-64 bg-[#c4a77d] flex-col shadow-xl flex-shrink-0">
+                    <div className="p-8 flex justify-center"><div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center p-1 overflow-hidden cursor-pointer hover:opacity-80 transition-opacity" onClick={() => fileInputRef.current?.click()}><CharacterAvatar className="w-full h-full" imageData={avatarImage} /></div></div>
+                    <nav className="flex-1 px-4 space-y-1">
                         {navItems.map(item => (
-                            <button key={item.id} onClick={() => setActiveTab(item.id)} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-black text-xs uppercase ${activeTab === item.id ? 'bg-white text-[#2B5BA9] shadow-lg' : 'text-white/60 hover:bg-white/10'}`}>
+                            <button key={item.id} onClick={() => setActiveTab(item.id)} className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all font-black text-xs uppercase ${activeTab === item.id ? 'bg-white text-[#c4a77d] shadow-lg' : 'text-white/70 hover:bg-white/10'}`}>
                                 {item.icon}<span>{item.label}</span>
                             </button>
                         ))}
                     </nav>
-                    <div className="p-6"><div className="bg-white/10 p-4 rounded-xl"><p className="text-[9px] text-white/50 font-black uppercase">Status</p><p className="text-xs text-white font-bold flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>{tasks.length} Templates Active</p></div></div>
+                    <div className="p-6"><div className="bg-white/10 p-4 rounded-xl"><p className="text-[9px] text-white/50 font-black uppercase tracking-wider">Status</p><p className="text-sm text-white font-bold flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>{tasks.length} Active Templates</p></div></div>
                 </aside>
             );
 
-            // Modals
             const TaskModal = () => (
                 <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setIsTaskModalOpen(false)}>
-                    <div className="bg-white rounded-2xl md:rounded-3xl w-full max-w-md overflow-hidden animate-in" onClick={e => e.stopPropagation()}>
-                        <div className="p-4 md:p-6 bg-slate-50 border-b flex justify-between items-center">
-                            <div><h3 className="text-xl md:text-2xl font-black text-[#1E3A8A]">New Template</h3><p className="text-xs text-slate-400">Define what to track</p></div>
-                            <button onClick={() => setIsTaskModalOpen(false)} className="text-slate-400 hover:text-slate-600 text-2xl">✕</button>
-                        </div>
-                        <form onSubmit={handleCreateTask} className="p-4 md:p-6 space-y-4">
-                            <div><input autoFocus required placeholder="Task name" value={newTaskName} onChange={(e) => setNewTaskName(e.target.value)} className="w-full bg-slate-50 border-2 rounded-xl px-4 py-3 outline-none focus:border-blue-500" /></div>
-                            <div><div className="grid grid-cols-2 gap-2">{CATEGORIES.map(c => (<button key={c.name} type="button" onClick={() => setNewTaskCategory(c.name)} className={`p-2 rounded-xl border-2 transition-all text-xs font-bold ${newTaskCategory === c.name ? 'border-blue-500 bg-blue-50 text-blue-600' : 'border-slate-100 bg-slate-50 text-slate-400'}`}>{c.name}</button>))}</div></div>
-                            <button type="submit" className="w-full py-3 bg-[#2B5BA9] text-white rounded-xl font-bold">Create Template</button>
-                        </form>
+                    <div className="bg-white rounded-2xl w-full max-w-md overflow-hidden animate-in" onClick={e => e.stopPropagation()}>
+                        <div className="p-6 bg-[#f5f0e8] border-b border-[#e8e0d5] flex justify-between items-center"><div><h3 className="text-xl font-black text-[#2c3e2f]">New Template</h3><p className="text-xs text-[#a0845c]">Define what you want to track</p></div><button onClick={() => setIsTaskModalOpen(false)} className="text-[#a0845c] hover:text-[#2c3e2f] text-2xl">✕</button></div>
+                        <form onSubmit={handleCreateTask} className="p-6 space-y-5"><div><input autoFocus required placeholder="e.g., Fill Gas, Change Oil" value={newTaskName} onChange={(e) => setNewTaskName(e.target.value)} className="w-full bg-[#f5f0e8] border-2 border-[#e8e0d5] rounded-xl px-5 py-3.5 outline-none focus:border-[#c4a77d] text-[#2c3e2f] placeholder:text-[#c4a77d]/50" /></div>
+                        <div><label className="block text-xs font-black text-[#a0845c] uppercase mb-3">Category</label><div className="grid grid-cols-2 gap-3">{CATEGORIES.map(c => (<button key={c.name} type="button" onClick={() => setNewTaskCategory(c.name)} className={`p-3 rounded-xl border-2 transition-all text-sm font-bold ${newTaskCategory === c.name ? 'border-[#c4a77d] bg-[#c4a77d] text-white' : 'border-[#e8e0d5] bg-[#f5f0e8] text-[#a0845c]'}`}>{c.name}</button>))}</div></div>
+                        <button type="submit" className="w-full py-3.5 bg-[#c4a77d] text-white rounded-xl font-bold hover:bg-[#a0845c] transition-colors">Create Template</button></form>
                     </div>
                 </div>
             );
 
             const EditTaskModal = () => editingTask && (
                 <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setIsEditModalOpen(false)}>
-                    <div className="bg-white rounded-2xl md:rounded-3xl w-full max-w-md overflow-hidden" onClick={e => e.stopPropagation()}>
-                        <div className="p-4 md:p-6 bg-slate-50 border-b"><h3 className="text-xl font-black text-[#1E3A8A]">Edit Template</h3></div>
-                        <form onSubmit={handleEditTask} className="p-4 md:p-6 space-y-4">
-                            <input required value={newTaskName} onChange={(e) => setNewTaskName(e.target.value)} className="w-full bg-slate-50 border-2 rounded-xl px-4 py-3" />
-                            <div className="grid grid-cols-2 gap-2">{CATEGORIES.map(c => (<button key={c.name} type="button" onClick={() => setNewTaskCategory(c.name)} className={`p-2 rounded-xl border-2 text-xs font-bold ${newTaskCategory === c.name ? 'border-blue-500 bg-blue-50 text-blue-600' : 'border-slate-100 bg-slate-50 text-slate-400'}`}>{c.name}</button>))}</div>
-                            <button type="submit" className="w-full py-3 bg-[#2B5BA9] text-white rounded-xl font-bold">Save Changes</button>
-                        </form>
+                    <div className="bg-white rounded-2xl w-full max-w-md overflow-hidden" onClick={e => e.stopPropagation()}>
+                        <div className="p-6 bg-[#f5f0e8] border-b border-[#e8e0d5]"><h3 className="text-xl font-black text-[#2c3e2f]">Edit Template</h3></div>
+                        <form onSubmit={handleEditTask} className="p-6 space-y-5"><input required value={newTaskName} onChange={(e) => setNewTaskName(e.target.value)} className="w-full bg-[#f5f0e8] border-2 border-[#e8e0d5] rounded-xl px-5 py-3.5 text-[#2c3e2f]" />
+                        <div className="grid grid-cols-2 gap-3">{CATEGORIES.map(c => (<button key={c.name} type="button" onClick={() => setNewTaskCategory(c.name)} className={`p-3 rounded-xl border-2 text-sm font-bold ${newTaskCategory === c.name ? 'border-[#c4a77d] bg-[#c4a77d] text-white' : 'border-[#e8e0d5] bg-[#f5f0e8] text-[#a0845c]'}`}>{c.name}</button>))}</div>
+                        <button type="submit" className="w-full py-3.5 bg-[#c4a77d] text-white rounded-xl font-bold hover:bg-[#a0845c] transition-colors">Save Changes</button></form>
                     </div>
                 </div>
             );
@@ -709,8 +858,8 @@
                 <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setShowResetConfirm(false)}>
                     <div className="bg-white rounded-2xl max-w-md w-full p-6" onClick={e => e.stopPropagation()}>
                         <h3 className="text-xl font-black text-red-600 mb-3">Reset All Data?</h3>
-                        <p className="text-slate-600 text-sm mb-6">This will permanently delete all your tasks and logs.</p>
-                        <div className="flex gap-3"><button onClick={resetAllData} className="flex-1 bg-red-500 text-white py-2 rounded-xl font-bold">Reset</button><button onClick={() => setShowResetConfirm(false)} className="flex-1 bg-slate-200 py-2 rounded-xl font-bold">Cancel</button></div>
+                        <p className="text-[#2c3e2f] text-sm mb-6">This action cannot be undone. All your tasks and logs will be permanently deleted.</p>
+                        <div className="flex gap-3"><button onClick={resetAllData} className="flex-1 bg-red-600 text-white py-2.5 rounded-xl font-bold">Yes, Reset</button><button onClick={() => setShowResetConfirm(false)} className="flex-1 bg-[#e8e0d5] text-[#2c3e2f] py-2.5 rounded-xl font-bold">Cancel</button></div>
                     </div>
                 </div>
             );
@@ -718,59 +867,32 @@
             const LogEditModal = () => editingLog && (
                 <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setIsLogEditModalOpen(false)}>
                     <div className="bg-white rounded-2xl max-w-md w-full" onClick={e => e.stopPropagation()}>
-                        <div className="p-4 bg-slate-50 border-b"><h3 className="text-xl font-black text-[#1E3A8A]">Edit Log Entry</h3></div>
-                        <form onSubmit={saveEditedLog} className="p-4 space-y-4">
-                            <input type="date" required value={editLogDate} onChange={(e) => setEditLogDate(e.target.value)} className="w-full bg-slate-50 border-2 rounded-xl px-4 py-3" />
-                            <input type="time" required value={editLogTime} onChange={(e) => setEditLogTime(e.target.value)} className="w-full bg-slate-50 border-2 rounded-xl px-4 py-3" />
-                            <div className="flex gap-3"><button type="submit" className="flex-1 bg-[#2B5BA9] text-white py-2 rounded-xl font-bold">Save</button><button type="button" onClick={() => setIsLogEditModalOpen(false)} className="flex-1 bg-slate-200 py-2 rounded-xl font-bold">Cancel</button></div>
-                        </form>
+                        <div className="p-6 bg-[#f5f0e8] border-b border-[#e8e0d5]"><h3 className="text-xl font-black text-[#2c3e2f]">Edit Log Entry</h3></div>
+                        <form onSubmit={saveEditedLog} className="p-6 space-y-5"><input type="date" required value={editLogDate} onChange={(e) => setEditLogDate(e.target.value)} className="w-full bg-[#f5f0e8] border-2 border-[#e8e0d5] rounded-xl px-5 py-3.5 text-[#2c3e2f]" /><input type="time" required value={editLogTime} onChange={(e) => setEditLogTime(e.target.value)} className="w-full bg-[#f5f0e8] border-2 border-[#e8e0d5] rounded-xl px-5 py-3.5 text-[#2c3e2f]" /><div className="flex gap-3"><button type="submit" className="flex-1 bg-[#c4a77d] text-white py-3 rounded-xl font-bold">Save</button><button type="button" onClick={() => setIsLogEditModalOpen(false)} className="flex-1 bg-[#e8e0d5] text-[#2c3e2f] py-3 rounded-xl font-bold">Cancel</button></div></form>
                     </div>
                 </div>
             );
 
             return (
-                <div className="flex h-screen bg-[#E9F1F9] overflow-hidden">
+                <div className="flex h-screen bg-[#f5f0e8] overflow-hidden">
                     <HamburgerButton />
                     <MobileSidebar />
                     <DesktopSidebar />
 
                     <main className="flex-1 overflow-y-auto">
-                        <div className="max-w-6xl mx-auto p-4 md:p-8 lg:p-12 pt-16 md:pt-8">
-                            <div className="mb-6 md:mb-10">
-                                <h1 className="text-2xl md:text-3xl font-black text-[#1E3A8A] tracking-tight uppercase">
-                                    {activeTab === 'dashboard' && 'Dashboard'}
-                                    {activeTab === 'templates' && 'My Templates'}
-                                    {activeTab === 'history' && 'History'}
-                                    {activeTab === 'settings' && 'Settings'}
-                                </h1>
-                                <p className="text-xs md:text-sm text-[#64748B] font-bold mt-1">
-                                    {activeTab === 'dashboard' && 'Monitor your recurring activities with Task Tracker'}
-                                    {activeTab === 'templates' && 'Manage your task templates'}
-                                    {activeTab === 'history' && 'View all task logs'}
-                                    {activeTab === 'settings' && 'Configure app settings'}
-                                </p>
+                        <div className="max-w-6xl mx-auto p-5 md:p-8 lg:p-10 pt-16 md:pt-8">
+                            <div className="mb-8">
+                                <h1 className="text-2xl md:text-3xl font-black text-[#2c3e2f] tracking-tight">Task Tracker Dashboard</h1>
+                                <p className="text-sm text-[#a0845c] font-semibold mt-1">Monitor your recurring activities with precision</p>
                             </div>
 
                             {activeTab === 'dashboard' && showTutorial && (
-                                <div className="mb-6 md:mb-10 p-1 bg-gradient-to-r from-orange-400 to-blue-400 rounded-2xl">
-                                    <div className="bg-white rounded-xl p-4 md:p-6 flex items-center gap-4 flex-wrap">
-                                        <CharacterAvatar className="w-12 h-12 md:w-16 md:h-16" />
-                                        <div className="flex-1">
-                                            <h2 className="text-base md:text-xl font-black text-[#1E3A8A]">
-                                                {tutorialStep === 0 && "Welcome!"}
-                                                {tutorialStep === 1 && "Create a Template"}
-                                                {tutorialStep === 2 && "Log Your First Entry"}
-                                                {tutorialStep === 3 && "Great Job!"}
-                                            </h2>
-                                            <p className="text-xs text-slate-500">
-                                                {tutorialStep === 0 && "Click Get Started to begin"}
-                                                {tutorialStep === 1 && "Add something like 'Water Plants'"}
-                                                {tutorialStep === 2 && "Select your task and click Add Entry"}
-                                                {tutorialStep === 3 && "The system will learn your patterns!"}
-                                            </p>
-                                        </div>
-                                        {tutorialStep === 0 && <button onClick={() => setTutorialStep(1)} className="bg-orange-500 text-white px-4 py-2 rounded-xl text-sm font-bold">Get Started →</button>}
-                                        <button onClick={() => setShowTutorial(false)} className="text-slate-300 text-xs">Hide</button>
+                                <div className="mb-8 p-4 bg-gradient-to-r from-[#c4a77d] to-[#a0845c] rounded-xl shadow-lg">
+                                    <div className="bg-white rounded-lg p-5 flex items-center gap-5 flex-wrap">
+                                        <CharacterAvatar className="w-14 h-14" imageData={avatarImage} />
+                                        <div className="flex-1"><h2 className="font-black text-[#2c3e2f]">{tutorialStep === 0 ? "Welcome!" : tutorialStep === 1 ? "Create a Template" : tutorialStep === 2 ? "Log Your First Entry" : "Great Job!"}</h2><p className="text-sm text-[#a0845c]">{tutorialStep === 0 ? "Let's get started with your first task" : tutorialStep === 1 ? "Add something like 'Fill Gas' or 'Change Oil'" : tutorialStep === 2 ? "Select your task and click Add Entry" : "I'll start calculating your trends now!"}</p></div>
+                                        {tutorialStep === 0 && <button onClick={() => setTutorialStep(1)} className="bg-[#c4a77d] text-white px-5 py-2 rounded-lg font-bold text-sm">Get Started →</button>}
+                                        <button onClick={() => setShowTutorial(false)} className="text-[#c4a77d] text-sm font-bold">Hide</button>
                                     </div>
                                 </div>
                             )}
