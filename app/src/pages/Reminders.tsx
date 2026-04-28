@@ -1,4 +1,4 @@
-import { useApp, useActivityTypes, useReminders, useProfile } from '@/context/AppContext';
+import { useApp, useActivityTypes, useReminders, useProfile } from '../context/AppContext';
 import { getDaysUntil, getBirthdayReminder, formatDate } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';

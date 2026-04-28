@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useApp, useActivityTypes, useActivityLogs } from '@/context/AppContext';
+import { useApp, useActivityTypes, useActivityLogs } from '../context/AppContext';
 import { getTimeSince, formatDateTime } from '@/lib/utils';
 import { CATEGORY_MAP } from '@/types';
 import type { ActivityType } from '@/types';

@@ -24,6 +24,7 @@ type Action =
 function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
     case 'LOAD_STATE':
+      console.log('LOAD_STATE:', action.payload);
       return action.payload;
     case 'ADD_ACTIVITY_TYPE':
       return { ...state, activityTypes: [...state.activityTypes, action.payload] };
@@ -69,7 +70,11 @@ function reducer(state: AppState, action: Action): AppState {
         reminders: state.reminders.filter((rem) => rem.id !== action.id),
       };
     case 'UPDATE_PROFILE':
-      return { ...state, profile: action.payload };
+      console.log('UPDATE_PROFILE - Old profile:', state.profile);
+      console.log('UPDATE_PROFILE - New profile payload:', action.payload);
+      const newState = { ...state, profile: action.payload };
+      console.log('UPDATE_PROFILE - New state profile:', newState.profile);
+      return newState;
     case 'UPDATE_SETTINGS':
       return { ...state, settings: { ...state.settings, ...action.payload } };
     case 'COMPLETE_ONBOARDING':
@@ -101,6 +106,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     if (stored) {
       try {
         const parsed: AppState = JSON.parse(stored);
+        console.log('Loaded from localStorage:', parsed);
         dispatch({ type: 'LOAD_STATE', payload: parsed });
       } catch {
         dispatch({ type: 'LOAD_STATE', payload: createDefaultState() });
@@ -111,6 +117,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (loaded) {
+      console.log('Saving to localStorage:', state);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     }
   }, [state, loaded]);
@@ -149,6 +156,7 @@ export function useReminders() {
 
 export function useProfile() {
   const { state } = useApp();
+  console.log('useProfile returning:', state.profile);
   return state.profile;
 }
 

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useActivityTypes, useActivityLogs } from '@/context/AppContext';
+import { useActivityTypes, useActivityLogs } from '../context/AppContext';
 // useReminders removed - not needed for stats
 import { CATEGORY_MAP } from '@/types';
 import { format, subDays } from 'date-fns';

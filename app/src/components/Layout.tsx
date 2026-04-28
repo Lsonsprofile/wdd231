@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { useApp, useProfile } from '@/context/AppContext';
-import { isBirthdayToday } from '@/lib/utils';
+import { useApp, useProfile } from '../context/AppContext';
+import { isBirthdayToday } from '../lib/utils';
 import { Sidebar } from './Sidebar';
 import { MobileBottomNav } from './MobileBottomNav';
 import { TopBar } from './TopBar';
 import { OnboardingOverlay } from './OnboardingOverlay';
-import { Toaster } from '@/components/ui/sonner';
+import { Toaster } from '../components/ui/sonner';
 import { toast } from 'sonner';
 import { PartyPopper } from 'lucide-react';
 
@@ -51,6 +51,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <main className="flex-1 p-4 lg:p-8 pb-24 lg:pb-8 overflow-y-auto">
         <div className="max-w-7xl mx-auto">
           {children}
+        </div>
+        
+        {/* SIGNATURE - Visible on ALL devices (mobile + desktop) */}
+        <div className="text-center py-6 mt-4 border-t border-gray-200">
+          <p className="text-xs text-gray-400">
+            Made with ❤️ by <span className="font-medium text-gray-500">Emmanuel Ndogo</span>
+          </p>
         </div>
       </main>
 

@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { useActivityTypes, useActivityLogs } from '@/context/AppContext';
+import { useActivityTypes, useActivityLogs } from '../context/AppContext';
 import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, isSameMonth, isSameDay, subMonths, addMonths } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { IconRenderer } from '@/components/IconRenderer';

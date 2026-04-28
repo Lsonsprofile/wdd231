@@ -1,4 +1,4 @@
-import { useApp, useProfile } from '@/context/AppContext';
+import { useApp, useProfile } from '../context/AppContext';
 import { getGreeting } from '@/lib/utils';
 
 export function TopBar() {

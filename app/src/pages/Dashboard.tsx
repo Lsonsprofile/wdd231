@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useActivityTypes, useActivityLogs, useReminders, useProfile } from '@/context/AppContext';
+import { useActivityTypes, useActivityLogs, useReminders, useProfile } from '../context/AppContext';
 import { getTimeSince, formatDateTime, getDaysUntil, getBirthdayReminder, getGreeting, isBirthdayToday } from '@/lib/utils';
 import { StatCard } from '@/components/StatCard';
 import { ActivityPieChart } from '@/components/ActivityPieChart';

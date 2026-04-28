@@ -38,12 +38,28 @@ export function formatDateTime(dateStr: string, timeStr?: string): string {
   return format(date, 'MMM d, yyyy \'at\' h:mm a');
 }
 
+// FIXED: Handle MM-DD format properly
 export function getBirthdayReminder(birthdayStr: string | null): { daysUntil: number; nextBirthday: string; message: string } | null {
-  if (!birthdayStr) return null;
+  if (!birthdayStr || birthdayStr.length !== 5) return null;
+  
   const now = new Date();
   const currentYear = now.getFullYear();
   const [monthStr, dayStr] = birthdayStr.split('-');
-  let nextBirthday = new Date(currentYear, parseInt(monthStr) - 1, parseInt(dayStr));
+  
+  // Validate month and day
+  const month = parseInt(monthStr);
+  const day = parseInt(dayStr);
+  
+  if (isNaN(month) || isNaN(day) || month < 1 || month > 12 || day < 1 || day > 31) {
+    return null;
+  }
+  
+  let nextBirthday = new Date(currentYear, month - 1, day);
+  
+  // Check if the date is valid
+  if (isNaN(nextBirthday.getTime())) {
+    return null;
+  }
   
   if (isBefore(nextBirthday, now) && !isSameDay(nextBirthday, now)) {
     nextBirthday = addYears(nextBirthday, 1);
@@ -54,16 +70,23 @@ export function getBirthdayReminder(birthdayStr: string | null): { daysUntil: nu
   
   return {
     daysUntil,
-    nextBirthday: format(nextBirthday, 'MMM d, yyyy'),
+    nextBirthday: format(nextBirthday, 'MMMM d'),
     message,
   };
 }
 
+// FIXED: Handle MM-DD format properly
 export function isBirthdayToday(birthdayStr: string | null): boolean {
-  if (!birthdayStr) return false;
+  if (!birthdayStr || birthdayStr.length !== 5) return false;
+  
   const now = new Date();
   const [monthStr, dayStr] = birthdayStr.split('-');
-  return now.getMonth() === parseInt(monthStr) - 1 && now.getDate() === parseInt(dayStr);
+  const month = parseInt(monthStr);
+  const day = parseInt(dayStr);
+  
+  if (isNaN(month) || isNaN(day)) return false;
+  
+  return now.getMonth() === month - 1 && now.getDate() === day;
 }
 
 export function getGreeting(): string {

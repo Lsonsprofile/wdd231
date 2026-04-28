@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useApp, useSettings } from '@/context/AppContext';
+import { useApp, useSettings } from '../context/AppContext';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { toast } from 'sonner';

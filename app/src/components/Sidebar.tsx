@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useApp } from '@/context/AppContext';
+import { useApp } from '../context/AppContext';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import {

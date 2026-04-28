@@ -1,5 +1,5 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { useActivityTypes, useActivityLogs } from '@/context/AppContext';
+import { useActivityTypes, useActivityLogs } from '../context/AppContext';
 import { CATEGORY_MAP } from '@/types';
 import { useMemo } from 'react';
 

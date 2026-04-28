@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { useApp, useProfile } from '@/context/AppContext';
-import { getBirthdayReminder, isBirthdayToday } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { useState, useEffect } from 'react';
+import { useApp, useProfile } from '../context/AppContext';
+import { getBirthdayReminder, isBirthdayToday } from '../lib/utils';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
 import { toast } from 'sonner';
 import { UserCircle, CalendarDays, Mail, Save, Gift, PartyPopper } from 'lucide-react';
 
@@ -31,7 +31,6 @@ export function Profile() {
   };
 
   const handleAvatarChange = () => {
-    // Generate a new random avatar style
     const styles = ['adventurer', 'avataaars', 'bottts', 'fun-emoji', 'lorelei', 'notionists'];
     const randomStyle = styles[Math.floor(Math.random() * styles.length)];
     const seed = Math.random().toString(36).substring(7);
@@ -43,6 +42,18 @@ export function Profile() {
     });
   };
 
+  const handleBirthdayChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value.replace(/\D/g, '');
+    
+    if (value.length >= 3) {
+      value = `${value.slice(0, 2)}-${value.slice(2, 4)}`;
+    }
+    
+    if (value.length <= 5) {
+      setBirthday(value);
+    }
+  };
+
   return (
     <div className="max-w-xl mx-auto space-y-6">
       <div>
@@ -50,7 +61,6 @@ export function Profile() {
         <p className="text-sm text-gray-500 mt-0.5">Manage your personal information</p>
       </div>
 
-      {/* Birthday Banner */}
       {birthdayToday && (
         <div className="bg-gradient-to-r from-pink-500 to-purple-500 rounded-2xl p-5 flex items-center gap-4 text-white">
           <PartyPopper className="w-10 h-10" />
@@ -62,15 +72,15 @@ export function Profile() {
       )}
 
       <div className="bg-white rounded-2xl p-6 shadow-card space-y-6">
-        {/* Avatar */}
         <div className="flex flex-col items-center gap-3">
-          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#6C5CE7] to-[#A78BFA] flex items-center justify-center text-white font-bold text-3xl cursor-pointer hover:opacity-90 transition-opacity"
+          <div 
+            className="w-24 h-24 rounded-full bg-gradient-to-br from-[#6C5CE7] to-[#A78BFA] flex items-center justify-center text-white font-bold text-3xl cursor-pointer hover:opacity-90 transition-opacity overflow-hidden"
             onClick={handleAvatarChange}
           >
             {profile.avatar ? (
               <img src={profile.avatar} alt="avatar" className="w-full h-full rounded-full object-cover" />
             ) : (
-              name.charAt(0).toUpperCase()
+              (name.charAt(0) || 'U').toUpperCase()
             )}
           </div>
           <button
@@ -81,7 +91,6 @@ export function Profile() {
           </button>
         </div>
 
-        {/* Form */}
         <div className="space-y-4">
           <div className="space-y-2">
             <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
@@ -113,36 +122,37 @@ export function Profile() {
           <div className="space-y-2">
             <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
               <Gift className="w-4 h-4 text-gray-400" />
-              Birthday (Month-Day)
+              Birthday (MM-DD)
             </Label>
             <Input
               type="text"
               value={birthday}
-              onChange={(e) => setBirthday(e.target.value)}
+              onChange={handleBirthdayChange}
               placeholder="MM-DD (e.g., 05-25)"
               className="h-12 rounded-xl"
               maxLength={5}
             />
-            <p className="text-xs text-gray-400">Format: MM-DD. Used for birthday reminders.</p>
+            <p className="text-xs text-gray-400">
+              Format: Month-Day (MM-DD). Example: 12-25 for Christmas
+            </p>
           </div>
 
-          {/* Birthday Preview */}
-          {birthdayInfo && (
+          {birthday && birthdayInfo && (
             <div className="bg-pink-50 rounded-xl p-4 flex items-center gap-3">
               <CalendarDays className="w-5 h-5 text-pink-500" />
-              <div>
+              <div className="flex-1">
                 <p className="text-sm font-medium text-gray-700">Next Birthday</p>
-                <p className="text-sm text-gray-600">
-                  {birthdayInfo.nextBirthday} • <span className="font-semibold text-pink-600">{birthdayInfo.message}</span>
+                <p className="text-sm text-gray-600">{birthdayInfo.nextBirthday}</p>
+                <p className="text-xs text-pink-600 mt-1">
+                  {birthdayInfo.daysUntil === 0 ? '🎉 Today! 🎉' : birthdayInfo.message}
                 </p>
               </div>
             </div>
           )}
 
-          {/* Join Date */}
           <div className="flex items-center gap-2 text-sm text-gray-500 py-2">
             <CalendarDays className="w-4 h-4" />
-            Joined {new Date(profile.joinedDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+            Joined {profile.joinedDate ? new Date(profile.joinedDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : 'recently'}
           </div>
         </div>
 
