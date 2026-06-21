@@ -39,9 +39,10 @@
 }
 
 .grid-flex {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
     padding: 1.5rem 1rem;
     max-width: 1400px;
     margin: 0 auto;
